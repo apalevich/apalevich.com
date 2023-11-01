@@ -216,12 +216,44 @@ footer {
 
 /* Media Queries for Desktop */
 @media screen and (min-width: 1024px) {
+    body > * {
+        max-width: 1024px;
+        margin: auto;
+    }
+
+    header {
+        justify-content: space-between;
+        padding: 12px 32px;
+    }
+
+    header button {
+        display: block;
+    }
+
+    .hero {
+        padding: 80px 80px 40px;
+        box-sizing: border-box;
+    }
+
+    h2 {
+        margin-top: 80px;
+    }
+
     .features {
         justify-content: space-between;
+        flex-wrap: nowrap;
     }
 
     .feature_card {
         width: 30%;
         margin: 20px;
+    }
+
+    .apply-container {
+        padding-bottom: 80px;
+    }
+
+    footer {
+        padding: 40px 80px;
     }
 }
