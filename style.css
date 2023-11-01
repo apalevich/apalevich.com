@@ -20,7 +20,7 @@ body {
     /* font-family: 'PT Mono', monospace; */
 }
 
-body > * {
+body>* {
     padding: 0 8px;
 }
 
@@ -157,13 +157,25 @@ footer {
 
 /* Media Queries for Tablet */
 @media screen and (min-width: 768px) {
+    body>* {
+        padding: 0 24px;
+    }
+
     header {
-        padding: 20px;
+        padding: 0 20px;
         background-color: transparent;
         padding: 10px 20px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
+    }
+
+    svg {
+        margin-top: 8px;
+    }
+
+    h1 {
+        margin: 24px 0;
     }
 
     h2 {
@@ -171,19 +183,33 @@ footer {
     }
 
     .features {
-        padding: 40px;
+        flex-wrap: wrap;
+        flex-direction: row;
     }
 
     .feature_card {
-        width: 30%;
+        width: 25%;
         margin: 20px;
     }
 
     .apply-container {
-        padding: 40px;
+        padding: 40px 80px;
     }
 
-    .footer {
+    .form-container {
+        display: flex;
+        flex-direction: row;
+        /* flex-wrap: nowrap; */
+    }
+
+    .form-container>* {
+        flex-basis: 50%;
+        margin: auto 0;
+        padding: 0 8px;
+        text-align: right;
+    }
+
+    footer {
         padding: 20px;
     }
 }
