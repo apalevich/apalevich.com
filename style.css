@@ -1,0 +1,181 @@
+:root {
+    --dark: #03040C;
+    --white: #fff6fa;
+    --black: #000;
+    --gradient1: #013780;
+    --gradient2: #CA05B4;
+}
+
+/* Base styles for mobile */
+body {
+    margin: 0;
+    padding: 16px 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    /* background-color: var(--dark); */
+    /* background: rgb(24,34,130); */
+    /* background: radial-gradient(circle, rgba(24,34,130,1) 0%, rgba(3,4,13,1) 97%); */
+    /* color: var(--white); */
+    /* font-family: 'PT Mono', monospace; */
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+header button {
+    display: none;
+}
+
+svg {
+    filter: invert(100%);
+    margin: 24px 0;
+}
+
+.hero {
+    
+}
+
+h1 {
+    font-size: 4rem;
+    margin: 8px 0;
+}
+
+.text-gradient {
+    background: linear-gradient(-135deg, var(--gradient1), var(--gradient2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* .text-medium {
+    font-weight: 400;
+} */
+
+.text-bold {
+    font-weight: 700;
+}
+
+.text-medium {
+    /* font-weight: 400; */
+    font-style: italic;
+}
+
+h2 {
+    margin: 60px 0 24px;
+    font-weight: 300;
+}
+
+.hero button {
+    margin: 24px;
+}
+
+button {
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, var(--gradient1), var(--gradient2));
+    color: var(--white);
+}
+
+
+.border-rounded {
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    padding: 20px;
+    flex-direction: column;
+}
+
+.feature_card {
+    /* background-color: var(--dark); */
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px var(--white) solid;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.feature_card h4 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.apply-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.switch {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.switch label {
+    margin: 0 10px;
+}
+
+.footer {
+    background-color: var(--black);
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Media Queries for Tablet */
+@media screen and (min-width: 768px) {
+    header {
+        padding: 20px;
+        background-color: transparent;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .medium-subheading {
+        font-size: 21px;
+    }
+
+    .features {
+        padding: 40px;
+    }
+
+    .feature_card {
+        width: 30%;
+        margin: 20px;
+    }
+
+    .apply-container {
+        padding: 40px;
+    }
+
+    .footer {
+        padding: 20px;
+    }
+}
+
+/* Media Queries for Desktop */
+@media screen and (min-width: 1024px) {
+    .features {
+        justify-content: space-between;
+    }
+
+    .feature_card {
+        width: 30%;
+        margin: 20px;
+    }
+}
