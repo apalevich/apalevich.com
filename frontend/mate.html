@@ -23,12 +23,17 @@
                 </path>
             </g>
         </svg>
-        <button class="border-rounded">Become beta-tester</button>
+        <a class="border-rounded button" href="#form-container">Become beta-tester</a>
     </header>
     <div class="hero">
         <h1 class="text-bold">Welcome <span class="text-gradient">MATE</span></h1>
-        <h2>MATE, or <span class="text-italic">Mentorship and AI Technology Enhancer</span>, is an&nbsp;invaluable companion for&nbsp;code&nbsp;review and development.</h2>
-        <button type="button" class="bg-gradient border-rounded">Become beta-tester</button>
+        <h2>MATE, or <span class="text-italic">Mentorship and AI Technology Enhancer</span>, is an&nbsp;AI-based 
+            companion for&nbsp;code&nbsp;review and development.</h2>
+        <a class="button bg-gradient border-rounded" href="#form-container">Become beta-tester</a>
+    </div>
+    <div>
+        <h3>Elevate your coding experience with MATE, your trusted Mentorship and AI Technology Enhancer. Say goodbye to
+            code review stress and hello to enhanced coding proficiency!</h3>
     </div>
     <main class="features direction-row sm:direction-column">
         <div class="feature_card">
@@ -48,22 +53,18 @@
         </div>
     </main>
     <div class="apply-container columns-2 direction-row sm:direction-column">
-        <h3>Elevate your coding experience with MATE, your trusted Mentorship and AI Technology Enhancer. Say goodbye to
-            code review stress and hello to enhanced coding proficiency!</h3>
-        <div class="form-container">
-            <p>Beta testers will have early access to MATE and receive exclusive discounts.</p>
-            <form action="">
-                <div class="switch">
-                    <label>E-mail
-                        <input type="radio" name="channel" id="email">
-                    </label>
-                    <label>Telegram
-                        <input type="radio" name="channel" id="telegram">
-                    </label>
-                </div>
-                <input type="email" name="" id="" class="border-rounded">
-                <input type="text" name="" id="" class="border-rounded">
-                <button type="submit" class="bg-gradient border-rounded">Become beta-tester</button>
+        <div class="form-container" id="form-container">
+            <div>
+                <p>Beta testers will have early access to MATE and receive exclusive discounts.</p>
+            </div>
+            <form action="https://getform.io/f/3208004b-b7b5-42b9-a4dc-ac531b930f96"method="POST">
+                <label for="user-name">Name</label>
+                <input type="text" name="name" id="user-name" class="border-rounded" required>
+                <label for="user-email">E-mail</label>
+                <input type="email" name="" id="user-email" class="border-rounded" required>
+                <!-- add hidden Honeypot input to prevent spams -->
+                <input type="hidden" name="_gotcha" style="display:none !important">
+                <button type="submit" class="bg-gradient border-rounded">Send</button>
             </form>
         </div>
     </div>
@@ -73,5 +74,9 @@
         unmatched insights into your code.
     </footer>
 </body>
+
+<script>
+
+</script>
 
 </html>

@@ -12,6 +12,7 @@ body {
     padding: 16px 0 0;
     font-family: 'Inter', sans-serif;
     font-weight: 300;
+    font-size: 16px;
     text-align: center;
     /* background-color: var(--dark); */
     /* background: rgb(24,34,130); */
@@ -20,8 +21,12 @@ body {
     /* font-family: 'PT Mono', monospace; */
 }
 
+p, label {
+    font-size: 1.1em;
+}
+
 body>* {
-    padding: 0 8px;
+    padding: 0 20px;
 }
 
 /* HEADER */
@@ -37,7 +42,18 @@ button {
     margin: 5px;
 }
 
-header button {
+.button {
+    display: block;
+    padding: 10px;
+    background: lightgray;
+    text-align: center;
+    border-radius: 5px;
+    color: var(--dark);
+    text-decoration: none;
+    line-height: 25px;
+}
+
+header .button {
     display: none;
 }
 
@@ -56,6 +72,11 @@ h1 {
 h2 {
     margin: 60px 0 24px;
     font-weight: 300;
+}
+
+h3 {
+    font-size: 2em;
+    margin-top: 64px;
 }
 
 .text-bold {
@@ -87,9 +108,11 @@ h2 {
 
 .border-rounded {
     border-radius: 5px;
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 20px 0px;
+    margin: 5px 0;
     cursor: pointer;
+    font-weight: 300;
+    font-size: 1.1em;
 }
 
 /* FEATURES */
@@ -100,7 +123,7 @@ h2 {
     justify-content: space-around;
     flex-wrap: nowrap;
     gap: 16px;
-    padding: 40px 20px 0;
+    /* padding: 40px 20px 0; */
 }
 
 .feature_card {
@@ -108,7 +131,7 @@ h2 {
     border-radius: 5px;
     border: 1px grey solid;
     padding: 20px 52px;
-    margin: 10px;
+    margin: 10px 0;
     text-align: center;
 }
 
@@ -126,37 +149,31 @@ h2 {
     padding: 40px 20px;
 }
 
-h3 {
-    font-size: 2em;
-}
-
 form {
     display: flex;
     flex-direction: column;
 }
 
-.switch {
-    display: flex;
-    justify-content: center;
-    margin: 10px 0;
-}
-
-.switch label {
+label {
     margin: 0 10px;
 }
 
 /* FOOTER */
 
 footer {
-    background-color: grey;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
+    background-color: var(--dark);
+    color: gray;
+    padding: 20px;
+    text-align: justify;
+    font-size: 12px;
 }
 
 /* Media Queries for Tablet */
 @media screen and (min-width: 768px) {
+    body {
+        padding: 0;
+    }
+
     body>* {
         padding: 0 24px;
     }
@@ -164,14 +181,19 @@ footer {
     header {
         padding: 0 20px;
         background-color: transparent;
-        padding: 10px 20px;
+        /* padding: 10px 20px; */
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
+    .hero .border-rounded {
+        margin: 5px auto;
+        max-width: 50%;
+    }
+
     svg {
-        margin-top: 8px;
+        /* margin-top: 8px; */
     }
 
     h1 {
@@ -189,7 +211,7 @@ footer {
 
     .feature_card {
         width: 25%;
-        margin: 20px;
+            margin: 10px 0;
     }
 
     .apply-container {
@@ -209,6 +231,16 @@ footer {
         text-align: right;
     }
 
+    .form-container p {
+        font-size: 2em;
+        max-width: 98%;
+        margin: 0 auto;
+    }
+
+    .form-container form {
+        text-align: center;
+    }
+
     footer {
         padding: 20px;
     }
@@ -223,11 +255,13 @@ footer {
 
     header {
         justify-content: space-between;
-        padding: 12px 32px;
+        padding: 0px 32px;
     }
 
-    header button {
+    header .button {
         display: block;
+        padding: 20px 0px;
+        background-color: transparent;
     }
 
     .hero {
@@ -253,7 +287,14 @@ footer {
         padding-bottom: 80px;
     }
 
+    .form-container p {
+        font-size: 2em;
+        max-width: 65%;
+        margin: 0 auto;
+    }
+
     footer {
         padding: 40px 80px;
+        max-width: none;
     }
 }
