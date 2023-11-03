@@ -108,7 +108,7 @@ h3 {
 
 .border-rounded {
     border-radius: 5px;
-    padding: 20px 0px;
+    padding: 20px 5px;
     margin: 5px 0;
     cursor: pointer;
     font-weight: 300;
