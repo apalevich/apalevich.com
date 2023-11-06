@@ -41,6 +41,11 @@ const insertFormData = (formData, callback) => {
   });
 };
 
+app.get('/health', (req, res) => {
+  console.log(req);
+  res.end('It Works! Well Done!');
+});
+
 // Endpoint to handle POST request for form data
 app.post('/submit-form', (req, res) => {
   const formData = req.body;
