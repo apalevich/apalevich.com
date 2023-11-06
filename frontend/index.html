@@ -20,26 +20,35 @@
     </div>
 </body>
 <script>
-    const options = {
-        method: 'GET',
-        redirect: 'follow',
-    };
+    const makeRequest = (url) => {
+        fetch('https://apalevich.com/backend/health', {
+            method: 'GET', // The method is GET for the request
+            headers: {
+                'Content-Type': 'application/json' // Assuming the server sends back JSON
+            },
+            redirect: 'follow',
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text(); // or response.json() if your server sends JSON response
+        })
+        .then(data => console.log(data))
+        .catch(error => console.error('There has been a problem with your fetch operation:', error));
+    }
 
-    document.querySelector('button#domain').addEventListener('click', (e) => {
-        fetch('https://apalevich.com/backend/health', options)
-        .then(console.log)
+    document.querySelector('button#domain').addEventListener('click', () => {
+        makeRequest('https://apalevich.com/backend/health')
     })
     document.querySelector('button#localhost').addEventListener('click', (e) => {
-        fetch('http://localhost/backend/health', options)
-        .then(console.log)
+        makeRequest('http://localhost/backend/health')
     })
     document.querySelector('button#localhostwp').addEventListener('click', (e) => {
-        fetch('http://localhost:5000/backend/health', options)
-        .then(console.log)
+        makeRequest('http://localhost:5000/backend/health')
     })
     document.querySelector('button#localhostrel').addEventListener('click', (e) => {
-        fetch('/backend/health', options)
-        .then(console.log)
+        makeRequest('/backend/health')
     })
 </script>
 
