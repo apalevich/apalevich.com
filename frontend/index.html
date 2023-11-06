@@ -21,7 +21,7 @@
 </body>
 <script>
     const makeRequest = (url) => {
-        fetch('https://apalevich.com/backend/health', {
+        fetch(url, {
             method: 'GET', // The method is GET for the request
             headers: {
                 'Content-Type': 'application/json' // Assuming the server sends back JSON
