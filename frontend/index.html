@@ -12,6 +12,18 @@
 
 <body style="display: flex; justify-content: center; align-items: center;background-color: #1E2124;color: white;font-family: 'Inter', sans-serif;height: 100vh;overflow:hidden;">
     <h1>Coming soon.</h1>
+    <button id="domain">check health</button>
+    <button id="localhost">check health</button>
 </body>
+<script>
+    document.querySelector('button#domain').addEventListener('click', (e) => {
+        fetch('https://apalevich.com/backend/health')
+        .then(console.log)
+    })
+    document.querySelector('button#localhost').addEventListener('click', (e) => {
+        fetch('https://apalevich.com/backend/health')
+        .then(console.log)
+    })
+</script>
 
 </html>
