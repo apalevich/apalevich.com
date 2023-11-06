@@ -7,7 +7,7 @@ const cors = require('cors');
 const app = express();
 
 // Set the port for the server to listen on
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
 // Middleware to parse JSON and urlencoded data
 // Middleware to parse JSON and urlencoded data
