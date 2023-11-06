@@ -1,6 +1,5 @@
 // Require necessary Node modules
 const express = require('express');
-const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const cors = require('cors');
 
@@ -11,9 +10,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON and urlencoded data
-app.use(cors())
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+// Middleware to parse JSON and urlencoded data
+app.use(cors());
+app.use(express.json()); // Parses requests with JSON payloads
+app.use(express.urlencoded({ extended: true })); // Parses requests with urlencoded payloads
 
 // Set up MySQL connection
 // const pool = mysql.createPool({
@@ -44,9 +44,9 @@ const insertFormData = (formData, callback) => {
 };
 
 app.get('/health', (req, res) => {
-  console.log(req);
-  res.end('It Works! Well Done!');
+  res.status(200).send('It Works! Well Done!');
 });
+
 
 // Endpoint to handle POST request for form data
 app.post('/submit-form', (req, res) => {
