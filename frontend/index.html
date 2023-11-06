@@ -12,44 +12,6 @@
 
 <body style="display: flex; justify-content: center; align-items: center;background-color: #1E2124;color: white;font-family: 'Inter', sans-serif;height: 100vh;overflow:hidden;">
     <h1>Coming soon.</h1>
-    <div id="buttons">
-        <button id="domain">check health</button>
-        <button id="localhost">check health</button>
-        <button id="localhostwp">check health</button>
-        <button id="localhostrel">check health</button>
-    </div>
 </body>
-<script>
-    const makeRequest = (url) => {
-        fetch(url, {
-            method: 'GET', // The method is GET for the request
-            headers: {
-                'Content-Type': 'application/json' // Assuming the server sends back JSON
-            },
-            redirect: 'follow',
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.text(); // or response.json() if your server sends JSON response
-        })
-        .then(data => console.log(data))
-        .catch(error => console.error('There has been a problem with your fetch operation:', error));
-    }
-
-    document.querySelector('button#domain').addEventListener('click', () => {
-        makeRequest('https://apalevich.com/backend/health')
-    })
-    document.querySelector('button#localhost').addEventListener('click', (e) => {
-        makeRequest('http://localhost/backend/health')
-    })
-    document.querySelector('button#localhostwp').addEventListener('click', (e) => {
-        makeRequest('http://localhost:8000/backend/health')
-    })
-    document.querySelector('button#localhostrel').addEventListener('click', (e) => {
-        makeRequest('/backend/health')
-    })
-</script>
 
 </html>
