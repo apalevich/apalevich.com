@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
+const cors = require('cors');
 
 // Create an Express application
 const app = express();
@@ -10,17 +11,18 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON and urlencoded data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors())
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up MySQL connection
-const pool = mysql.createPool({
-  connectionLimit : 10, // maximum number of connections
-  host     : 'localhost', // database host
-  user     : 'your_username', // your database username
-  password : 'your_password', // your database password
-  database : 'your_database_name' // your database name
-});
+// const pool = mysql.createPool({
+//   connectionLimit : 10, // maximum number of connections
+//   host     : 'localhost', // database host
+//   user     : 'your_username', // your database username
+//   password : 'your_password', // your database password
+//   database : 'your_database_name' // your database name
+// });
 
 // Function to insert form data into MySQL
 const insertFormData = (formData, callback) => {
