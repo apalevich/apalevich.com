@@ -35,7 +35,7 @@ app.post('/submit-form', (req, res) => {
       return;
     }
     records.forEach(function (record) {
-      res.status(200).send('Form data submitted successfully');
+      res.status(200).send('Your application submitted successfully. Will contact you until the end of November. Cheers!');
     });
   });
 });
