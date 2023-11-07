@@ -29,7 +29,7 @@ app.post('/submit-form', (req, res) => {
     }
   };
 
-  base('leads').create([entry], function(err, records) {
+  base(process.env.AIRTABLE_TAB).create([entry], function(err, records) {
     if (err) {
       res.status(500).send('Server error while inserting data');
       return;
