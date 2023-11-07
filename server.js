@@ -1,64 +1,42 @@
 // Require necessary Node modules
+require('dotenv').config();
 const express = require('express');
-const mysql = require('mysql');
 const cors = require('cors');
-
-// Create an Express application
-const app = express();
+const airtable = require('airtable');
 
 // Set the port for the server to listen on
 const PORT = process.env.PORT || 8000;
 
-// Middleware to parse JSON and urlencoded data
-// Middleware to parse JSON and urlencoded data
+// Create interfaces
+var base = new airtable({apiKey: process.env.AIRTABLE_TOKEN}).base(process.env.AIRTABLE_BASEID);
+const app = express();
 app.use(cors());
 app.use(express.json()); // Parses requests with JSON payloads
 app.use(express.urlencoded({ extended: true })); // Parses requests with urlencoded payloads
 
-// Set up MySQL connection
-// const pool = mysql.createPool({
-//   connectionLimit : 10, // maximum number of connections
-//   host     : 'localhost', // database host
-//   user     : 'your_username', // your database username
-//   password : 'your_password', // your database password
-//   database : 'your_database_name' // your database name
-// });
-
-// Function to insert form data into MySQL
-const insertFormData = (formData, callback) => {
-  pool.getConnection((err, connection) => {
-    if(err) throw err; // not connected!
-    
-    const { name, email, message } = formData;
-    
-    // Insert form data into your_table_name
-    const sql = `INSERT INTO your_table_name (name, email, message) VALUES (?, ?, ?)`;
-    connection.query(sql, [name, email, message], (error, results) => {
-      // release the connection back to the pool
-      connection.release();
-      
-      if (error) return callback(error, null);
-      return callback(null, results);
-    });
-  });
-};
-
-app.get('/health', (req, res) => {
+app.get('/check-health', (req, res) => {
   res.status(200).send('It Works! Well Done!');
 });
 
-
 // Endpoint to handle POST request for form data
 app.post('/submit-form', (req, res) => {
-  const formData = req.body;
+  const { Name, Email } = req.body;
 
-  // Call function to insert form data into MySQL
-  insertFormData(formData, (error, results) => {
-    if (error) {
-      res.status(500).send('Server error while inserting data');
-    } else {
-      res.status(200).send('Form data submitted successfully');
+  const entry = {
+    fields: {
+      Name,
+      Email,
     }
+  };
+
+  base('leads').create([entry], function(err, records) {
+    if (err) {
+      res.status(500).send('Server error while inserting data');
+      return;
+    }
+    records.forEach(function (record) {
+      res.status(200).send('Form data submitted successfully');
+    });
   });
 });
 
