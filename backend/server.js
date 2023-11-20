@@ -50,31 +50,31 @@ app.post("/submit-form", (req, res) => {
 // MATE SECTION
 const mate_prefix = "/mate";
 app.post(`${mate_prefix}/analyze`, async (req, res) => {
-  const { text, name } = req.body;
-
-  console.log(`${name.toUpperCase()} said:
-    ${JSON.stringify(text)}`);
   res.status(200).send({ text: "YOUR CODE WAS RECEIVED. CONGRATS!" });
-  return;
+  // const { text, name } = req.body;
 
-  try {
-    const apiResponse = await axios.post(
-      "https://api.openai.com/v1/engines/davinci-codex/completions",
-      {
-        prompt: codeContent,
-        // Any other API parameters
-      },
-      {
-        headers: {
-          Authorization: `Bearer YOUR_OPENAI_API_KEY`,
-        },
-      },
-    );
+  // console.log(`${name.toUpperCase()} said:
+  //   ${JSON.stringify(text)}`);
+  // return true;
 
-    res.status(200).json({ text: apiResponse.data.choices[0].text.trim() });
-  } catch (error) {
-    res.status(500).send("Error communicating with OpenAI API");
-  }
+  // try {
+  //   const apiResponse = await axios.post(
+  //     "https://api.openai.com/v1/engines/davinci-codex/completions",
+  //     {
+  //       prompt: codeContent,
+  //       // Any other API parameters
+  //     },
+  //     {
+  //       headers: {
+  //         Authorization: `Bearer YOUR_OPENAI_API_KEY`,
+  //       },
+  //     },
+  //   );
+
+  //   res.status(200).json({ text: apiResponse.data.choices[0].text.trim() });
+  // } catch (error) {
+  //   res.status(500).send("Error communicating with OpenAI API");
+  // }
 });
 
 // Start the server
