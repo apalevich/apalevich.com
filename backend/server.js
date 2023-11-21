@@ -4,6 +4,8 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const Airtable = require("airtable");
+const OpenAI = require("openai");
+const prompt = require("./mate/prompt.js")
 
 // Set the port for the server to listen on
 const PORT = process.env.PORT || 8000;
@@ -13,9 +15,11 @@ const app = express();
 app.use(cors());
 app.use(express.json()); // Parses requests with JSON payloads
 app.use(express.urlencoded({ extended: true })); // Parses requests with urlencoded payloads
-var base = new Airtable({ apiKey: process.env.AIRTABLE_TOKEN }).base(
+
+const base = new Airtable({ apiKey: process.env.AIRTABLE_TOKEN }).base(
   process.env.AIRTABLE_BASEID,
 );
+const openai = new OpenAI({apiKey: process.env.OPENAI_SECRET});
 
 app.get("/check-health", (req, res) => {
   res.status(200).send("It Works! Well Done!");
@@ -50,31 +54,20 @@ app.post("/submit-form", (req, res) => {
 // MATE SECTION
 const mate_prefix = "/mate";
 app.post(`${mate_prefix}/analyze`, async (req, res) => {
-  res.status(200).send({ text: "YOUR CODE WAS RECEIVED. CONGRATS!" });
-  // const { text, name } = req.body;
+  // res.status(200).send({ text: "YOUR CODE WAS RECEIVED. CONGRATS!" });
+  
+  const { content } = req.body;
 
-  // console.log(`${name.toUpperCase()} said:
-  //   ${JSON.stringify(text)}`);
-  // return true;
-
-  // try {
-  //   const apiResponse = await axios.post(
-  //     "https://api.openai.com/v1/engines/davinci-codex/completions",
-  //     {
-  //       prompt: codeContent,
-  //       // Any other API parameters
-  //     },
-  //     {
-  //       headers: {
-  //         Authorization: `Bearer YOUR_OPENAI_API_KEY`,
-  //       },
-  //     },
-  //   );
-
-  //   res.status(200).json({ text: apiResponse.data.choices[0].text.trim() });
-  // } catch (error) {
-  //   res.status(500).send("Error communicating with OpenAI API");
-  // }
+  openai.chat.completions.create({
+    messages: [{"role": "system", "content": prompt},
+        {"role": "user", "content": content}],
+    model: "gpt-3.5-turbo-1106",
+  })
+  .then(output => {
+    console.log(output.choices[0].message.content)
+    res.status(200).send(output);
+  })
+  .catch(err => {res.status(500).send("Error communicating with OpenAI API");})
 });
 
 // Start the server
