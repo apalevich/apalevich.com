@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true })); // Parses requests with urlenco
 const base = new Airtable({ apiKey: process.env.AIRTABLE_TOKEN }).base(
   process.env.AIRTABLE_BASEID,
 );
-const openai = new OpenAI({apiKey: process.env.OPENAI_SECRET});
+const openai = new OpenAI({ apiKey: process.env.OPENAI_SECRET });
 
 app.get("/check-health", (req, res) => {
   res.status(200).send("It Works! Well Done!");
@@ -54,20 +54,20 @@ app.post("/submit-form", (req, res) => {
 // MATE SECTION
 const mate_prefix = "/mate";
 app.post(`${mate_prefix}/analyze`, async (req, res) => {
-  // res.status(200).send({ text: "YOUR CODE WAS RECEIVED. CONGRATS!" });
-  
   const { content } = req.body;
 
   openai.chat.completions.create({
-    messages: [{"role": "system", "content": prompt},
-        {"role": "user", "content": content}],
+    messages: [
+      { "role": "system", "content": prompt },
+      { "role": "user", "content": content }
+    ],
     model: "gpt-3.5-turbo-1106",
   })
-  .then(output => {
-    console.log(output.choices[0].message.content)
-    res.status(200).send(output);
-  })
-  .catch(err => {res.status(500).send("Error communicating with OpenAI API");})
+    .then(output => {
+      console.log(output.choices[0].message.content)
+      res.status(200).send(output);
+    })
+    .catch(err => { res.status(500).send("Error communicating with OpenAI API"); })
 });
 
 // Start the server
