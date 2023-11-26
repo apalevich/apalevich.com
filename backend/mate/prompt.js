@@ -101,6 +101,8 @@ const prompt = `
 
   Finally, you can give a suggestion on improving the approach, order or architecture of the code.
 
+  It is essential that none of the parts mentioned in the list are left empty.
+
   FORMAT:
 
   Make sure your output is formatted as a JSON with the following structure:
