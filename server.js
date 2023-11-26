@@ -25,8 +25,10 @@ app.get("/check-health", (req, res) => {
   res.status(200).send("It Works! Well Done!");
 });
 
-// Endpoint to handle POST request for form data
-app.post("/submit-form", (req, res) => {
+// MATE SECTION
+const mate_prefix = "/mate";
+
+app.post(`${mate_prefix}/submit-form`, (req, res) => {
   const { Name, Email } = req.body;
 
   const entry = {
@@ -51,8 +53,6 @@ app.post("/submit-form", (req, res) => {
   });
 });
 
-// MATE SECTION
-const mate_prefix = "/mate";
 app.post(`${mate_prefix}/analyze`, async (req, res) => {
   const { content } = req.body;
 
@@ -61,13 +61,41 @@ app.post(`${mate_prefix}/analyze`, async (req, res) => {
       { "role": "system", "content": prompt },
       { "role": "user", "content": content }
     ],
-    model: "gpt-3.5-turbo-1106",
+    // model: "gpt-3.5-turbo-1106",
+    model: "gpt-4-1106-preview",
+    response_format: { type: "json_object" },
   })
     .then(output => {
       console.log(output.choices[0].message.content)
       res.status(200).send(output);
     })
     .catch(err => { res.status(500).send("Error communicating with OpenAI API"); })
+});
+
+app.post(`${mate_prefix}/feedback`, async (req, res) => {
+  const { Email, Notes } = req.body;
+
+  const entry = {
+    fields: {
+      Email,
+      Notes,
+      Date: new Date().toISOString()
+    },
+  };
+
+  base('feedback').create([entry], function(err, records) {
+    if (err) {
+      res.status(500).send("Server error while inserting data");
+      return;
+    }
+    records.forEach(function (record) {
+      res
+        .status(200)
+        .send(
+          "Your application submitted successfully. Will contact you until the end of November. Cheers!",
+        );
+    });
+  });
 });
 
 // Start the server
