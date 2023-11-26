@@ -92,7 +92,7 @@ app.post(`${mate_prefix}/feedback`, async (req, res) => {
       res
         .status(200)
         .send(
-          "Your application submitted successfully. Will contact you until the end of November. Cheers!",
+          "Receiver your feedback. Yummy! I really appreciate it 🫶",
         );
     });
   });
