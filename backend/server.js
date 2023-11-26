@@ -98,6 +98,12 @@ app.post(`${mate_prefix}/feedback`, async (req, res) => {
   });
 });
 
+// Route for downloading the file
+app.get(`${mate_prefix}/download`, (req, res) => {
+  const file = './upload/AI_reviewer_chrome-0.3.0.zip'; // Replace with the path to your file
+  res.download(file);
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
