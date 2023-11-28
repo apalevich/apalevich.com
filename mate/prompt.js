@@ -97,7 +97,7 @@ const prompt = `
   
   Second, you give a list of places of the code that are written in good quality. Such places could be: names of variables, using functions and methods for their intended purpose, using standart APIs, and others.
 
-  Third, you give a list of places of the code that are written badly or could be improved in terms of readability, efficiency, execution speed, and variable names. You could add a hint on how to fix that but do not give direct instructions.
+  Third, you give a list of places of the code that are written badly or could be improved in terms of readability, efficiency, execution speed, and variable names. You can give a short direct instruction on how to fix that.
 
   Finally, you can give a suggestion on improving the approach, order or architecture of the code.
 
