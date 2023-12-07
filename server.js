@@ -61,8 +61,7 @@ app.post(`${mate_prefix}/analyze`, async (req, res) => {
       { "role": "system", "content": prompt },
       { "role": "user", "content": content }
     ],
-    // model: "gpt-3.5-turbo-1106",
-    model: "gpt-4-1106-preview",
+    model: process.env.OPENAI_MODEL,
     response_format: { type: "json_object" },
   })
     .then(output => {
