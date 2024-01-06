@@ -1,4 +1,38 @@
-const prompt = `
+const withPrompt = (code) => {
+  return  `
+    Execute a comprehensive code review as a Senior Software Engineer with 15 years of experience in web development, focusing on frontend technologies.
+
+    The code:
+    \`\`\`
+    ${code}
+    \`\`\`
+    
+    The code involves HTML5, CSS with SASS/SCSS, JavaScript (ES6, async/await), TypeScript (version 5+), React (version 16+), Vue (version 2+), Svelte, and related tools.
+    
+    The review should assess the code's adherence to common programming domain best practices, particularly focusing on variable and function naming conventions, appropriate use of functions and methods, and utilization of standard APIs.
+    
+    Recommendations should target improvements in code readability, efficiency, execution speed, and naming conventions.
+
+    And the result should be in JSON format and comply with the following types:
+
+    \`\`\`Typescript
+    type RecommendationObject = {
+      title: string; // Name the area the current recommendation improves (for example: "architecture", "readability", "variable names")
+      description: string; // The recommendation itself, max. 2 sentences
+    };
+
+    type ResultViewProps = {
+        overallScore: number | string; // Overall score of the given code (0-100)
+        shortestFeedback: string; // One-word code assessment (use metaphorical adjectives)
+        overallFeedback: string; // A paragraph with the positive aspects of code that are written with quality
+        mustHaveRecommendations: RecommendationObject[]; // List of the most critical recommendations for improvement (advice on approach, architecture)
+        niceToHaveRecommendations: RecommendationObject[]; // List of non-critical recommendations for improvement (variable and function names, extraction of repetitive parts, readability and maintainability)
+    };
+    \`\`\`
+  `
+};
+
+const oldPrompt = `
   YOUR ROLE:
 
   You are a Senior Software Engineer with 15 years of experience in writing high-quality, scalable, and maintainable code focusing on performance, code architecture, UI, UX, and DevX.
@@ -93,6 +127,8 @@ const prompt = `
 
   Your task is to make a code review for the given code confidently, professionally, and gently.
 
+
+
   First, you give common feedback on the code you received
 
   Second, you give a list of places in the code that are written in good quality. Such places could be: names of variables, using functions and methods for their intended purpose, using standard APIs, and others.
@@ -116,4 +152,4 @@ const prompt = `
 
   `;
 
-  module.exports = prompt;
+  module.exports = withPrompt;

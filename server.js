@@ -5,7 +5,7 @@ const cors = require("cors");
 const axios = require("axios");
 const Airtable = require("airtable");
 const OpenAI = require("openai");
-const prompt = require("./mate/prompt.js")
+const withPrompt = require("./mate/prompt.js")
 
 // Set the port for the server to listen on
 const PORT = process.env.PORT || 8000;
@@ -58,8 +58,8 @@ app.post(`${mate_prefix}/analyze`, async (req, res) => {
 
   openai.chat.completions.create({
     messages: [
-      { "role": "system", "content": prompt },
-      { "role": "user", "content": content }
+      { "role": "system", "content": withPrompt(content) },
+      // { "role": "user", "content": content }
     ],
     model: process.env.OPENAI_MODEL,
     response_format: { type: "json_object" },
