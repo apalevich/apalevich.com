@@ -47,7 +47,7 @@ app.post(`${mate_prefix}/submit-form`, (req, res) => {
       res
         .status(200)
         .send(
-          "Your application submitted successfully. Will contact you until the end of November. Cheers!",
+          "Your application submitted successfully. MATE will contact you until the end of March 2024. Cheers!",
         );
     });
   });
