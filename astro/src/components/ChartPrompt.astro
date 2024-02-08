@@ -1,9 +1,20 @@
-<canvas id="chartBar">No thanks</canvas>
+<canvas id="chartBar" class="">No thanks</canvas>
 
 <script>
+  import resolveConfig from 'tailwindcss/resolveConfig';
+  import tailwindConfig from '../../tailwind.config.mjs';
+import { fade } from 'astro:transitions';
+  const fullConfig = resolveConfig(tailwindConfig)
+  const {colors} = fullConfig.theme;
+
   document.addEventListener('DOMContentLoaded', () => {
     createChart(document.getElementById("chartBar"));
   })
+
+  const helpers = {
+    isDarkMode: () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
+    isMobile: () => parseInt(fullConfig.theme.screens.lg) >= window.outerWidth
+  }
 
   function createChart (el) {
     import('chart.js/auto').then(({Chart}) => {
@@ -17,15 +28,68 @@
           { year: 2016, count: 28 },
       ];
 
-      const myChart = new Chart(
+      const plugin = {
+        id: 'customCanvasBackgroundColor',
+        beforeDraw: (chart, args, options) => {
+          const {ctx} = chart;
+          ctx.save();
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = helpers.isDarkMode() ? colors.dark : helpers.isMobile() ? colors.white : colors.gray[50];
+          // ctx.strokeStyle = isDarkMode() ? colors.gradient1 : colors.gradient2;
+          ctx.fillRect(0, 0, chart.width, chart.height);
+          ctx.restore();
+        }
+      };
+
+      new Chart(
           el,
           {
             type: 'bar',
+            plugins: [plugin],
+            options: {
+              aspectRatio: 1,
+              plugins: {
+                legend: {
+                  display: false
+                },
+                tooltip: {
+                  enabled: false
+                },
+                title: {
+                  display: false,
+                  text: 'Prompt length (symbols)',
+                  padding: {
+                    top: 0,
+                    bottom: 0
+                  },
+                  font: {
+                    size: 36,
+                    family: fullConfig.theme.fontFamily.sans.join(', ')
+                  }
+                },
+                subtitle: {
+                  display: true,
+                  text: 'Prompt length (symbols)',
+                  padding: {
+                    bottom: 10
+                  }
+                }
+              },
+              elements: {
+                bar: {
+                  backgroundColor: helpers.isDarkMode() ? colors.gradient1 : colors.gradient2,
+                  borderRadius: 5,
+                }
+              },
+              interaction: {
+                intersect: false
+              }
+            },
             data: {
               labels: data.map(row => row.year),
               datasets: [
                 {
-                    label: 'Prompt length (symbols)',
+                    label: '',
                     data: data.map(row => row.count)
                 }
               ]
