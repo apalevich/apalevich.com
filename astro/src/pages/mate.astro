@@ -1,5 +1,35 @@
+---
+import '../base.css';
+import Logo from '../components/Logo.astro';
+import Cards from '../components/Cards.astro';
+import ChartPrompt from '../components/ChartPrompt.astro';
+import { content } from '../content';
+
+function createArrayFromHeading(): [string, string] {
+  const sentence = content.HeroSection.Heading;
+  const words = sentence.split(' ');
+  const lastWord = words.pop(); // Remove and capture the last word
+  const restOfString = words.join(' '); // Re-join the remaining words
+  return [restOfString, lastWord ?? '']; // Return the array, handling the case where the sentence might be empty
+}
+
+
+const cardsData = [
+    {
+        icon: Logo,
+        heading: "First feature", 
+        description: "Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
+    },
+    {
+        icon: Logo,
+        heading: "Second feature", 
+        description: "Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
+    }
+];
+---
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MATE, the Mentorship and AI Technology Enhancer, is an AI-based companion for code review and development. MATE combines the wisdom of experienced mentors with the power of cutting-edge AI technology to provide you with unmatched insights into your code.">
     <title>MATE — Mentorship and AI Technology Enhancer</title>
@@ -8,64 +38,462 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap" rel="stylesheet">
 </head>
 
-<body class="text-white bg-dark container mt-4 text-center">
-    <header class="flex justify-center px-5">
-        <svg width="50" height="50" viewBox="140 0 80 150" class="css-1j8o68f">
-            <defs id="SvgjsDefs1486"></defs>
-            <g id="SvgjsG1487"
-                transform="matrix(1.796046190387309,0,0,1.796046190387309,85.19679295083817,-19.803205336318705)"
-                fill="#000">
-                <path xmlns="http://www.w3.org/2000/svg"
-                    d="M50,11.026c-21.525,0-38.974,17.449-38.974,38.974c0,12.283,5.688,23.232,14.567,30.376l-14.567,8.599H50  c21.525,0,38.975-17.449,38.975-38.975C88.975,28.475,71.523,11.026,50,11.026z M49.999,85.507H23.961l8.242-4.786  C21.617,74.574,14.493,63.123,14.493,50c0-19.61,15.896-35.506,35.506-35.506c19.61,0,35.507,15.896,35.507,35.506  C85.506,69.609,69.609,85.507,49.999,85.507z M38.165,60.521c0.581,0.581,0.581,1.521,0,2.103c-0.581,0.581-1.521,0.581-2.102,0  L24.516,51.076c-0.581-0.581-0.581-1.521,0-2.102l11.547-11.547c0.581-0.581,1.522-0.581,2.102,0c0.581,0.58,0.581,1.521,0,2.102  L27.669,50.025L38.165,60.521 M61.835,39.529c-0.581-0.581-0.581-1.521,0-2.102s1.521-0.581,2.103,0l11.547,11.547  c0.581,0.581,0.581,1.522,0,2.102L63.938,62.623c-0.581,0.581-1.522,0.581-2.103,0c-0.581-0.58-0.581-1.521,0-2.102l10.496-10.496  L61.835,39.529 M44.498,63.563c-0.206,0-0.415-0.044-0.615-0.134c-0.747-0.342-1.077-1.223-0.737-1.97l11.004-24.153  c0.34-0.747,1.221-1.077,1.968-0.736c0.748,0.34,1.077,1.221,0.737,1.968L45.851,62.692C45.602,63.24,45.062,63.563,44.498,63.563">
-                </path>
-            </g>
-        </svg>
-        <a class="border-rounded button" href="#form-container">Join the Waitlist</a>
-    </header>
-    <div class="hero">
-        <h1 class="text-bold">Welcome <span class="text-gradient">MATE</span></h1>
-        <h2>MATE, or <span class="text-italic">Mentorship and AI Technology Enhancer</span>, is an&nbsp;AI-based
-            companion for&nbsp;code&nbsp;review and development.<br>Coming in 2024.</h2>
-        <a class="button bg-gradient border-rounded" href="#form-container">Join the Waitlist</a>
-    </div>
-    <div>
-        <h3>Elevate your coding experience with MATE, your trusted Mentorship and AI Technology Enhancer. Say goodbye to
-            code review stress and hello to enhanced coding proficiency!</h3>
-    </div>
-    <main class="features direction-row sm:direction-column">
-        <div class="feature_card">
-            <h4>Mentorship</h4>
-            <p>MATE offers personalized guidance and suggestions, making it feel like you have an experienced mentor by
-                your side, 24/7.</p>
-        </div>
-        <div class="feature_card">
-            <h4>AI Technology</h4>
-            <p>Leveraging advanced AI algorithms, MATE ensures your code is not just functional but also optimized for
-                efficiency and best practices.</p>
-        </div>
-        <div class="feature_card">
-            <h4>Enhanced Learning</h4>
-            <p>Learn from your code and the suggestions MATE provides, and watch your coding skills improve with each
-                project.</p>
-        </div>
-    </main>
-    <div class="apply-container columns-2 direction-row sm:direction-column">
-        <div class="form-container" id="form-container">
-            <div>
-                <p >Get notified when <span class="text-gradient text-medium">MATE</span> is become available.</p>
+
+
+<body class="font-sans dark:bg-dark">
+    <!-- HEADER -->
+    <header>
+        <input type="checkbox" name="hbr" id="hbr" class="hbr peer" hidden aria-hidden="true">
+        <nav class="fixed z-20 w-full dark:bg-gray-900/80 backdrop-blur navbar shadow-2xl shadow-gray-600/5 border-b border-gray-100 dark:border-gray-800 peer-checked:navbar-active dark:shadow-none">
+            <div class="xl:container m-auto px-6 md:px-12 lg:px-6">
+                <div class="flex flex-wrap items-center justify-between gap-6 md:py-3 md:gap-0 lg:py-5">
+                    <div class="w-full items-center flex justify-between lg:w-auto">
+                        <a class="relative z-10 px-6 py-2" href="#" aria-label="logo">
+                            <Logo />
+                        </a>
+                        <label for="hbr" class="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden">
+                            <div aria-hidden="true" class="m-auto h-0.5 w-5 rounded bg-gray-900 dark:bg-gray-300 transition duration-300"></div>
+                            <div aria-hidden="true" class="m-auto mt-2 h-0.5 w-5 rounded bg-gray-900 dark:bg-gray-300 transition duration-300"></div>
+                        </label>
+                    </div>
+                    <div class="navmenu hidden w-full flex-wrap justify-end items-center mb-16 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
+                        <div class="text-gray-600 dark:text-gray-300 lg:pr-4">
+                            <ul class="space-y-6 tracking-wide font-medium text-base lg:text-sm lg:flex lg:space-y-0">
+                                <li>
+                                    <a href="#" class="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
+                                        <span>Home</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
+                                        <span>Portfolio</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
+                                        <span>Services</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="w-full space-y-2 border-primary/10 dark:border-gray-700 flex flex-col -ml-1 sm:flex-row lg:space-y-0 md:w-max lg:border-l">
+                            <a href="#" class="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full focus:before:bg-primary/10 dark:focus:before:bg-primaryLight/10 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                                <span class="relative text-sm font-semibold text-primary dark:text-primaryLight">Sign Up</span>                    
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <form action="/backend/mate/submit-form" method="POST">
-                <label for="user-name">Name</label>
-                <input type="text" name="Name" id="user-name" class="border-rounded" required>
-                <label for="user-email">E-mail</label>
-                <input type="email" name="Email" id="user-email" class="border-rounded" required>
-                <!-- add hidden Honeypot input to prevent spams -->
-                <input type="hidden" name="_gotcha" style="display:none !important">
-                <button type="submit" class="bg-gradient border-rounded">Join</button>
-            </form>
+        </nav>
+    </header>
+    <!-- HERO -->
+    <div class="relative pt-40 pb-20 lg:pt-44">
+        <div class="relative xl:container m-auto px-6 md:px-12 lg:px-6 sm:w-10/12 md:w-2/3 sm:mx-auto lg:w-6/12">
+            <h1 class="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-blue-900 text-4xl text-center sm:text-5xl md:text-6xl lg:w-auto xl:text-7xl dark:text-white">{createArrayFromHeading()[0]} <br class="lg:block hidden"> <span class="relative text-transparent bg-clip-text bg-gradient-to-r from-gradient1 to-gradient2 dark:from-primaryLight dark:to-secondaryLight">{createArrayFromHeading()[1]}</span></h1>
+            <div class="relative mt-8 lg:mt-16 space-y-8 w-10/12 xl:w-6/12 mx-auto text-center">
+                <p class="sm:text-lg text-gray-700 dark:text-gray-300">
+                    {content.HeroSection.Subheading}
+                </p>
+                <!-- <span class="block font-semibold text-gray-500 dark:text-gray-400">The best companion bot for your chat app.</span> -->
+            </div>
+        </div>
+        <div class="pt-12 lg:hidden">
+            <div class="relative w-screen h-[600px] bg-cover" style="background-image: url(/code-screenshot.png); ba">
+                <img src="/mate-screenshot.png" class="border-black-900 border-2 rounded-[6px] w-auto max-h-[600px] absolute inset-y-[-1rem] right-0" alt="mate illustration" loading="lazy">
+            </div>
+        </div>
+        <div class="mt-16 max-md:hidden flex justify-around items-center xl:container mx-auto">
+            <img src="/code-screenshot.png" class="border-black-900 border-2 rounded-[6px] w-auto max-h-[600px]" alt="mate illustration" loading="lazy">
+            <div class="text-5xl">➡️</div>
+            <img src="/mate-screenshot.png" class="border-black-900 border-2 rounded-[6px] w-auto max-h-[600px]" alt="mate illustration" loading="lazy">
         </div>
     </div>
-    <footer>
-        MATE, the Mentorship and AI Technology Enhancer, is an AI-based companion for code review and development. MATE combines the wisdom of experienced mentors with the power of cutting-edge AI technology to provide you with unmatched insights into your code.
-    </footer>
+    <!-- FEATURES -->
+    <div class="py-16">
+        <div class="xl:container m-auto px-6 text-gray-500 md:px-12">
+            <div>
+            <h2 class="mt-4 text-2xl text-center font-bold text-gray-700 dark:text-white md:text-4xl">
+                {content.FeaturesSection.Heading}
+            </h2>
+            </div>
+            <Cards cards={content.FeaturesSection.Columns} />
+        </div>
+    </div>
+    <!-- USERS -->
+    <div class="py-20">
+      <div class="container mx-auto px-6 text-center md:px-12">
+        <div class="mb-16">
+          <h2 class="mb-4 text-center text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+            {content.ForWhomSection.Heading}
+          </h2>
+          <p class="text-gray-600 dark:text-gray-300 lg:mx-auto lg:w-8/12">
+            {content.ForWhomSection.Subheading}
+          </p>
+        </div>
+        <div class="grid gap-28 py-20 md:grid-cols-3 md:gap-12">
+          {content.ForWhomSection.KeyFeatures.map(role => (
+            <div class="group space-y-8 border-t-4 border-gray-100 dark:border-gray-800">
+              <div class="mx-auto -mt-16 h-32 w-32 rotate-45 overflow-hidden rounded-[2rem] border-2 border-gray-100 dark:border-gray-800 ">
+                <img
+                  class="mx-auto h-full w-full -rotate-45 scale-125 object-cover transition duration-300 group-hover:scale-[1.4]"
+                  src={role.ImagePath}
+                  alt="woman"
+                  loading="lazy"
+                  width="640"
+                  height="805"
+                />
+              </div>
+              <div class="space-y-4 text-center">
+                <div>
+                  <h4 class="text-2xl text-gray-700 dark:text-white">{role.Title}</h4>
+                  <span class="block text-md text-gray-500">{role.Description}</span>
+                </div>
+              </div>
+            </div>  
+          ))}
+          
+          <!-- <div class="group space-y-8 border-t-4 border-gray-100 dark:border-gray-800">
+            <div class="mx-auto -mt-16 h-32 w-32 rotate-45 overflow-hidden rounded-[2rem] border-2 border-gray-100 dark:border-gray-800 ">
+              <img
+                class="mx-auto h-full w-full -rotate-45 scale-125 object-cover transition duration-300 group-hover:scale-[1.4]"
+                src="/senior_portrait.jpg"
+                alt="woman"
+                loading="lazy"
+                width="640"
+                height="805"
+              />
+            </div>
+            <div class="space-y-4 text-center">
+              <div>
+                <h4 class="text-2xl text-gray-700 dark:text-white">Full-Time Job Programmer</h4>
+                <span class="block text-sm text-gray-500">An automated tool to speed up the code-review process. Support for various of tech stacks. Easy integration with an existing GIT-hosting and REST API</span>
+              </div>
+              <a href="#" class="mx-auto block w-max text-primary dark:text-white">View Bio</a>
+            </div>
+          </div> -->
+    
+          <!-- <div class="group space-y-8 border-t-4 border-gray-100 dark:border-gray-800">
+              <div class="mx-auto -mt-16 h-32 w-32 rotate-45 overflow-hidden rounded-[2rem] border-2 border-gray-100 dark:border-gray-800 ">
+              <img
+                class="mx-auto h-full w-full -rotate-45 scale-125 object-cover transition duration-300 group-hover:scale-[1.4]"
+                src="/middle_portrait.jpg"
+                alt="woman"
+                loading="lazy"
+                width="1000"
+                height="667"
+              />
+            </div>
+            <div class="space-y-4 text-center">
+              <div>
+                <h4 class="text-2xl text-gray-700 dark:text-white">Freelance Developer</h4>
+                <span class="block text-sm text-gray-500">Affordable, easy-to-use tool for automated code-review. Tips for optimizing code to improve quality and performance.</span>
+              </div>
+              <a href="#" class="mx-auto block w-max text-primary">View Bio</a>
+            </div>
+          </div> -->
+    
+          <!-- <div class="group space-y-8 border-t-4 border-gray-100 dark:border-gray-800">
+              <div class="mx-auto -mt-16 h-32 w-32 rotate-45 overflow-hidden rounded-[2rem] border-2 border-gray-100 dark:border-gray-800 ">
+              <img
+                class="mx-auto h-full w-full -rotate-45 scale-125 object-cover transition duration-300 group-hover:scale-[1.4]"
+                src="/junior_portrait.jpg"
+                alt="man"
+                loading="lazy"
+                width="1000"
+                height="667"
+              />
+            </div>
+            <div class="space-y-4 text-center">
+              <div>
+                <h4 class="text-2xl text-gray-700 dark:text-white">IT Student</h4>
+                <span class="block text-sm text-gray-500">An interactive tool to learn and practice writing clean and efficient code. Clear and detailed advice on how to improve the code you write.</span>
+              </div>
+              <a href="#" class="mx-auto block w-max text-primary">View Bio</a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- FINE-TUNING -->
+    <div class="py-16">
+      <div class="xl:container m-auto px-6 text-gray-600 md:px-12 xl:px-16">
+        <div class="lg:bg-gray-50 dark:lg:bg-darker lg:p-16 rounded-[4rem] space-y-6 lg:flex flex-row-reverse lg:gap-6 justify-center lg:space-y-0 lg:items-center">
+          <div class="lg:w-1/2">
+              <ChartPrompt>Chart can't be loaded</ChartPrompt>
+          </div>
+          <div class="lg:w-1/2">
+            <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+              {content.UnlockedPotentialSection.Heading}
+            </h2>
+            <p class="my-8 text-gray-600 dark:text-gray-300">
+              {content.UnlockedPotentialSection.Description}
+            </p>
+            <div class="divide-y space-y-4 divide-gray-100 dark:divide-gray-800">
+              <div class="mt-8 flex gap-4 md:items-center">
+                <div class="w-12 h-12 flex gap-4 rounded-full bg-indigo-100 dark:bg-indigo-900/20">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 m-auto text-indigo-500 dark:text-indigo-400">
+                    <path fill-rule="evenodd" d="M4.848 2.771A49.144 49.144 0 0112 2.25c2.43 0 4.817.178 7.152.52 1.978.292 3.348 2.024 3.348 3.97v6.02c0 1.946-1.37 3.678-3.348 3.97a48.901 48.901 0 01-3.476.383.39.39 0 00-.297.17l-2.755 4.133a.75.75 0 01-1.248 0l-2.755-4.133a.39.39 0 00-.297-.17 48.9 48.9 0 01-3.476-.384c-1.978-.29-3.348-2.024-3.348-3.97V6.741c0-1.946 1.37-3.68 3.348-3.97zM6.75 8.25a.75.75 0 01.75-.75h9a.75.75 0 010 1.5h-9a.75.75 0 01-.75-.75zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H7.5z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="w-5/6">
+                  <h4 class="font-semibold text-lg text-gray-700 dark:text-indigo-300">Chat Anytime</h3>
+                  <p class="text-gray-500 dark:text-gray-400">Asperiores nemo possimus nesciunt quam mollitia.</p>
+                </div> 
+              </div> 
+              <div class="pt-4 flex gap-4 md:items-center">
+                <div class="w-12 h-12 flex gap-4 rounded-full bg-teal-100 dark:bg-teal-900/20">  
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 m-auto text-teal-600 dark:text-teal-400">
+                    <path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <div class="w-5/6">
+                  <h4 class="font-semibold text-lg text-gray-700 dark:text-teal-300">Real Time Location</h3>
+                  <p class="text-gray-500 dark:text-gray-400">Asperiores nemo possimus nesciunt quam mollitia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING -->
+    <div class="xl:container m-auto px-6 py-20 md:px-12 lg:px-20 xl:px-0">
+      <div class="m-auto text-center">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">A plan for everyone</h2>
+      </div>
+      <div class="m-auto mt-12">
+        <div class="relative z-10">
+          <div class="relative overflow-auto p-6">
+            <table class="w-full border-t border-gray-100 dark:border-gray-700">
+              <thead>
+                <tr>
+                  <td class="p-4 sm:sticky"></td>
+                  <td class="p-8 space-y-8">
+                    <!-- <img src="images/pro.webp" class="h-12 w-auto" alt="organization icon" width="" height=""> -->
+                    <div class="space-y-4">
+                        <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Starter</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">{content.PlansSection.CheapPlan.Description}</p>
+                    </div>
+                    <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>15 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
+                    <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-sky-50 before:border before:border-sky-500 dark:before:border-gray-700 dark:before:bg-gray-800 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                      <span class="relative text-base font-semibold text-sky-600 dark:text-white">Get Started</span>
+                    </button>
+                  </td>
+                  <td class="p-8 space-y-8">
+                    <!-- <img src="images/team.webp" class="h-12 w-auto" alt="team icon" width="" height=""> -->
+                    <div class="space-y-4">
+                        <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Premium</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">{content.PlansSection.PremiumPlan.Description}</p>
+                    </div>
+                    <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>189 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
+                    <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                      <span class="relative text-base font-semibold text-white dark:text-dark">Buy Now</span>
+                    </button>
+                  </td>
+                </tr>
+              </thead>
+    
+              <tbody>
+                <tr>
+                  <td
+                    class="left-0 border border-sky-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> Favorite profile </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                </tr>
+                <tr>
+                  <td
+                    class="left-0 border border-sky-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> All courses and videos </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                </tr>
+                <tr>
+                  <td
+                    class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> Questions & Answers (soon) </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                </tr>
+                <tr>
+                  <td
+                    class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> Source files, ePub </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                </tr>
+                <tr>
+                  <td
+                    class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> UI templates, icons, illustrations </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-gray-600 dark:text-gray-300">
+                    <span class="m-auto block w-max"> Limited to 5 </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                </tr>
+                <tr>
+                  <td
+                    class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> Premium tutorials </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                </tr>
+                <tr>
+                  <td
+                    class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> Commercial use </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                </tr>
+                <tr>
+                  <td
+                    class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                  >
+                    <span class="block w-max"> Manage team and see progress </span>
+                  </td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                  <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="max-w-4xl px-6 md:px-12">
+      <h2 class="text-3xl font-bold tracking-tight text-white"> Frequently asked questions </h2>
+      <div class="space-y-4 border-t border-indigo-300 border-opacity-25 py-10">
+        {
+          content.FAQData.map(item => (
+            <details class="bg-white p-6 rounded-lg shadow-lg">
+                <summary class="font-medium cursor-pointer hover:text-blue-500">{item.question}</summary>
+                <p class="mt-2 text-gray-600">
+                  {item.answer}
+                </p>
+            </details>
+          ))
+        }
+      </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <svg xmlns="http://www.w3.org/2000/svg" class="-mb-0.5 w-full" viewBox="0 0 1367.743 181.155">
+      <path
+        class="fill-current text-gray-100 dark:text-gray-800"
+        id="wave"
+        data-name="wave"
+        d="M0,0S166.91-56.211,405.877-49.5,715.838,14.48,955.869,26.854,1366,0,1366,0V115H0Z"
+        transform="translate(1.743 66.155)"
+      ></path>
+    </svg>
+    <div class="bg-gradient-to-b from-gray-100 to-transparent dark:from-gray-800 dark:to-transparent pt-1">
+      <div class="container m-auto space-y-8 px-6 text-gray-600 dark:text-gray-400 md:px-12 lg:px-20">
+        <div class="grid grid-cols-8 gap-6 md:gap-0">
+          <div class="col-span-8 border-r border-gray-100 dark:border-gray-800 md:col-span-2 lg:col-span-3">
+            <div
+              class="flex items-center justify-between gap-6 border-b border-white dark:border-gray-800 py-6 md:block md:space-y-6 md:border-none md:py-0"
+            >
+              <Logo class="w-32 dark:brightness-200 dark:grayscale"/>
+              <div class="flex gap-6">
+                <a href="#" target="blank" aria-label="github" class="hover:text-cyan-600">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-github"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                    />
+                  </svg>
+                </a>
+                <a href="#" target="blank" aria-label="twitter" class="hover:text-cyan-600">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-twitter"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
+                    />
+                  </svg>
+                </a>
+                <a href="#" target="blank" aria-label="medium" class="hover:text-cyan-600">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-medium"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.01 4.236-2.256 4.236-1.246 0-2.256-1.897-2.256-4.236 0-2.34 1.01-4.236 2.256-4.236 1.246 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-span-8 md:col-span-6 lg:col-span-5">
+            <div class="grid grid-cols-2 gap-6 pb-16 sm:grid-cols-3 md:pl-16">
+              <div>
+                <h6 class="text-lg font-medium text-gray-800 dark:text-gray-200">Company</h6>
+                <ul class="mt-4 list-inside space-y-4">
+                  <li>
+                    <a href="#" class="transition hover:text-cyan-600">About</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h6 class="text-lg font-medium text-gray-800 dark:text-gray-200">Products</h6>
+                <ul class="mt-4 list-inside space-y-4">
+                  <li>
+                    <a href="#" class="transition hover:text-cyan-600">About</a>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h6 class="text-lg font-medium text-gray-800 dark:text-gray-200">Ressources</h6>
+                <ul class="mt-4 list-inside space-y-4">
+                  <li>
+                    <a href="#" class="transition hover:text-cyan-600">About</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="flex justify-between border-t border-gray-100 dark:border-gray-800 py-4 pb-8 md:pl-16">
+              <span>&copy; Artem Palevich 2024 - <span id="year">{Date.now()}</span> </span>
+              <span>All right reserved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
