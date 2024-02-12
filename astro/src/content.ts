@@ -86,7 +86,7 @@ export const content: MATELandingPageContent = {
     },
     "UnlockedPotentialSection": {
         "Heading": "Unleashed Potential",
-        "Description": "Experience the power of detailed prompts in AI code review. MATE leverages longer prompts to provide more comprehensive and accurate feedback, transforming good code into great code."
+        "Description": "Experience the power of fine-tuning prompts in AI-driven code review. MATE leverages longer prompts to provide more comprehensive and accurate feedback, transforming good code into great code."
     },
     "PlansSection": {
         "CheapPlan": {

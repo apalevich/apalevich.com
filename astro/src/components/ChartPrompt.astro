@@ -1,4 +1,4 @@
-<canvas id="chartBar" class="">No thanks</canvas>
+<canvas id="chartBar" class="">The chart is currently unavailable</canvas>
 
 <script>
   import resolveConfig from 'tailwindcss/resolveConfig';
@@ -18,17 +18,27 @@ import { fade } from 'astro:transitions';
 
   function createChart (el) {
     import('chart.js/auto').then(({Chart}) => {
+      Chart.defaults.font.family = fullConfig.theme.fontFamily.sans.join(', ');
+      Chart.defaults.color = colors.gray[500];
+      if (helpers.isDarkMode()) {
+        Chart.defaults.borderColor = colors.gray[800];
+        Chart.defaults.font.weight = 'normal';
+        Chart.defaults.font.lineHeight = 1.3
+      }
+      // console.log(Chart.defaults.font.family)
+
       const data = [
-          { year: 2010, count: 10 },
-          { year: 2011, count: 20 },
-          { year: 2012, count: 15 },
-          { year: 2013, count: 25 },
-          { year: 2014, count: 22 },
-          { year: 2015, count: 30 },
-          { year: 2016, count: 28 },
+        { title: 'ChatGPT as a reviewer', count: 59 },
+        { title: 'CodeReviewer [WOLF]', count: 111 },
+        { title: 'ChatGPT CodeReviewer', count: 125 },
+        { title: 'OpenAI ChatGPT Code Review', count: 133 },
+        { title: 'Code Review with ChatGPT', count: 267 },
+        { title: 'ChatGPT GPT-3.5 Turbo reviewer and linter', count: 465 },
+        { title: 'GitHub Actions ChatGPT PR Reviewer', count: 760 },
+        { title: 'MATE', count: 2614 },
       ];
 
-      const plugin = {
+      const customCanvasBackgroundColor = {
         id: 'customCanvasBackgroundColor',
         beforeDraw: (chart, args, options) => {
           const {ctx} = chart;
@@ -45,31 +55,27 @@ import { fade } from 'astro:transitions';
           el,
           {
             type: 'bar',
-            plugins: [plugin],
+            plugins: [customCanvasBackgroundColor],
             options: {
-              aspectRatio: 1,
+              // animations: {
+              //   tension: {
+              //     delay: 1000,
+              //     easing: 'linear',
+              //     from: 1,
+              //     to: 0,
+              //   },
+              // },
+              // aspectRatio: 1,
               plugins: {
                 legend: {
                   display: false
                 },
-                tooltip: {
-                  enabled: false
-                },
-                title: {
-                  display: false,
-                  text: 'Prompt length (symbols)',
-                  padding: {
-                    top: 0,
-                    bottom: 0
-                  },
-                  font: {
-                    size: 36,
-                    family: fullConfig.theme.fontFamily.sans.join(', ')
-                  }
-                },
+                // tooltip: {
+                  // enabled: false
+                // },
                 subtitle: {
                   display: true,
-                  text: 'Prompt length (symbols)',
+                  text: 'Prompt length',
                   padding: {
                     bottom: 10
                   }
@@ -77,8 +83,8 @@ import { fade } from 'astro:transitions';
               },
               elements: {
                 bar: {
-                  backgroundColor: helpers.isDarkMode() ? colors.gradient1 : colors.gradient2,
-                  borderRadius: 5,
+                  // backgroundColor: helpers.isDarkMode() ? colors.gradient1 : colors.gradient2,
+                  borderRadius: 4,
                 }
               },
               interaction: {
@@ -86,11 +92,12 @@ import { fade } from 'astro:transitions';
               }
             },
             data: {
-              labels: data.map(row => row.year),
+              labels: data.map(col => col.title),
               datasets: [
                 {
-                    label: '',
-                    data: data.map(row => row.count)
+                    label: 'Symbols',
+                    data: data.map(col => col.count),
+                    backgroundColor: data.map(col => col.title === 'MATE' ? colors.gradient2 : colors.gray[300]),
                 }
               ]
             }
