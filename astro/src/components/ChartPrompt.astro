@@ -3,7 +3,6 @@
 <script>
   import resolveConfig from 'tailwindcss/resolveConfig';
   import tailwindConfig from '../../tailwind.config.mjs';
-import { fade } from 'astro:transitions';
   const fullConfig = resolveConfig(tailwindConfig)
   const {colors} = fullConfig.theme;
 
@@ -25,7 +24,6 @@ import { fade } from 'astro:transitions';
         Chart.defaults.font.weight = 'normal';
         Chart.defaults.font.lineHeight = 1.3
       }
-      // console.log(Chart.defaults.font.family)
 
       const data = [
         { title: 'ChatGPT as a reviewer', count: 59 },
@@ -40,7 +38,7 @@ import { fade } from 'astro:transitions';
 
       const customCanvasBackgroundColor = {
         id: 'customCanvasBackgroundColor',
-        beforeDraw: (chart, args, options) => {
+        beforeDraw: (chart) => {
           const {ctx} = chart;
           ctx.save();
           ctx.globalCompositeOperation = 'destination-over';

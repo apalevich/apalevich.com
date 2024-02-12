@@ -1,9 +1,8 @@
 ---
-import '../base.css';
+import { content } from '../content';
 import Logo from '../components/Logo.astro';
 import Cards from '../components/Cards.astro';
 import ChartPrompt from '../components/ChartPrompt.astro';
-import { content } from '../content';
 
 function createArrayFromHeading(): [string, string] {
   const sentence = content.HeroSection.Heading;
@@ -12,20 +11,6 @@ function createArrayFromHeading(): [string, string] {
   const restOfString = words.join(' '); // Re-join the remaining words
   return [restOfString, lastWord ?? '']; // Return the array, handling the case where the sentence might be empty
 }
-
-
-const cardsData = [
-    {
-        icon: Logo,
-        heading: "First feature", 
-        description: "Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
-    },
-    {
-        icon: Logo,
-        heading: "Second feature", 
-        description: "Neque Dolor, fugiat non cum doloribus aperiam voluptates nostrum."
-    }
-];
 ---
 <head>
     <meta charset="UTF-8">
@@ -37,8 +22,6 @@ const cardsData = [
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap" rel="stylesheet">
 </head>
-
-
 
 <body class="font-sans dark:bg-dark">
     <!-- HEADER -->
