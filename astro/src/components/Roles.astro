@@ -3,7 +3,7 @@ const { content } = Astro.props;
 ---
 <div class="pt-16">
     <div class="container mx-auto px-6 text-center md:px-12">
-      <div class="mb-0">
+      <div class="mb-8">
         <h2 class="my-4 text-2xl text-center font-bold text-gray-700 dark:text-white md:text-4xl">
           {content.Heading}
         </h2>
@@ -13,7 +13,7 @@ const { content } = Astro.props;
       </div>
       <div class="grid gap-28 py-16 md:grid-cols-3 md:gap-12">
         {content.KeyFeatures.map(role => (
-          <div class="group space-y-8 border-t-4 border-gray-100 dark:border-gray-800">
+          <div class="group space-y-8 mt-8 border-t-4 border-gray-100 dark:border-gray-800">
             <div class="mx-auto -mt-16 h-32 w-32 rotate-45 overflow-hidden rounded-[2rem] border-2 border-gray-100 dark:border-gray-800 ">
               <img
                 class="mx-auto h-full w-full -rotate-45 scale-125 object-cover transition duration-300 group-hover:scale-[1.4]"
