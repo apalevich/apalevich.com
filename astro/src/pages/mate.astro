@@ -1,7 +1,6 @@
 ---
-import '../base.css';
+import MateLayout from "../layouts/MateLayout.astro";
 import { content } from '../content';
-import Logo from '../components/Logo.astro';
 import Cards from '../components/Cards.astro';
 import ChartPrompt from '../components/ChartPrompt.astro';
 
@@ -13,64 +12,7 @@ function createArrayFromHeading(): [string, string] {
   return [restOfString, lastWord ?? '']; // Return the array, handling the case where the sentence might be empty
 }
 ---
-<head>
-    <meta charset="UTF-8">
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MATE, the Mentorship and AI Technology Enhancer, is an AI-based companion for code review and development. MATE combines the wisdom of experienced mentors with the power of cutting-edge AI technology to provide you with unmatched insights into your code.">
-    <title>MATE — Mentorship and AI Technology Enhancer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap" rel="stylesheet">
-</head>
-
-<body class="font-sans dark:bg-dark">
-    <!-- HEADER -->
-    <header>
-        <input type="checkbox" name="hbr" id="hbr" class="hbr peer" hidden aria-hidden="true">
-        <nav class="fixed z-20 w-full dark:bg-gray-900/80 backdrop-blur navbar shadow-2xl shadow-gray-600/5 border-b border-gray-100 dark:border-gray-800 peer-checked:navbar-active dark:shadow-none">
-            <div class="xl:container m-auto px-6 md:px-12 lg:px-6">
-                <div class="flex flex-wrap items-center justify-between gap-6 md:py-3 md:gap-0 lg:py-5">
-                    <div class="w-full items-center flex justify-between lg:w-auto">
-                        <a class="relative z-10 px-6 py-2" href="#" aria-label="logo">
-                            <Logo />
-                        </a>
-                        <label for="hbr" class="peer-checked:hamburger block relative z-20 p-6 -mr-6 cursor-pointer lg:hidden">
-                            <div aria-hidden="true" class="m-auto h-0.5 w-5 rounded bg-gray-900 dark:bg-gray-300 transition duration-300"></div>
-                            <div aria-hidden="true" class="m-auto mt-2 h-0.5 w-5 rounded bg-gray-900 dark:bg-gray-300 transition duration-300"></div>
-                        </label>
-                    </div>
-                    <div class="navmenu hidden w-full flex-wrap justify-end items-center mb-8 space-y-8 p-6 border border-gray-100 rounded-3xl shadow-2xl shadow-gray-300/20 bg-white dark:bg-gray-800 lg:space-y-0 lg:p-0 lg:m-0 lg:flex md:flex-nowrap lg:bg-transparent lg:w-7/12 lg:shadow-none dark:shadow-none dark:border-gray-700 lg:border-0">
-                        <div class="text-gray-600 dark:text-gray-300 lg:pr-4 text-center">
-                            <ul class="space-y-6 tracking-wide font-medium text-base lg:text-sm lg:flex lg:space-y-0">
-                                <li>
-                                    <a href="#features-section" class="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
-                                        <span>Features</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#pricing-section" class="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
-                                        <span>Pricing</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#faq-section" class="block md:px-4 transition hover:text-primary dark:hover:text-primaryLight">
-                                        <span>FAQ</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="w-full space-y-2 border-primary/10 dark:border-gray-700 flex flex-col -ml-1 sm:flex-row lg:space-y-0 md:w-max lg:border-l">
-                            <a href="#" class="relative flex h-9 ml-auto items-center justify-center sm:px-6 before:absolute before:inset-0 before:rounded-full focus:before:bg-primary/10 dark:focus:before:bg-primaryLight/10 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-                                <span class="relative text-sm font-semibold text-primary dark:text-primaryLight">Sign Up?</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </header>
+<MateLayout>
     <!-- HERO -->
     <div class="relative pt-40 pb-20 lg:pt-44" id="hero-section">
         <div class="relative xl:container m-auto px-6 md:px-12 lg:px-6 sm:w-10/12 md:w-2/3 sm:mx-auto lg:w-6/12">
@@ -319,93 +261,4 @@ function createArrayFromHeading(): [string, string] {
         }
       </div>
   </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <svg xmlns="http://www.w3.org/2000/svg" class="-mb-0.5 w-full" viewBox="0 0 1367.743 181.155">
-      <path
-        class="fill-current text-gray-100 dark:text-gray-800"
-        id="wave"
-        data-name="wave"
-        d="M0,0S166.91-56.211,405.877-49.5,715.838,14.48,955.869,26.854,1366,0,1366,0V115H0Z"
-        transform="translate(1.743 66.155)"
-      ></path>
-    </svg>
-    <div class="bg-gradient-to-b from-gray-100 to-transparent dark:from-gray-800 dark:to-transparent pt-1">
-      <div class="container m-auto space-y-8 px-6 text-gray-600 dark:text-gray-400 md:px-12 lg:px-20">
-        <div class="grid grid-cols-8 gap-6 md:gap-0">
-          <div class="col-span-8 border-r border-gray-100 dark:border-gray-800 md:col-span-2 lg:col-span-3">
-            <div
-              class="flex items-center justify-between gap-6 border-b border-white dark:border-gray-800 py-6 md:block md:space-y-6 md:border-none md:py-0"
-            >
-              <Logo class="w-32 dark:brightness-200 dark:grayscale"/>
-              <div class="flex gap-6">
-                <a href="#" target="blank" aria-label="github" class="hover:text-cyan-600">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    class="bi bi-github"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                    />
-                  </svg>
-                </a>
-                <a href="#" target="blank" aria-label="twitter" class="hover:text-cyan-600">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    class="bi bi-twitter"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"
-                    />
-                  </svg>
-                </a>
-                <a href="#" target="blank" aria-label="medium" class="hover:text-cyan-600">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    class="bi bi-medium"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      d="M9.025 8c0 2.485-2.02 4.5-4.513 4.5A4.506 4.506 0 0 1 0 8c0-2.486 2.02-4.5 4.512-4.5A4.506 4.506 0 0 1 9.025 8zm4.95 0c0 2.34-1.01 4.236-2.256 4.236-1.246 0-2.256-1.897-2.256-4.236 0-2.34 1.01-4.236 2.256-4.236 1.246 0 2.256 1.897 2.256 4.236zM16 8c0 2.096-.355 3.795-.794 3.795-.438 0-.793-1.7-.793-3.795 0-2.096.355-3.795.794-3.795.438 0 .793 1.699.793 3.795z"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-span-8 md:col-span-6 lg:col-span-5">
-            <div class="grid grid-cols-2 gap-6 pb-16 sm:grid-cols-3 md:pl-16">
-              <div>
-                <h6 class="text-lg font-medium text-gray-800 dark:text-gray-200">Developer</h6>
-                <ul class="mt-4 list-inside space-y-4">
-                  <li>
-                    <a href="#" class="transition hover:text-gradient2">About</a>
-                  </li>
-                  <li>
-                    <a href="#" class="transition hover:text-gradient2">Contact</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="flex justify-between border-t border-gray-100 dark:border-gray-800 py-4 pb-8 md:pl-16">
-              <span>&copy; Artem Palevich 2023 - <span id="year">{new Date().getFullYear()}</span> </span>
-              <span>All right reserved</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-</body>
+</MateLayout>
