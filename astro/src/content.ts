@@ -6,6 +6,7 @@ export type MATELandingPageContent = {
   FeaturesSection: {
     Heading: string;
     Columns: Array<{
+      Icon: string;
       Title: string;
       Description: string;
     }>;
@@ -24,6 +25,9 @@ export type MATELandingPageContent = {
     Description: string;
   };
   PlansSection: {
+    FreePlan: {
+      Description: string;
+    }
     CheapPlan: {
       Description: string;
     };
@@ -40,26 +44,30 @@ export type MATELandingPageContent = {
 export const content: MATELandingPageContent = {
     "HeroSection": {
         "Heading": "Elevate Your Code with MATE",
-        "Subheading": "Your AI-powered coding companion for flawless code review and mentoring."
+        "Subheading": "Mentorship and AI Technology Enhancer (MATE) is your AI-powered coding companion for flawless code review and mentoring."
     },
     "FeaturesSection": {
         "Heading": "Features That Empower",
         "Columns": [
         {
-            "Title": "Instant Code Review",
-            "Description": "Get real-time feedback with AI-driven insights to improve code quality instantly."
+          "Icon": '⏱️',
+          "Title": "Instant Code Review",
+          "Description": "Get real-time feedback with AI-driven insights to improve code quality instantly."
         },
         {
-            "Title": "Integration Friendly",
-            "Description": "Seamlessly integrates with GitHub, GitLab, and popular IDEs to streamline your workflow."
+          "Icon": '🌐',
+          "Title": "Right where it needed",
+          "Description": "Browser extension, available right on GitHub and other platforms."
         },
         {
-            "Title": "Multi-Language Support",
-            "Description": "Whether you're working in JavaScript, Python, or any major programming language, MATE has you covered."
+          "Icon": '🔄',
+          "Title": "Multi-Language Support",
+          "Description": "Whether you're working in JavaScript, Python, or any major programming language, MATE has you covered."
         },
         {
-            "Title": "Custom Recommendations",
-            "Description": "Receive personalized suggestions for code refactoring and optimization tailored to your project's needs."
+          "Icon": '🔋',
+          "Title": "Batteries included",
+          "Description": "No API key required, works as it is in your browser."
         }
         ]
     },
@@ -89,11 +97,14 @@ export const content: MATELandingPageContent = {
         "Description": "Experience the power of fine-tuning prompts in AI-driven code review. MATE leverages longer prompts to provide more comprehensive and accurate feedback, transforming good code into great code."
     },
     "PlansSection": {
+      "FreePlan": {
+        "Description": "Unlimited use of MATE GPT at the OpenAI webview."
+      },
         "CheapPlan": {
-        "Description": "Get started with our affordable plan, offering basic code review features and support for individual developers."
+          "Description": "Get started with our affordable plan, offering basic code review features and support for individual developers."
         },
         "PremiumPlan": {
-        "Description": "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support."
+          "Description": "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support."
         }
     },
     FAQData: [

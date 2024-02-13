@@ -1,4 +1,4 @@
-<canvas id="chartBar" class="">The chart is currently unavailable</canvas>
+<canvas id="chartBar" class=""><slot /></canvas>
 
 <script>
   import resolveConfig from 'tailwindcss/resolveConfig';
@@ -43,7 +43,6 @@
           ctx.save();
           ctx.globalCompositeOperation = 'destination-over';
           ctx.fillStyle = helpers.isDarkMode() ? colors.dark : helpers.isMobile() ? colors.white : colors.gray[50];
-          // ctx.strokeStyle = isDarkMode() ? colors.gradient1 : colors.gradient2;
           ctx.fillRect(0, 0, chart.width, chart.height);
           ctx.restore();
         }
@@ -63,10 +62,10 @@
               //     to: 0,
               //   },
               // },
-              // aspectRatio: 1,
+              aspectRatio: helpers.isMobile() ? 1 : 2,
               plugins: {
                 legend: {
-                  display: false
+                  display: false,
                 },
                 // tooltip: {
                   // enabled: false
@@ -81,7 +80,6 @@
               },
               elements: {
                 bar: {
-                  // backgroundColor: helpers.isDarkMode() ? colors.gradient1 : colors.gradient2,
                   borderRadius: 4,
                 }
               },
