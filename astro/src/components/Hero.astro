@@ -1,0 +1,31 @@
+---
+const {content} = Astro.props;
+
+function createArrayFromHeading(): [string, string] {
+  const sentence = content.Heading;
+  const words = sentence.split(' ');
+  const lastWord = words.pop(); // Remove and capture the last word
+  const restOfString = words.join(' '); // Re-join the remaining words
+  return [restOfString, lastWord ?? '']; // Return the array, handling the case where the sentence might be empty
+}
+
+---
+<div class="relative pt-40 pb-20 lg:pt-44" id="hero-section">
+    <div class="relative xl:container m-auto px-6 md:px-12 lg:px-6 sm:w-10/12 md:w-2/3 sm:mx-auto lg:w-6/12">
+        <h1 class="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-blue-900 text-4xl text-center sm:text-5xl md:text-6xl lg:w-auto xl:text-7xl dark:text-white">{createArrayFromHeading()[0]} <br class="lg:block hidden"> <span class="relative text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-l from-gradient1 to-gradient2 dark:from-primaryLight dark:to-secondaryLight">{createArrayFromHeading()[1]}</span></h1>
+        <div class="relative mt-8 lg:mt-16 space-y-8 w-10/12 xl:w-6/12 mx-auto text-center">
+            <p class="sm:text-lg text-gray-700 dark:text-gray-300">
+                {content.Subheading}
+            </p>
+        </div>
+    </div>
+    <div class="mt-12 lg:hidden relative h-[600px] mx-2">
+      <img src="/code-screenshot.png" class="border-gray-100 border-2 rounded-[6px] w-auto max-h-[600px] absolute right-[20%] bottom-0 opacity-" alt="mate illustration" loading="lazy">
+      <img src="/mate-screenshot.png" class="border-gray-200 border-2 rounded-[6px] w-auto max-w-[85%] max-h-[600px] absolute -bottom-2 right-0" alt="mate illustration" loading="lazy">
+    </div>
+    <!-- <div class="mt-16 max-md:hidden flex justify-around items-center xl:container mx-auto">
+        <img src="/code-screenshot.png" class="border-black-900 border-2 rounded-[6px] w-auto max-h-[600px]" alt="mate illustration" loading="lazy">
+        <div class="text-5xl">➡️</div>
+        <img src="/mate-screenshot.png" class="border-black-900 border-2 rounded-[6px] w-auto max-h-[600px]" alt="mate illustration" loading="lazy">
+    </div> -->
+</div>

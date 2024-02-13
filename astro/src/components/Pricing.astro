@@ -1,0 +1,119 @@
+---
+const { content } = Astro.props;
+---
+<div class="xl:container m-auto px-6 py-20 md:px-12 lg:px-20 xl:px-0" id="pricing-section">
+    <div class="m-auto text-center">
+      <h2 class="mt-4 text-2xl text-center font-bold text-gray-700 dark:text-white md:text-4xl">
+        A plan for everyone
+      </h2>
+    </div>
+    <div class="m-auto mt-12">
+      <div class="relative z-10">
+        <div class="relative overflow-auto p-6">
+          <table class="w-full border-t border-gray-100 dark:border-gray-700">
+            <thead>
+              <tr>
+                <td class="p-4 sm:sticky"></td>
+                <td class="p-8 space-y-8">
+                  <!-- <img src="images/team.webp" class="h-12 w-auto" alt="team icon" width="" height=""> -->
+                  <div class="space-y-4">
+                      <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Free</h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">{content.FreePlan.Description}</p>
+                  </div>
+                  <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>0 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
+                  <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-sky-50 before:border before:border-sky-500 dark:before:border-gray-700 dark:before:bg-gray-800 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                    <span class="relative text-base font-semibold text-sky-600 dark:text-white">Get started</span>
+                  </button>
+                </td>
+                <td class="p-8 space-y-8">
+                  <!-- <img src="images/pro.webp" class="h-12 w-auto" alt="organization icon" width="" height=""> -->
+                  <div class="space-y-4">
+                      <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Standart</h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">{content.CheapPlan.Description}</p>
+                  </div>
+                  <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>9 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
+                  <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                    <span class="relative text-base font-semibold text-dark dark:text-white">Coming Soon</span>
+                  </button>
+                </td>
+                <td class="p-8 space-y-8">
+                  <!-- <img src="images/team.webp" class="h-12 w-auto" alt="team icon" width="" height=""> -->
+                  <div class="space-y-4">
+                      <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Premium</h4>
+                      <p class="text-sm text-gray-600 dark:text-gray-400">{content.PremiumPlan.Description}</p>
+                  </div>
+                  <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>19 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
+                  <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                    <span class="relative text-base font-semibold text-dark dark:text-white">Coming Soon</span>
+                  </button>
+                </td>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr>
+                <td
+                  class="left-0 border border-sky-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                >
+                  <span class="block w-max"> ChatGPT </span>
+                </td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+              </tr>
+              <tr>
+                <td
+                  class="left-0 border border-sky-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                >
+                  <span class="block w-max"> Extensions for Popular Browsers </span>
+                </td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+              </tr>
+              <tr>
+                <td
+                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                >
+                <span class="block w-max"> API </span>
+                </td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+              </tr>
+              <tr>
+                <td
+                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                >
+                <span class="block w-max"> Priority Support </span>
+                </td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+              </tr>
+              <tr>
+                <td
+                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                >
+                  <span class="block w-max"> Dedicated Version for Self-Hosting </span>
+                </td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+              </tr>
+              <tr>
+                <td
+                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                >
+                  <span class="block w-max"> Premium tutorials </span>
+                </td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
