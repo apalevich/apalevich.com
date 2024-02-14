@@ -37,7 +37,7 @@ import Logo from '../components/Logo.astro';
                             </button>
                         </div>
                         <!-- <img src="favicon.svg" loading="lazy" class="mx-auto w-12" alt="Mate logo" /> -->
-                        <form action="" class="space-y-8">
+                        <form action="" method="POST" class="space-y-8" id="applicationForm">
                             <div class="space-y-2">
                                 <label for="firstName" class="text-gray-600 dark:text-gray-300">First Name</label>
                                 <input
@@ -58,6 +58,7 @@ import Logo from '../components/Logo.astro';
                                 class="focus:outline-none block w-full rounded-md border border-gray-200 dark:border-gray-600 bg-transparent px-4 py-3 text-gray-600 transition duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 focus:ring-cyan-300"
                                 />
                             </div>
+                            <div id="loader" class="hidden">Sending...</div>
                 
                             <button type="submit" class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-gradient2 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
                                 <span class="relative text-base font-semibold text-white">Send</span>
@@ -82,11 +83,9 @@ import Logo from '../components/Logo.astro';
 </body>
 <script>
     const container = document.getElementById('fullPageContainer');
-
-    const toggleBurgerMenu = (value = null) => {
-        const burgerMenu = document.getElementById('hbr') as HTMLInputElement;
-        value !== null ? burgerMenu.checked = value : burgerMenu.checked = !burgerMenu.checked;
-    };
+    const applicationForm = document.getElementById('applicationForm');
+    
+    applicationForm.addEventListener('submit', handleFormSubmit);
     
     document.querySelectorAll('[data-modal-show]')
     .forEach((el) => {
@@ -100,10 +99,52 @@ import Logo from '../components/Logo.astro';
         const target = event.target as Element;
 
         if (target && target.hasAttribute('data-modal-hide')) {
-            container.classList.add('hidden');
-            toggleBurgerMenu(false)
-        } else {
-            console.log(target?.hasAttribute('data-modal-hide'), target);
+            hideContainer();
         }
     });
+
+    function hideContainer () {
+        container.classList.add('hidden');
+        toggleBurgerMenu(false)
+    }
+
+    function toggleBurgerMenu (value = null) {
+        const burgerMenu = document.getElementById('hbr') as HTMLInputElement;
+        value !== null ? burgerMenu.checked = value : burgerMenu.checked = !burgerMenu.checked;
+    };
+
+    function serializeForm(formNode) {
+        return new FormData(formNode)
+    };
+
+    async function handleFormSubmit(e: SubmitEvent) {
+        e.preventDefault();
+        const data = serializeForm(e.target);
+
+        toggleLoader();
+        const response = await sendData(data);
+        toggleLoader();
+
+        console.log(response);
+
+        if (response.status === 200) {
+            hideContainer();
+            alert('Your application successfully sent!')
+        }
+    }
+
+    async function sendData(data) {
+        console.log(1, data._boundary)
+        return await fetch('/mate/submit-form', {
+            method: 'POST',
+            body: data,
+        })
+    };
+    
+    function toggleLoader() {
+        const loader = document.getElementById('loader');
+        applicationForm.querySelector('button').disabled = true;
+        applicationForm.classList.toggle('hidden');
+        loader.classList.toggle('hidden');
+    }
 </script>
