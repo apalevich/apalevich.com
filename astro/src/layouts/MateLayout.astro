@@ -26,7 +26,7 @@ import Logo from '../components/Logo.astro';
             <div class="container m-auto px-6 text-gray-500 md:px-12 xl:px-40" data-modal-hide>
               <div class="m-auto space-y-8 md:w-8/12 lg:w-6/12 xl:w-6/12">
                 <div class="rounded-3xl border border-gray-100 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl">
-                    <div class="px-16 pb-16 pt-16">
+                    <div id="containerContent" class="px-16 pb-16 pt-16">
                         <div class="flex justify-between">
                             <h2 class="mb-8 text-2xl font-bold text-gray-800 dark:text-white">Get your MATE</h2>
                             <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide>
@@ -58,7 +58,6 @@ import Logo from '../components/Logo.astro';
                                 class="focus:outline-none block w-full rounded-md border border-gray-200 dark:border-gray-600 bg-transparent px-4 py-3 text-gray-600 transition duration-300 invalid:ring-2 invalid:ring-red-400 focus:ring-2 focus:ring-cyan-300"
                                 />
                             </div>
-                            <div id="loader" class="hidden">Sending...</div>
                 
                             <button type="submit" class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-gradient2 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
                                 <span class="relative text-base font-semibold text-white">Send</span>
@@ -69,6 +68,7 @@ import Logo from '../components/Logo.astro';
                                 <!-- <a href="#" class="text-primary">Sign up</a> -->
                             </p>
                         </form>
+                        <div id="reqStatus" class="hidden text-center text-2xl"></div>
                     </div>
                     </div>
                     <!-- <div class="space-x-4 text-center text-gray-500">
@@ -121,30 +121,28 @@ import Logo from '../components/Logo.astro';
         e.preventDefault();
         const data = serializeForm(e.target);
 
-        toggleLoader();
+        setStatus('Sending...');
         const response = await sendData(data);
-        toggleLoader();
-
-        console.log(response);
 
         if (response.status === 200) {
-            hideContainer();
-            alert('Your application successfully sent!')
+            setStatus('Your application successfully sent!');
+            return;
         }
+
+        setStatus('Something went wrong, sorry...');
     }
 
     async function sendData(data) {
-        console.log(1, data._boundary)
         return await fetch('/backend/mate/submit-form', {
             method: 'POST',
             body: data,
         })
     };
     
-    function toggleLoader() {
-        const loader = document.getElementById('loader');
-        applicationForm.querySelector('button').disabled = true;
-        applicationForm.classList.toggle('hidden');
-        loader.classList.toggle('hidden');
+    function setStatus(status) {
+        const reqStatus = document.getElementById('reqStatus');
+        Array.from(reqStatus.parentElement.children).forEach(el => el.classList.add('hidden'));
+        reqStatus.innerText = status;
+        reqStatus.classList.remove('hidden');
     }
 </script>
