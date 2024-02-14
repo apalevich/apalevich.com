@@ -2,7 +2,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const axios = require("axios");
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' })
 const Airtable = require("airtable");
 const OpenAI = require("openai");
 const withPrompt = require("./mate/prompt.js")
@@ -28,19 +29,19 @@ app.get("/check-health", (req, res) => {
 // MATE SECTION
 const mate_prefix = "/mate";
 
-app.post(`${mate_prefix}/submit-form`, (req, res) => {
-  const { Name, Email } = req.body;
+app.post(`${mate_prefix}/submit-form`, upload.none(), (req, res) => {
+  const { firstName, email } = req.body;
 
   const entry = {
     fields: {
-      Name,
-      Email,
+      Name: firstName,
+      Email: email,
     },
   };
 
   base(process.env.AIRTABLE_TAB).create([entry], function (err, records) {
     if (err) {
-      res.status(500).send("Server error while inserting data");
+      res.status(500).send(err);
       return;
     }
     records.forEach(function (record) {
