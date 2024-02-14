@@ -21,7 +21,7 @@ import Logo from '../components/Logo.astro';
     <Header icon={Logo} />
     <slot />
     <Footer icon={Logo} />
-    <div id="fullPageContainer" class=" fixed top-0 left-0 w-full h-full bg-white dark:bg-gray-700 z-[1000] overflow-y-scroll">
+    <div id="fullPageContainer" class="hidden fixed top-0 left-0 w-full h-full bg-white dark:bg-gray-700 z-[1000] overflow-y-scroll">
         <div class="relative h-full py-16 flex align-middle" data-modal-hide>
             <div class="container m-auto px-6 text-gray-500 md:px-12 xl:px-40" data-modal-hide>
               <div class="m-auto space-y-8 md:w-8/12 lg:w-6/12 xl:w-6/12">
@@ -135,7 +135,7 @@ import Logo from '../components/Logo.astro';
 
     async function sendData(data) {
         console.log(1, data._boundary)
-        return await fetch('/mate/submit-form', {
+        return await fetch('/backend/mate/submit-form', {
             method: 'POST',
             body: data,
         })
