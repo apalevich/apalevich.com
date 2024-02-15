@@ -26,9 +26,9 @@ import Logo from '../components/Logo.astro';
             <div class="container m-auto px-6 text-gray-500 md:px-12 xl:px-40" data-modal-hide>
               <div class="m-auto space-y-8 md:w-8/12 lg:w-6/12 xl:w-6/12">
                 <div class="rounded-3xl border border-gray-100 bg-white dark:bg-gray-800 dark:border-gray-700 shadow-2xl">
-                    <div id="containerContent" class="px-16 pb-16 pt-16">
-                        <div class="flex justify-between">
-                            <h2 class="mb-8 text-2xl font-bold text-gray-800 dark:text-white">Get your MATE</h2>
+                    <div class="px-16 pb-16 pt-16">
+                        <div id="applicationHeader" class="flex justify-between mb-8 ">
+                            <h2 class="text-2xl font-bold text-gray-800 dark:text-white">Get your MATE</h2>
                             <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide>
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14" data-modal-hide>
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" data-modal-hide/>
@@ -64,18 +64,23 @@ import Logo from '../components/Logo.astro';
                             </button>
                 
                             <p class="border-t border-gray-100 dark:border-gray-700 pt-6 text-sm text-gray-500 dark:text-gray-400 text-center">
-                                We <b>do not share</b> your personal data with third parties
+                                MATE <b>does not share</b> your code and personal data with third parties
                                 <!-- <a href="#" class="text-primary">Sign up</a> -->
                             </p>
                         </form>
-                        <div id="reqStatus" class="hidden text-center text-2xl"></div>
+                        <div id="applicationResult" class="hidden text-center">
+                            <div id="reqStatus" class="text-xl mb-4 text-gray-500"></div>
+                            <a target="_blank" href="/" class="block w-full py-3s px-6 text-sm rounded-full text-gray-500 hover:text-gradient2 opacity-80 bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                                Why not try the MATE&nbsp;GPT for&nbsp;now?
+                            </a>
+                        </div>
                     </div>
                     </div>
-                    <!-- <div class="space-x-4 text-center text-gray-500">
-                    <span>&copy; MATE</span>
-                    <a href="#" class="text-sm hover:text-primary">Contact</a>
-                    <a href="#" class="text-sm hover:text-primary">Privacy & Terms</a>
-                    </div> -->
+                    <div class="space-x-4 text-center text-gray-500">
+                    <span>&copy; Artem Palevich</span>
+                    <a href="mailto:hello@apalevich.com" class="text-sm hover:text-primary">Contact</a>
+                    <!-- <a href="#" class="text-sm hover:text-primary">Privacy & Terms</a> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -84,6 +89,7 @@ import Logo from '../components/Logo.astro';
 <script>
     const container = document.getElementById('fullPageContainer');
     const applicationForm = document.getElementById('applicationForm');
+    const applicationResult = document.getElementById('applicationResult');
     
     applicationForm.addEventListener('submit', handleFormSubmit);
     
@@ -113,13 +119,9 @@ import Logo from '../components/Logo.astro';
         value !== null ? burgerMenu.checked = value : burgerMenu.checked = !burgerMenu.checked;
     };
 
-    function serializeForm(formNode) {
-        return new FormData(formNode)
-    };
-
     async function handleFormSubmit(e: SubmitEvent) {
         e.preventDefault();
-        const data = serializeForm(e.target);
+        const data = new FormData(e.target as HTMLFormElement)
 
         setStatus('Sending...');
         const response = await sendData(data);
@@ -141,8 +143,8 @@ import Logo from '../components/Logo.astro';
     
     function setStatus(status) {
         const reqStatus = document.getElementById('reqStatus');
-        Array.from(reqStatus.parentElement.children).forEach(el => el.classList.add('hidden'));
         reqStatus.innerText = status;
-        reqStatus.classList.remove('hidden');
+        applicationResult.classList.remove('hidden');
+        applicationForm.classList.add('hidden');
     }
 </script>
