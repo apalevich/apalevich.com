@@ -1,10 +1,142 @@
 ---
 const { content } = Astro.props;
+
 ---
-<div class="xl:container m-auto px-6 py-20 md:px-12 lg:px-20 xl:px-0" id="pricing-section">
+<!-- MOBILE CARDS -->
+<div class="xl:container md:hidden m-auto px-6 py-20 md:px-12 lg:px-20">
+  <div class="m-auto text-center lg:w-7/12">
+    <h2 class="text-2xl font-bold text-gray-800 dark:text-white md:text-4xl">
+      { content.Heading }
+    </h2>
+  </div>
+  <div class="mt-12 grid items-center gap-6 md:grid-cols-2 lg:flex lg:space-x-8">
+    <div class="group relative md:col-span-1 lg:w-[32%]">
+      <div
+        aria-hidden="true"
+        class="absolute top-0 h-full w-full rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none transition duration-500 group-hover:scale-105 lg:group-hover:scale-110"
+      ></div>
+      <div class="relative space-y-8 p-8">
+        <h3 class="text-center text-3xl font-semibold text-gray-700 dark:text-white">Monthly</h3>
+        <div class="relative flex justify-around">
+          <div class="flex">
+            <span class="-ml-6 mt-2 text-3xl font-bold text-primary">$</span>
+            <span class="leading-0 text-8xl font-bold text-gray-800 dark:text-white">19</span>
+          </div>
+          <span class="absolute right-9 bottom-2 text-xl font-bold text-primary"
+            >/ Month</span
+          >
+        </div>
+        <ul role="list" class="m-auto w-max space-y-4 pb-6 text-gray-600 dark:text-gray-300">
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>First premium advantage</span>
+          </li>
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>Second premium advantage</span>
+          </li>
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>Third advantage</span>
+          </li>
+        </ul>
+        <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+          <span class="relative text-base font-semibold text-white dark:text-dark">Start plan</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="group relative row-start-1 md:col-span-2 lg:w-[36%]">
+      <div
+        aria-hidden="true"
+        class="absolute top-0 h-full w-full rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none transition duration-500 group-hover:scale-105 lg:group-hover:scale-110"
+      ></div>
+      <div class="relative space-y-8 p-8">
+        <h3 class="text-center text-3xl font-semibold text-gray-700 dark:text-white">Annual</h3>
+        <div class="overflow-hidden">
+          <div class="-mr-20 flex items-end justify-center">
+            <div class="flex">
+              <span class="-ml-6 mt-2 text-3xl font-bold text-primary">$</span>
+              <span class="leading-0 text-8xl font-bold text-gray-800 dark:text-white">15</span>
+            </div>
+            <div class="mb-2">
+              <span class="block text-xl font-bold text-gray-500 dark:text-gray-400">.56</span>
+              <span class="block text-xl font-bold text-primary">/ Month</span>
+            </div>
+          </div>
+          <div class="text-center text-2xl font-medium">
+            <span class="text-gray-400 line-through">$234</span>
+            <span class="font-semibold text-gray-700 dark:text-white">$190</span>
+          </div>
+          <span class="block text-center text-xs uppercase text-primary">BILLED YEARLY</span>
+          <span
+            class="m-auto mt-4 block w-max rounded-full bg-gradient-to-r from-yellow-300 to-pink-300 px-4 py-1 text-sm font-medium text-yellow-900"
+            >1 Discount applied</span
+          >
+        </div>
+        <ul role="list" class="m-auto w-max space-y-4 pb-6 text-gray-600 dark:text-gray-300">
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>First premium advantage</span>
+          </li>
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>Second premium advantage</span>
+          </li>
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>Third advantage</span>
+          </li>
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>Fourth organizations advantage</span>
+          </li>
+        </ul>
+        <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+          <span class="relative text-base font-semibold text-white dark:text-dark">Start plan</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="group relative md:col-span-1 lg:w-[32%]">
+      <div
+        aria-hidden="true"
+        class="absolute top-0 h-full w-full rounded-3xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-2xl shadow-gray-600/10 dark:shadow-none transition duration-500 group-hover:scale-105 lg:group-hover:scale-110"
+      ></div>
+      <div class="relative space-y-8 p-8">
+        <h3 class="text-center text-3xl font-semibold text-gray-700 dark:text-white">Free</h3>
+        <div class="relative flex justify-around">
+          <div class="flex">
+            <span class="-ml-2 mt-2 text-3xl font-bold text-primary">$</span>
+            <span class="leading-0 text-8xl font-bold text-gray-800 dark:text-white">0</span>
+          </div>
+        </div>
+        <ul role="list" class="m-auto w-max space-y-4 pb-6 text-gray-600 dark:text-gray-300">
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>First premium advantage</span>
+          </li>
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>Second premium advantage</span>
+          </li>
+          <li class="space-x-2">
+            <span class="font-semibold text-primary">&check;</span>
+            <span>Third advantage</span>
+          </li>
+        </ul>
+        <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-sky-50 before:border before:border-sky-500 dark:before:border-gray-600 dark:before:bg-gray-700 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+          <span class="relative text-base font-semibold text-sky-600 dark:text-white">Get Started</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TABLE -->
+<div class="xl:container hidden md:block m-auto px-6 py-20 md:px-12 lg:px-20 xl:px-0" id="pricing-section">
     <div class="m-auto text-center">
       <h2 class="mt-4 text-2xl text-center font-bold text-gray-700 dark:text-white md:text-4xl">
-        A plan for everyone
+        { content.Heading }
       </h2>
     </div>
     <div class="m-auto mt-12">
@@ -14,103 +146,41 @@ const { content } = Astro.props;
             <thead>
               <tr>
                 <td class="p-4 sm:sticky"></td>
-                <td class="p-8 space-y-8">
-                  <!-- <img src="images/team.webp" class="h-12 w-auto" alt="team icon" width="" height=""> -->
-                  <div class="space-y-4">
-                      <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Free</h4>
-                      <p class="text-sm text-gray-600 dark:text-gray-400">{content.FreePlan.Description}</p>
-                  </div>
-                  <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>0 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
-                  <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-sky-50 before:border before:border-sky-500 dark:before:border-gray-700 dark:before:bg-gray-800 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-                    <span class="relative text-base font-semibold text-sky-600 dark:text-white">Get started</span>
-                  </button>
-                </td>
-                <td class="p-8 space-y-8">
-                  <!-- <img src="images/pro.webp" class="h-12 w-auto" alt="organization icon" width="" height=""> -->
-                  <div class="space-y-4">
-                      <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Standart</h4>
-                      <p class="text-sm text-gray-600 dark:text-gray-400">{content.CheapPlan.Description}</p>
-                  </div>
-                  <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>9 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
-                  <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-                    <span class="relative text-base font-semibold text-dark dark:text-white">Coming Soon</span>
-                  </button>
-                </td>
-                <td class="p-8 space-y-8">
-                  <!-- <img src="images/team.webp" class="h-12 w-auto" alt="team icon" width="" height=""> -->
-                  <div class="space-y-4">
-                      <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">Premium</h4>
-                      <p class="text-sm text-gray-600 dark:text-gray-400">{content.PremiumPlan.Description}</p>
-                  </div>
-                  <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>19 <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
-                  <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-primary dark:before:bg-white before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
-                    <span class="relative text-base font-semibold text-dark dark:text-white">Coming Soon</span>
-                  </button>
-                </td>
+                { content.Plans.map(item => 
+                  <td class="p-8 space-y-8">
+                    <div class="space-y-4">
+                        <h4 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">{item.Title}</h4>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">{item.Description}</p>
+                    </div>
+                    <h3 class="text-4xl text-gray-900 dark:text-white font-bold flex"><span class="text-lg text-gray-500">$</span>{item.MonthlyPrice} <span class="ml-4 h-max mt-auto text-lg text-gray-500 font-light">/ Month</span> </h3>
+                    <button class="relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-sky-50 before:border before:border-sky-500 dark:before:border-gray-700 dark:before:bg-gray-800 before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                      <span class="relative text-base font-semibold text-sky-600 dark:text-white" data-modal-show>{item.CallToAction.Text}</span>
+                    </button>
+                  </td>
+                )}
               </tr>
             </thead>
   
             <tbody>
-              <tr>
-                <td
-                  class="left-0 border border-sky-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
-                >
-                  <span class="block w-max"> ChatGPT </span>
-                </td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-              </tr>
-              <tr>
-                <td
-                  class="left-0 border border-sky-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
-                >
-                  <span class="block w-max"> Extensions for Popular Browsers </span>
-                </td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-              </tr>
-              <tr>
-                <td
-                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
-                >
-                <span class="block w-max"> API </span>
-                </td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-              </tr>
-              <tr>
-                <td
-                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
-                >
-                <span class="block w-max"> Priority Support </span>
-                </td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-              </tr>
-              <tr>
-                <td
-                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
-                >
-                  <span class="block w-max"> Dedicated Version for Self-Hosting </span>
-                </td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-              </tr>
-              <tr>
-                <td
-                  class="left-0 border border-gray-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
-                >
-                  <span class="block w-max"> Premium tutorials </span>
-                </td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
-                <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
-              </tr>
+              {
+                content.Plans.at(-1).Features.map(feature => (
+                  <tr>
+                    <td
+                      class="left-0 border border-sky-100 dark:border-gray-700 bg-sky-50 dark:bg-gray-800 p-4 font-medium text-sky-900 dark:text-gray-200 sm:sticky"
+                    >
+                      <span class="block w-max"> {feature} </span>
+                    </td>
+                    {
+                      content.Plans.map(plan => (
+                        plan.Features.includes(feature)
+                        ? <td class="border border-gray-100 dark:border-gray-700 p-4 text-center text-green-500">&check;</td>
+                        : <td class="border border-gray-100 dark:border-gray-700 text-center text-2xl text-red-500">&times;</td>
+                      ))
+
+                    }
+                  </tr>
+                ))
+              }
             </tbody>
           </table>
         </div>

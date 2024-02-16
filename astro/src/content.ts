@@ -25,15 +25,16 @@ export type MATELandingPageContent = {
     Description: string;
   };
   PlansSection: {
-    FreePlan: {
+    Heading: string;
+    Plans: Array<{
+      Title: string;
+      MontlyPrice: number;
       Description: string;
-    }
-    CheapPlan: {
-      Description: string;
-    };
-    PremiumPlan: {
-      Description: string;
-    };
+      Features: string[];
+      CallToAction?: {
+        Text: string;
+      };
+    }>
   };
   FAQData: Array<{
     question: string;
@@ -97,15 +98,36 @@ export const content: MATELandingPageContent = {
         "Description": "Experience the power of fine-tuning prompts in AI-driven code review. MATE leverages longer prompts to provide more comprehensive and accurate feedback, transforming good code into great code."
     },
     "PlansSection": {
-      "FreePlan": {
-        "Description": "Unlimited use of MATE GPT at the OpenAI webview."
-      },
-        "CheapPlan": {
-          "Description": "Get started with our affordable plan, offering basic code review features and support for individual developers."
+      Heading: "A plan for everyone",
+      Plans: [
+        {
+          "Title": "Free",
+          "MontlyPrice": 0,
+          "Description": "Unlimited use of MATE GPT at the OpenAI webview.",
+          "Features": ['ChatGPT'],
+          "CallToAction": {
+            "Text": 'Get Started',
+          },
         },
-        "PremiumPlan": {
-          "Description": "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support."
+        {
+          "Title": "Individual",
+          "MontlyPrice": 9,
+          "Description": "Get started with our affordable plan, offering basic code review features and support for individual developers.",
+          "Features": ['ChatGPT', 'Extensions for Popular Browsers'],
+          "CallToAction": {
+            "Text": 'Coming Soon',
+          },
+        },
+        {
+          "Title": "Enterprise",
+          "MontlyPrice": 18,
+          "Description": "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support.",
+          "Features": ['ChatGPT', 'Extensions for Popular Browsers', 'API', 'Priority Support', 'Secure Self-Hosted Instance', 'Premium tutorials'],
+          "CallToAction": {
+            "Text": 'Coming Soon',
+          },
         }
+      ]
     },
     FAQData: [
       // {
