@@ -3,9 +3,9 @@ const { content } = Astro.props;
 
 ---
 <!-- MOBILE CARDS -->
-<div class="xl:container m-auto px-6 py-20 md:px-12 lg:px-20">
+<div id="pricing-section" class="xl:container m-auto px-6 py-20 md:px-12 lg:px-20">
   <div class="m-auto text-center lg:w-7/12">
-    <h2 class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl">
+    <h2 class="font-bold text-gray-800 dark:text-white md:text-4xl">
       { content.Heading }
     </h2>
   </div>
@@ -21,13 +21,13 @@ const { content } = Astro.props;
         <div class="relative space-y-8 p-8">
           <h3 class="text-center text-3xl font-semibold text-gray-700 dark:text-white">{plan.Title}</h3>
           <div class="relative flex justify-center">
-            <div class="text-3xl font-bold grow-1">
+            <div class="text-3xl font-bold grow-1 dark:text-white">
               $
             </div>
             <div class="text-8xl">
               <span class="font-bold text-gray-800 dark:text-white">{plan.MonthlyPrice}</span>
             </div>
-            <div class="text-xl font-bold self-end">
+            <div class="text-xl font-bold self-end dark:text-white">
               / Month
             </div>
           </div>
@@ -41,8 +41,8 @@ const { content } = Astro.props;
               ))
             }
           </ul>
-          <button class:list={['relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-gradient2', {'before:bg-white': !plan.CallToAction.Available}, 'before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95']} data-modal-show>
-            <span class:list={['relative text-base font-semibold', plan.CallToAction.Available ? 'text-white' : 'text-gradient2']}>{plan.CallToAction.Text}</span>
+          <button class:list={['relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-gradient2', {'before:bg-white dark:before:bg-transparent': !plan.CallToAction.Available}, 'before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95']} data-modal-show>
+            <span class:list={['relative font-semibold', plan.CallToAction.Available ? 'text-white' : 'text-gradient2 dark:text-white']}>{plan.CallToAction.Text}</span>
           </button>
         </div>
       </div>

@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+    h2 {
+        @apply text-3xl
+    }
+}
+
 @layer components {
     .navbar-active .hamburger div:first-child {
         @apply rotate-45 translate-y-1.5;

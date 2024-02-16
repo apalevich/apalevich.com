@@ -12,7 +12,7 @@
 
   const helpers = {
     isDarkMode: () => window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,
-    isMobile: () => parseInt(fullConfig.theme.screens.lg) >= window.outerWidth
+    isMobile: () => window.outerWidth < parseInt(fullConfig.theme.screens.md)
   }
 
   function createChart (el) {
@@ -42,7 +42,8 @@
           const {ctx} = chart;
           ctx.save();
           ctx.globalCompositeOperation = 'destination-over';
-          ctx.fillStyle = helpers.isDarkMode() ? colors.dark : helpers.isMobile() ? colors.white : colors.gray[50];
+          // ctx.fillStyle = helpers.isDarkMode() ? colors.dark : helpers.isMobile() ? colors.white : colors.gray[50];
+          ctx.fillStyle = 'transparent';
           ctx.fillRect(0, 0, chart.width, chart.height);
           ctx.restore();
         }
@@ -67,9 +68,9 @@
                 legend: {
                   display: false,
                 },
-                // tooltip: {
-                  // enabled: false
-                // },
+                tooltip: {
+                  enabled: false
+                },
                 subtitle: {
                   display: true,
                   text: 'Prompt length',
