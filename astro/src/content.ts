@@ -164,7 +164,7 @@ export const content: MATELandingPageContent = {
       },
       {
         question: 'Who built this?',
-        answer: 'My name is Artyom and I\'m big into all the UX, AI and building products. Say hello on twitter @apalevich.',
+        answer: 'My name is Artyom and I\'m big into all the UX, AI and building products. Say hello on twitter <a href="https://twitter.com/apalevich" target="_blank">@apalevich.</a>',
       },
       {
         question: 'Is this only for GitHub?',
