@@ -28,11 +28,12 @@ export type MATELandingPageContent = {
     Heading: string;
     Plans: Array<{
       Title: string;
-      MontlyPrice: number;
+      MonthlyPrice: number;
       Description: string;
       Features: string[];
       CallToAction?: {
         Text: string;
+        Available: boolean;
       };
     }>
   };
@@ -102,29 +103,32 @@ export const content: MATELandingPageContent = {
       Plans: [
         {
           "Title": "Free",
-          "MontlyPrice": 0,
+          "MonthlyPrice": 0,
           "Description": "Unlimited use of MATE GPT at the OpenAI webview.",
           "Features": ['ChatGPT'],
           "CallToAction": {
             "Text": 'Get Started',
+            "Available": true,
           },
         },
         {
           "Title": "Individual",
-          "MontlyPrice": 9,
+          "MonthlyPrice": 9,
           "Description": "Get started with our affordable plan, offering basic code review features and support for individual developers.",
           "Features": ['ChatGPT', 'Extensions for Popular Browsers'],
           "CallToAction": {
-            "Text": 'Coming Soon',
+            "Text": 'Notify me when available',
+            "Available": false,
           },
         },
         {
           "Title": "Enterprise",
-          "MontlyPrice": 18,
+          "MonthlyPrice": 18,
           "Description": "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support.",
           "Features": ['ChatGPT', 'Extensions for Popular Browsers', 'API', 'Priority Support', 'Secure Self-Hosted Instance', 'Premium tutorials'],
           "CallToAction": {
-            "Text": 'Coming Soon',
+            "Text": 'Notify me when available',
+            "Available": false,
           },
         }
       ]
