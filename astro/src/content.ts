@@ -156,7 +156,8 @@ export const content: MATELandingPageContent = {
       // },
       {
         question: 'Does it actually review the Pull Request?',
-        answer: 'Yes! You will get a code review from the ai - it will use your PR description and look at the code to decide whether to approve the PR or not. It will give you a summary of the code and recommendations on how to improve it.',
+        answer: 'Currently it is only available for single files on GitHub. We are working hard to add PR as soon as possible.',
+        // answer: 'Yes! You will get a code review from the AI - it will use your PR description and look at the code to decide whether to approve the PR or not. It will give you a summary of the code and recommendations on how to improve it.',
       },
       {
         question: 'If I try this out but prefer my humans in the end, what next?',
@@ -164,11 +165,11 @@ export const content: MATELandingPageContent = {
       },
       {
         question: 'Who built this?',
-        answer: 'My name is Artyom and I\'m big into all the UX, AI and building products. Say hello on twitter <a href="https://twitter.com/apalevich" target="_blank">@apalevich.</a>',
+        answer: 'My name is Artyom and I\'m big into all the UX, AI and building products. Say hello on twitter <a href="https://twitter.com/apalevich" class="underline" target="_blank">@apalevich.</a>',
       },
       {
         question: 'Is this only for GitHub?',
-        answer: 'Currently it is only available for GitHub. We are working harn to add GitLab in the future.',
+        answer: 'Currently it is only available for GitHub. We are working hard to add GitLab in the future.',
       },
       {
         question: 'We need to integrate with our own Azure OpenAI Instance',
