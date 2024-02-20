@@ -69,8 +69,8 @@ import Logo from '../components/Logo.astro';
                             </p>
                         </form>
                         <div id="applicationResult" class="hidden text-center">
-                            <div id="reqStatus" class="text-xl mb-4 text-gray-500"></div>
-                            <a target="_blank" href="https://chat.openai.com/g/g-Kwd9HEBG2-code-mate" class="block w-full py-3s px-6 text-sm rounded-full text-gray-500 hover:text-gradient2 opacity-80 bg-transparent before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
+                            <div id="reqStatus" class="text-xl mb-8 text-gray-500"></div>
+                            <a target="_blank" href="https://chat.openai.com/g/g-Kwd9HEBG2-code-mate" class="block w-full py-3s px-6 text-sm rounded-full hover:underline text-gradient2 bg-transparent before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95">
                                 Why not try the MATE&nbsp;GPT for&nbsp;now?
                             </a>
                         </div>
@@ -105,6 +105,12 @@ import Logo from '../components/Logo.astro';
         const target = event.target as Element;
 
         if (target && target.hasAttribute('data-modal-hide')) {
+            hideContainer();
+        }
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
             hideContainer();
         }
     });
