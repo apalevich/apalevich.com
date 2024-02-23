@@ -2,7 +2,7 @@
 const {content} = Astro.props;
 
 function createArrayFromHeading(): [string, string] {
-  const sentence = content.Heading;
+  const sentence = content.heading;
   const words = sentence.split(' ');
   const lastWord = words.pop(); // Remove and capture the last word
   const restOfString = words.join(' '); // Re-join the remaining words
@@ -15,7 +15,7 @@ function createArrayFromHeading(): [string, string] {
         <h1 class="sm:mx-auto sm:w-10/12 md:w-2/3 font-black text-blue-900 text-4xl text-center sm:text-5xl md:text-6xl lg:w-auto xl:text-7xl dark:text-white">{createArrayFromHeading()[0]} <br class="lg:block hidden"> <span class="relative text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-l from-gradient1 to-gradient2 dark:from-primaryLight dark:to-secondaryLight">{createArrayFromHeading()[1]}</span></h1>
         <div class="relative mt-8 lg:mt-16 space-y-8 w-10/12 xl:w-6/12 mx-auto text-center">
             <p class="sm:text-lg text-gray-700 dark:text-gray-300">
-                {content.Subheading}
+                {content.subheading}
             </p>
         </div>
     </div>

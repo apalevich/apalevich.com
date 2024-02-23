@@ -1,139 +1,139 @@
 export type MATELandingPageContent = {
-  HeroSection: {
-    Heading: string;
-    Subheading: string;
+  heroSection: {
+    heading: string;
+    subheading: string;
   };
-  FeaturesSection: {
-    Heading: string;
-    Columns: Array<{
-      Icon: string;
-      Title: string;
-      Description: string;
+  featuresSection: {
+    heading: string;
+    columns: Array<{
+      icon: string;
+      title: string;
+      description: string;
     }>;
   };
-  ForWhomSection: {
-    Heading: string;
-    Subheading: string;
-    KeyFeatures: Array<{
-      ImagePath: string;
-      Title: string;
-      Description: string;
+  forWhomSection: {
+    heading: string;
+    subheading: string;
+    keyFeatures: Array<{
+      imagePath: string;
+      title: string;
+      description: string;
     }>;
   };
-  UnlockedPotentialSection: {
-    Heading: string;
-    Description: string;
+  unlockedPotentialSection: {
+    heading: string;
+    description: string;
   };
-  PlansSection: {
-    Heading: string;
-    Plans: Array<{
-      Title: string;
-      MonthlyPrice: number;
-      Description: string;
-      Features: string[];
-      CallToAction?: {
-        Text: string;
-        Available: boolean;
+  plansSection: {
+    heading: string;
+    plans: Array<{
+      title: string;
+      monthlyPrice: number;
+      description: string;
+      features: string[];
+      callToAction?: {
+        text: string;
+        available: boolean;
       };
     }>
   };
-  FAQData: Array<{
+  faqData: Array<{
     question: string;
     answer: string;
   }>;
 };
 
 export const content: MATELandingPageContent = {
-    "HeroSection": {
-        "Heading": "Elevate Your Code with MATE",
-        "Subheading": "Mentorship and AI Technology Enhancer (MATE) is your AI-powered coding companion for flawless code review and mentoring."
+    heroSection: {
+        heading: "Elevate Your Code with MATE",
+        subheading: "Mentorship and AI Technology Enhancer (MATE) is your AI-powered coding companion for flawless code review and mentoring."
     },
-    "FeaturesSection": {
-        "Heading": "Features That Empower",
-        "Columns": [
+    featuresSection: {
+        heading: "Features That Empower",
+        columns: [
         {
-          "Icon": '⏱️',
-          "Title": "Instant Code Review",
-          "Description": "Get real-time feedback with AI-driven insights to improve code quality instantly."
+          icon: '⏱️',
+          title: "Instant Code Review",
+          description: "Get real-time feedback with AI-driven insights to improve code quality instantly."
         },
         {
-          "Icon": '🌐',
-          "Title": "Right where it needed",
-          "Description": "Browser extension, available right on GitHub and other platforms."
+          icon: '🌐',
+          title: "Right where it needed",
+          description: "Browser extension, available right on GitHub and other platforms."
         },
         {
-          "Icon": '🔄',
-          "Title": "Multi-Language Support",
-          "Description": "Whether you're working in JavaScript, Python, or any major programming language, MATE has you covered."
+          icon: '🔄',
+          title: "Multi-Language Support",
+          description: "Whether you're working in JavaScript, Python, or any major programming language, MATE has you covered."
         },
         {
-          "Icon": '🔋',
-          "Title": "Batteries included",
-          "Description": "No API key required, works as it is in your browser."
+          icon: '🔋',
+          title: "Batteries included",
+          description: "No API key required, works as it is in your browser."
         }
         ]
     },
-    "ForWhomSection": {
-      "Heading": "Designed for Every Developer",
-      "Subheading": "MATE meets the unique needs of diverse coding professionals.",
-      "KeyFeatures": [
+    forWhomSection: {
+      heading: "Designed for Every Developer",
+      subheading: "MATE meets the unique needs of diverse coding professionals.",
+      keyFeatures: [
         {
-          "Title": "Full-Time Job Programmer",
-          "Description": "Accelerate project timelines and enhance code quality under tight deadlines.",
-          "ImagePath": "/senior_portrait.jpg"
+          title: "Full-Time Job Programmer",
+          description: "Accelerate project timelines and enhance code quality under tight deadlines.",
+          imagePath: "/senior_portrait.jpg"
         },
         {
-          "Title": "Freelance Developer",
-          "Description": "Maintain high coding standards and quick project turnaround times, solo or in teams.",
-          "ImagePath": "/middle_portrait.jpg"
+          title: "Freelance Developer",
+          description: "Maintain high coding standards and quick project turnaround times, solo or in teams.",
+          imagePath: "/middle_portrait.jpg"
         },
         {
-          "Title": "IT Student",
-          "Description": "Sharpen your coding skills with in-depth feedback and recommendations.",
-          "ImagePath": "/junior_portrait.jpg"
+          title: "IT Student",
+          description: "Sharpen your coding skills with in-depth feedback and recommendations.",
+          imagePath: "/junior_portrait.jpg"
         },
       ]
     },
-    "UnlockedPotentialSection": {
-        "Heading": "Unleashed Potential",
-        "Description": "Experience the power of fine-tuning prompts in AI-driven code review. MATE leverages longer prompts to provide more comprehensive and accurate feedback, transforming good code into great code."
+    unlockedPotentialSection: {
+        heading: "Unleashed Potential",
+        description: "Experience the power of fine-tuning prompts in AI-driven code review. MATE leverages longer prompts to provide more comprehensive and accurate feedback, transforming good code into great code."
     },
-    "PlansSection": {
-      Heading: "A plan for everyone",
-      Plans: [
+    plansSection: {
+      heading: "A plan for everyone",
+      plans: [
         {
-          "Title": "Free",
-          "MonthlyPrice": 0,
-          "Description": "Unlimited use of MATE GPT at the OpenAI webview.",
-          "Features": ['ChatGPT'],
-          "CallToAction": {
-            "Text": 'Get Started',
-            "Available": true,
+          title: "Free",
+          monthlyPrice: 0,
+          description: "Unlimited use of MATE GPT at the OpenAI webview.",
+          features: ['ChatGPT'],
+          callToAction: {
+            text: 'Get Started',
+            available: true,
           },
         },
         {
-          "Title": "Individual",
-          "MonthlyPrice": 9,
-          "Description": "Get started with our affordable plan, offering basic code review features and support for individual developers.",
-          "Features": ['ChatGPT', 'Extensions for Popular Browsers'],
-          "CallToAction": {
-            "Text": 'Notify me when available',
-            "Available": false,
+          title: "Individual",
+          monthlyPrice: 9,
+          description: "Get started with our affordable plan, offering basic code review features and support for individual developers.",
+          features: ['ChatGPT', 'Extensions for Popular Browsers'],
+          callToAction: {
+            text: 'Notify me when available',
+            available: false,
           },
         },
         {
-          "Title": "Enterprise",
-          "MonthlyPrice": 18,
-          "Description": "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support.",
-          "Features": ['ChatGPT', 'Extensions for Popular Browsers', 'API', 'Priority Support', 'Secure Self-Hosted Instance', 'Premium tutorials'],
-          "CallToAction": {
-            "Text": 'Notify me when available',
-            "Available": false,
+          title: "Enterprise",
+          monthlyPrice: 18,
+          description: "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support.",
+          features: ['ChatGPT', 'Extensions for Popular Browsers', 'API', 'Priority Support', 'Secure Self-Hosted Instance', 'Premium tutorials'],
+          callToAction: {
+            text: 'Notify me when available',
+            available: false,
           },
         }
       ]
     },
-    FAQData: [
+    faqData: [
       // {
       //   question: 'How big can the code file be?',
       //   answer: 'At the moment we estimate this to be around 200 lines of code. We\'ll let you know if a PR too large for us and we\'re working on increasing the limit on the size of PRs we can handle.',
