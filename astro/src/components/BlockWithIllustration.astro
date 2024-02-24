@@ -6,12 +6,12 @@ const { content, illustration: Illustration } = Astro.props;
       <!-- <h2 class="pb-12 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
         {content.Heading}
       </h2> -->
-      <div class="lg:bg-gray-50 dark:lg:bg-dark lg:p-16 rounded-[4rem] space-y-6 flex flex-col-reverse lg:flex-row gap-10 justify-center lg:space-y-0 lg:items-start">
+      <div class="lg:bg-gray-50 dark:lg:bg-dark lg:p-16 rounded-[4rem] space-y-0 flex flex-col-reverse lg:flex-row gap-10 justify-center lg:space-y-0 lg:items-start">
         <div class="lg:w-1/2">
             <Illustration />
         </div>
         <div class="lg:w-1/2">
-          <h2 class="mt-4 normal-case text-justify font-bold text-gray-500 md:text-dark dark:text-white md:text-4xl">
+          <h2 class="mt-4 normal-case light:text-justify font-bold text-gray-500 md:text-dark dark:text-white md:text-4xl">
             {content.description}
           </h2>
           <!-- <p class="my-8 text-gray-600 dark:text-gray-300" set:html={content.description}></p> -->
