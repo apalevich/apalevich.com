@@ -1,5 +1,6 @@
 ---
 const { content } = Astro.props;
+
 ---
 
 <div class="py-16" id="features-section">
@@ -16,7 +17,7 @@ const { content } = Astro.props;
                         <div class="relative space-y-8 pt-12 pb-8 p-8 h-full">
                             <div class="flex flex-col justify-between gap-4">
                                 <h5 class="text-xl font-medium text-gray-700 dark:text-white transition group-hover:text-dark">
-                                    <span class="pr-1">{ icon }</span>{ title }
+                                    <span class="pr-1">{ icon }</span><span set:html={ title }></span>
                                 </h5>
                                 <p class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-dark">
                                     { description }
