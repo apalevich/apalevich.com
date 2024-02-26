@@ -148,7 +148,7 @@ import Logo from '../components/Logo.astro';
         el.addEventListener('click', function() {
             container.classList.remove('hidden');
             if (window.fbq) {
-                window.fbq('track', 'OpenModal');
+                window.fbq('trackCustom', 'OpenModal');
             } else {
                 console.error('window.fbq is not found');
             }
