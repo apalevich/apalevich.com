@@ -5,6 +5,7 @@ import { content } from '../content';
 import ChartPrompt from '../components/ChartPrompt.astro';
 
 import Hero from '../components/Hero.astro';
+import DemoBlock from '../components/DemoBlock.astro';
 import Cards from '../components/Cards.astro';
 import Roles from '../components/Roles.astro';
 import BlockWithIllustration from '../components/BlockWithIllustration.astro';
@@ -13,6 +14,7 @@ import Disclosures from '../components/Disclosures.astro';
 ---
 <MateLayout>
     <Hero content={content.heroSection} />
+    <DemoBlock />
     <Cards content={content.featuresSection} />
     <Roles content={content.forWhomSection} />
     <BlockWithIllustration illustration={ChartPrompt} content={content.unlockedPotentialSection} />

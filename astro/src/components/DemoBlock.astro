@@ -1,0 +1,57 @@
+<!-- <div class="code-input-container relative">
+    <textarea id="codeInput" class="w-full h-32 p-2 border border-gray-300 rounded-md" placeholder="Paste your code here..."></textarea>
+    <button id="processCodeBtn" class="absolute right-2 bottom-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Process Code</button>
+</div>
+<div id="resultText" class="mt-4 p-2 bg-gray-100 border border-gray-300 rounded-md hidden"></div>
+<script>
+    const codeInput = document.getElementById('codeInput');
+    const processCodeBtn = document.getElementById('processCodeBtn');
+    const resultText = document.getElementById('resultText');
+
+    processCodeBtn.addEventListener('click', () => {
+        const code = codeInput.value;
+        // Example processing, replace with actual logic
+        const result = `Processed ${code.length} characters of code.`;
+        
+        // Display result
+        resultText.textContent = result;
+        resultText.classList.remove('hidden');
+
+        // Make code input uneditable and semi-transparent
+        codeInput.setAttribute('readonly', 'true');
+        codeInput.classList.add('bg-gray-200', 'opacity-50');
+    });
+</script> -->
+<style>
+    .result-active {
+        transform: scale(1.2);
+        transition: transform 300ms ease-in-out;
+    }
+</style>
+
+<div id="app" class="p-4 w-full max-w-lg bg-gray-100 flex items-center justify-center h-screen">
+    <textarea id="codeInput" class="w-full p-4 bg-white border border-gray-300 rounded-lg mb-4" placeholder="Paste your code here"></textarea>
+    <button id="reviewButton" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition duration-200 ease-in-out">
+        Get the Code Review
+    </button>
+    <div id="resultMessage" class="hidden text-center text-2xl mt-4"></div>
+</div>
+
+<script>
+    const codeInput = document.getElementById('codeInput');
+    const reviewButton = document.getElementById('reviewButton');
+    const resultMessage = document.getElementById('resultMessage');
+
+    reviewButton.addEventListener('click', () => {
+        // Simulate code review process
+        reviewButton.classList.add('result-active', 'fixed', 'top-0', 'right-0', 'bottom-0', 'left-0', 'flex', 'items-center', 'justify-center', 'text-4xl');
+        reviewButton.textContent = '75% Nice!';
+        codeInput.setAttribute('readonly', true);
+        codeInput.classList.add('opacity-50');
+        resultMessage.classList.remove('hidden');
+        resultMessage.textContent = 'The review is complete.';
+
+        // Disable further clicks
+        reviewButton.disabled = true;
+    });
+</script>
