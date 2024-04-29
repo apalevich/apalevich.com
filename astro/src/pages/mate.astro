@@ -13,11 +13,11 @@ import Pricing from '../components/Pricing.astro';
 import Disclosures from '../components/Disclosures.astro';
 ---
 <MateLayout>
-    <!-- <Hero content={content.heroSection} /> -->
-    <DemoBlock content={content.heroSection} />
+    <Hero content={content.heroSection} />
     <Cards content={content.featuresSection} />
     <Roles content={content.forWhomSection} />
     <BlockWithIllustration illustration={ChartPrompt} content={content.unlockedPotentialSection} />
+    <DemoBlock />
     <Pricing content={content.plansSection} />
     <Disclosures content={content.faqData} />
 </MateLayout>
