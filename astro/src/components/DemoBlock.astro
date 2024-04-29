@@ -1,0 +1,37 @@
+---
+// const {content} = Astro.props;
+---
+<div class="pt-16">
+    <div class="container mx-auto px-6 text-center md:px-12">
+      <div class="mb-8">
+        <h2 class="my-4 text-center font-bold text-gray-700 dark:text-white md:text-4xl">
+          Easy to use
+        </h2>
+        <p class="sm:text-lg text-gray-500 dark:text-gray-300 lg:mx-auto lg:w-8/12 ">
+          Seamless integration into your GitHub UI
+        </p>
+      </div>
+      <video
+        class="w-full"
+        autoplay
+        controls
+        muted
+        controlslist="nodownload noremoteplayback disablepictureinpicture"
+        loop
+      >
+        <source
+            src="/demo_sidebar.mp4"
+            type="video/mp4"
+        >
+        <source
+            src="/demo_sidebar.webm"
+            type="video/webm"
+        >
+        <p>
+            Your browser doesn't support HTML video. Here is a
+            <a href="/demo_sidebar.mp4" download="/demo_sidebar.mp4">link to the video</a>
+            instead.
+          </p>
+    </video>
+    </div>
+</div>
