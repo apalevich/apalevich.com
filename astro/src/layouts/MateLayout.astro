@@ -15,51 +15,44 @@ import Logo from '../components/Logo.astro';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Google Tag Manager
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-WFM5P6XF');
-    </script>
-    End Google Tag Manager -->
-    
-    <!-- Google tag (gtag.js) 
-    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-BTZ070C48T"></script>
-    <script type="text/partytown">
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
 
-        gtag('config', 'G-BTZ070C48T');
-    </script>-->
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1664295854386832');
-        fbq('track', 'PageView');
-        </script>
-        <noscript>
-            <img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1664295854386832&ev=PageView&noscript=1"
-        /></noscript>
-        <!-- End Meta Pixel Code -->
+    <!-- DATA LAYER -->
+    <script is:inline>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+    </script>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+        (function (w, d, s, l, i) {
+        console.log("GTM");
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+        })(window, document, "script", "dataLayer", "GTM-WFM5P6XF");
+    </script>
+    <!-- End Google Tag Manager -->
 </head>
 
 <body class="font-sans dark:bg-dark">
     <!-- Google Tag Manager (noscript) -->
     <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFM5P6XF" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        <iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-WFM5P6XF"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        >
+        </iframe>
     </noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <Header icon={Logo} />
         <slot />
     <Footer icon={Logo} />
@@ -139,11 +132,8 @@ import Logo from '../components/Logo.astro';
     .forEach((el) => {
         el.addEventListener('click', function() {
             container.classList.remove('hidden');
-            if (window.fbq) {
-                window.fbq('trackCustom', 'OpenModal');
-            } else {
-                console.error('window.fbq is not found');
-            }
+            trackEvent('OpenModal');
+            
         });
     });
     
@@ -192,6 +182,7 @@ import Logo from '../components/Logo.astro';
         }
 
         setStatus('Sending...');
+        trackEvent('SubmitApplication');
         const response = await sendData(data);
 
         if (response.status === 200) {
@@ -214,5 +205,34 @@ import Logo from '../components/Logo.astro';
         reqStatus.innerText = status;
         applicationResult.classList.remove('hidden');
         applicationForm.classList.add('hidden');
+    }
+
+    function trackEvent(eventName:string) {
+        if (!window.fbq) {
+            console.error(`FB tracking error: ${eventName} can't be tracked as window.fbq is not found`);
+            return;
+        }
+        
+        const standartEvents = [
+            "AddPaymentInfo",
+            "AddToCart",
+            "AddToWishlist",
+            "CompleteRegistration",
+            "Contact",
+            "CustomizeProduct",
+            "Donate",
+            "FindLocation",
+            "InitiateCheckout",
+            "Lead",
+            "Purchase",
+            "Schedule",
+            "Search",
+            "StartTrial",
+            "SubmitApplication",
+            "Subscribe",
+            "ViewContent"
+        ];
+        const eventType = standartEvents.includes(eventName) ? 'track' : 'trackCustom';
+        window.fbq(eventType, eventName);
     }
 </script>
