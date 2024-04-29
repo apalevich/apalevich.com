@@ -10,7 +10,7 @@ function createArrayFromHeading(): [string, string] {
 }
 
 ---
-<div class="relative pt-40 pb-20 lg:pt-36" id="hero-section">
+<div class="relative md:pt-40 pb-0 lg:pt-36" id="hero-section">
     <div class="relative xl:container m-auto px-6 md:px-12 lg:px-6 sm:w-10/12 md:w-2/3 sm:mx-auto lg:w-6/12">
         <h1 class="sm:mx-auto sm:w-10/12 md:w-full font-black text-blue-900 text-4xl text-center sm:text-5xl md:text-6xl lg:w-auto xl:text-7xl dark:text-white">
             {createArrayFromHeading()[0]} <br class="lg:block hidden"> <div class="tooltip relative inline-block text-transparent bg-clip-text bg-gradient-to-r dark:bg-gradient-to-l from-gradient1 to-gradient2 dark:from-primaryLight dark:to-secondaryLight">{createArrayFromHeading()[1]}
@@ -21,20 +21,19 @@ function createArrayFromHeading(): [string, string] {
             <p class="sm:text-lg text-gray-700 dark:text-gray-300" set:html={content.subheading}></p>
         </div>
         <div class="flex flex-col md:flex-row mx-auto gap-4 mt-8 lg:mt-16 w-10/12">
-            <a href="https://mate-ai-code-review.lemonsqueezy.com/buy/9a9e9f3a-dcfe-4d07-bdd1-89103c9f2b51?media=0&discount=0" target="_blank" class="w-full border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 bg-gradient2 text-white hover:text-white relative mx-auto flex h-9 ml-auto items-center justify-center sm:px-6 text-sm font-semibold">
+            <a href="https://mate-ai-code-review.lemonsqueezy.com/buy/9a9e9f3a-dcfe-4d07-bdd1-89103c9f2b51?media=0&discount=0" target="_blank" class="w-full border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 bg-gradient2 text-white hover:text-white relative mx-auto flex h-9 ml-auto items-center justify-center sm:px-3 text-sm font-semibold">
                 Get Beta Now
             </a>
-            <button class="w-full border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 dark:bg-gradient2 text-gradient2 dark:text-white hover:text-white relative mx-auto flex h-9 ml-auto items-center justify-center sm:px-6 text-sm font-semibold" data-modal-show>
-                Alert Me at Full Launch
+            <button class="w-full border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 dark:bg-gradient2 text-gradient2 dark:text-white hover:text-white relative mx-auto flex h-9 ml-auto items-center justify-center sm:px-3 text-sm font-semibold" data-modal-show>
+                Alert Me at Launch
             </button>
         </div>
         <p class="text-center text-[.7em] text-gray-400 mt-4 mx-auto w-10/12">
             We&nbsp;respect your&nbsp;privacy and&nbsp;do not&nbsp;share your&nbsp;email with&nbsp;third parties. We&nbsp;promise not&nbsp;to send&nbsp;spam.
         </p>
     </div>
-    <div class="mt-12 relative h-[600px] overflow-hidden md:overflow-visible">
-        <!-- <img src="/code-screenshot.png" class="border-gray-100 border-2 rounded-[6px] w-auto max-h-[600px] absolute -left-12 bottom-4 opacity-50 md:left-1/4 md:-translate-x-1/4" alt="code example"> -->
-        <img src="/magic_button.jpg" class="border-gray-200 border-2 rounded-[6px] absolute bottom-0 -left-4 h-[600px]" alt="mate illustration">
+    <div class="mt-12 relative h-[370px] sm:h-[50vh]">
+        <img src="/magic_button.jpg" class="aspect-video border-gray-200 max-w-fit border-2 rounded-[6px] absolute top-0 -translate-x-1/2 sm:-right-2/4 h-full" alt="mate illustration">
     </div>
 </div>
 
