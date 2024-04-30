@@ -21,10 +21,10 @@ function createArrayFromHeading(): [string, string] {
             <p class="sm:text-lg text-gray-700 dark:text-gray-300" set:html={content.subheading}></p>
         </div>
         <div class="flex flex-col md:flex-row mx-auto gap-4 mt-8 lg:mt-16 w-10/12 max-w-[800px]">
-            <a href="https://mate-ai-code-review.lemonsqueezy.com/buy/9a9e9f3a-dcfe-4d07-bdd1-89103c9f2b51" target="_blank" class="w-full border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 bg-gradient2 text-white hover:text-white relative mx-auto flex h-9 ml-auto items-center justify-center sm:px-3 text-sm font-semibold">
-                Get Beta Now
+            <a href="https://mate-ai-code-review.lemonsqueezy.com/buy/9a9e9f3a-dcfe-4d07-bdd1-89103c9f2b51" target="_blank" class="w-full text-center border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 bg-gradient2 text-white hover:text-white relative mx-auto flex min-h-9 ml-auto items-center justify-center sm:px-3 text-sm font-semibold" onclick="window?.fbq('track', 'InitiateCheckout');">
+                Get Beta Now (Chrome)
             </a>
-            <button class="w-full border-gradient2 dark:border-gradient1 dark:bg-gradient1 border-2 rounded-[6px] hover:bg-gradient2 dark:bg-transparent text-gradient2 dark:text-white hover:text-white relative mx-auto flex h-9 ml-auto items-center justify-center sm:px-3 text-sm font-semibold" data-modal-show>
+            <button class="w-full text-center border-gradient2 dark:border-gradient1 dark:bg-gradient1 border-2 rounded-[6px] hover:bg-gradient2 dark:bg-transparent text-gradient2 dark:text-white hover:text-white relative mx-auto flex min-h-9 ml-auto items-center justify-center sm:px-3 text-sm font-semibold" data-modal-show>
                 Alert Me at Launch
             </button>
         </div>
@@ -39,6 +39,36 @@ function createArrayFromHeading(): [string, string] {
         <div class="w-1/4"></div>
     </div>
 </div>
+<script>
+    function trackEvent(eventName:string) {
+        if (!window.fbq) {
+            console.error(`FB tracking error: ${eventName} can't be tracked as window.fbq is not found`);
+            return;
+        }
+        
+        const standartEvents = [
+            "AddPaymentInfo",
+            "AddToCart",
+            "AddToWishlist",
+            "CompleteRegistration",
+            "Contact",
+            "CustomizeProduct",
+            "Donate",
+            "FindLocation",
+            "InitiateCheckout",
+            "Lead",
+            "Purchase",
+            "Schedule",
+            "Search",
+            "StartTrial",
+            "SubmitApplication",
+            "Subscribe",
+            "ViewContent"
+        ];
+        const eventType = standartEvents.includes(eventName) ? 'track' : 'trackCustom';
+        window.fbq(eventType, eventName);
+    }
+</script>
 
 <style>
     
