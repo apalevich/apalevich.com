@@ -177,7 +177,7 @@ export const content: MATELandingPageContent = {
     },
     {
       question: 'Who built this?',
-      answer: 'My name is Artyom and I\'m big into all the UX, AI and building products. Say hello on twitter <a href="https://twitter.com/apalevich" class="underline" target="_blank">@apalevich.</a>',
+      answer: 'My name is Artem and I\'m big into all the UX, AI and building products. Say hello on twitter <a href="https://twitter.com/apalevich" class="underline" target="_blank">@apalevich.</a>',
     },
     {
       question: 'Is this only for GitHub?',
@@ -313,7 +313,7 @@ export const content: MATELandingPageContent = {
       },
       {
         question: 'Who built this?',
-        answer: 'My name is Artyom and I\'m big into all the UX, AI and building products. Say hello on twitter <a href="https://twitter.com/apalevich" class="underline" target="_blank">@apalevich.</a>',
+        answer: 'My name is Artem and I\'m big into all the UX, AI and building products. Say hello on twitter <a href="https://twitter.com/apalevich" class="underline" target="_blank">@apalevich.</a>',
       },
       {
         question: 'Is this only for GitHub?',
