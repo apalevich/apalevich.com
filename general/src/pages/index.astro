@@ -68,9 +68,9 @@ import Layout from "../layouts/Layout.astro";
 	</div>
 
 	<!-- // SECTION WITH CARDS -->
-	<div class="grid grid-cols-3">
+	<div class="grid lg:grid-cols-3">
 		<!-- MATE CARD -->
-		<div class="m-4 p-1 rounded-2xl bg-gradient-to-r from-mateblue to-mateviolet grid-1">
+		<div class="m-4 p-1 rounded-2xl bg-gradient-to-r from-mateblue to-mateviolet">
 			<div class="p-4 rounded-[calc(1rem-4px)] bg-white">
 				<div class="flex h-20 py-2 px-3">
 					<div class="w-14 h-14 flex-0 rounded-md bg-white bg-[url('/mate_icon.svg')] bg-no-repeat bg-center bg-[length:40px] shadow-sm shadow-gray-500/30"></div>
@@ -88,28 +88,58 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 		</div>
 		<!-- FRONTEND CARD -->
-		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gradient-to-r from-mateblue to-mateviolet grid-2">
-			<div class="p-4 rounded-[calc(1rem-4px)] bg-white">
+		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-100 lg:grid-2">
+			<div class="p-4 rounded-[calc(1rem-4px)] bg-white h-full">
 				<div class="flex h-20 py-2 px-3">
-					<div class="w-14 h-14 flex-0 rounded-md bg-white bg-[url('/mate_icon.svg')] bg-no-repeat bg-center bg-[length:40px] shadow-sm shadow-gray-500/30"></div>
-					<div class="flex-1 pl-4">
-						<h2 class="text-xl font-semibold opacity-90">MATE</h2>
-						<p class="text-sm font-normal opacity-40">Developer Tool</p>
+					<div class="flex-1">
+						<h2 class="text-xl font-semibold opacity-90">FrontEnd</h2>
+						<p class="text-sm font-normal opacity-40">Experience</p>
 					</div>
 				</div>
 				<div class="px-3">
 					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">
-						Website ➡
-					</a>
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">GitHub</a> /
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">LinkedIn</a>
+				</div>
+			</div>
+		</div>
+		<!-- CONSULTATION CARD -->
+		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-100 lg:grid-2">
+			<div class="p-4 rounded-[calc(1rem-4px)] bg-white h-full">
+				<div class="flex h-20 py-2 px-3">
+					<div class="flex-1">
+						<h2 class="text-xl font-semibold opacity-90">Mentoring</h2>
+						<p class="text-sm font-normal opacity-40">For coders and digital specialists</p>
+					</div>
+				</div>
+				<div class="px-3">
+					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Email</a> /
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Telegram</a>
+				</div>
+			</div>
+		</div>
+		<!-- GPTS CARD -->
+		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-100">
+			<div class="p-4 rounded-[calc(1rem-4px)] bg-white h-full">
+				<div class="flex h-20 py-2 px-3">
+					<div class="flex-1">
+						<h2 class="text-xl font-semibold opacity-90">GPTs</h2>
+						<p class="text-sm font-normal opacity-40">Free AI assistants for various tasks</p>
+					</div>
+				</div>
+				<div class="px-3">
+					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Email</a> /
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Telegram</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<!-- // BANNER -->
-	<div class="w-full bg-black text-white">
-		<div class="container flex px-6 gap-4">
+	<div class="w-full bg-black text-white bg-war bg-cover bg-center py-4">
+		<div class="container flex flex-col md:flex-row px-6 gap-4">
 			<div class="uppercase text-3xl">Идёт война</div>
 			<div>As a russian citizen, I take my responsibility. If you have a project that helps to stop war in Ukraine or weaken the Putin's regime, I am ready to volunteer</div>
 		</div>
@@ -210,7 +240,7 @@ import Layout from "../layouts/Layout.astro";
         <div
           class="m-auto mt-16 w-10/12 space-y-6 text-center sm:mt-auto sm:w-5/12 sm:text-left"
         >
-          <span class="block text-gray-500 dark:text-gray-400">All text and media belongs to their authors</span
+          <span class="block text-gray-500 dark:text-gray-400">All text and media belongs to their authors. Photo: Roman Baluk / the Collection of war.ukraine.ua</span
           >
 
           <span class="block text-gray-500 dark:text-gray-400">
