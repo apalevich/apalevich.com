@@ -11,6 +11,8 @@ export default {
 			'white': '#fefefe',
 			// 'black': '#010309',
 			'black': '#121212', //Recommended by Material UI
+			'mateblue': '#013780',
+			'mateviolet': '#CA05B4',
 			"mustard": {
 				50: "oklch(97.35% 0.018 89.36 / <alpha-value>)",
 				100: "oklch(95.12% 0.031 86.46 / <alpha-value>)",

@@ -68,20 +68,41 @@ import Layout from "../layouts/Layout.astro";
 	</div>
 
 	<!-- // SECTION WITH CARDS -->
-	<div class="grid">
-		<div class="bg-gray-50 m-4 border-[16px] border-gray-50 rounded-2xl">
-			<div class="flex h-20 py-2 px-3">
-				<div class="w-14 h-14 flex-0 rounded-md bg-white bg-[url('/mate_icon.svg')] bg-no-repeat bg-center bg-[length:40px] shadow-sm"></div>
-				<div class="flex-1 pl-4">
-					<h2 class="text-xl font-semibold opacity-90">MATE</h2>
-					<p class="text-sm font-normal opacity-40">Developer Tool</p>
+	<div class="grid grid-cols-3">
+		<!-- MATE CARD -->
+		<div class="m-4 p-1 rounded-2xl bg-gradient-to-r from-mateblue to-mateviolet grid-1">
+			<div class="p-4 rounded-[calc(1rem-4px)] bg-white">
+				<div class="flex h-20 py-2 px-3">
+					<div class="w-14 h-14 flex-0 rounded-md bg-white bg-[url('/mate_icon.svg')] bg-no-repeat bg-center bg-[length:40px] shadow-sm shadow-gray-500/30"></div>
+					<div class="flex-1 pl-4">
+						<h2 class="text-xl font-semibold opacity-90">MATE</h2>
+						<p class="text-sm font-normal opacity-40">Developer Tool</p>
+					</div>
+				</div>
+				<div class="px-3">
+					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">
+						Website ➡
+					</a>
 				</div>
 			</div>
-			<div class="px-3">
-				<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
-				<a class="text-sm font-normal opacity-40 font-mono" aria-label="Open in new tab">
-					Website ➡
-				</a>
+		</div>
+		<!-- FRONTEND CARD -->
+		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gradient-to-r from-mateblue to-mateviolet grid-2">
+			<div class="p-4 rounded-[calc(1rem-4px)] bg-white">
+				<div class="flex h-20 py-2 px-3">
+					<div class="w-14 h-14 flex-0 rounded-md bg-white bg-[url('/mate_icon.svg')] bg-no-repeat bg-center bg-[length:40px] shadow-sm shadow-gray-500/30"></div>
+					<div class="flex-1 pl-4">
+						<h2 class="text-xl font-semibold opacity-90">MATE</h2>
+						<p class="text-sm font-normal opacity-40">Developer Tool</p>
+					</div>
+				</div>
+				<div class="px-3">
+					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
+					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">
+						Website ➡
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
