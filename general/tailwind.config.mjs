@@ -3,6 +3,10 @@ export default {
 	darkMode: 'class',
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
+		fontFamily: {
+			'sans': ["SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",'sans-serif'],
+			'mono': ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace']
+		},
 		colors: {
 			'white': '#fefefe',
 			// 'black': '#010309',
