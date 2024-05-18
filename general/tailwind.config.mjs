@@ -57,9 +57,6 @@ export default {
 				},
 			}
 		},
-		backgroundImage: {
-			'war': "linear-gradient(to bottom, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url('/war_banner_l.jpeg')",
-		}
 	},
 	plugins: [],
 }
