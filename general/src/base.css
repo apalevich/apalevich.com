@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .appicon {
+        @apply w-14 h-14 rounded-md bg-no-repeat bg-center bg-[length:40px] shadow-sm shadow-gray-500/30;
+    }
+    .text-link {
+        @apply text-sm font-normal opacity-90 underline font-mono;
+    }
+}

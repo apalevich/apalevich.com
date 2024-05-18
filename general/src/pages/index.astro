@@ -3,13 +3,18 @@ import Layout from "../layouts/Layout.astro";
 ---
 <Layout title="Home Page">
 	<!-- HEADER -->
-	<div class="fixed w-full backdrop-blur shadow-2xl shadow-gray-600/5 border-2 h-11 z-50">
-		<div class="xl:container m-auto px-6 md:px-12 lg:px-6">
-			<div class="flex items-center justify-between text-white">
+	<div class="fixed w-full backdrop-blur shadow-2xl shadow-gray-900/5 h-11 z-50">
+		<div class="xl:container m-auto px-6 md:px-12 lg:px-6 h-full">
+			<div class="flex items-center justify-between text-white h-full">
 				<div class="text-black dark:text-white text-center">
-					<button class="dark:hidden" onclick=`document.documentElement.classList.add('dark')`>Dark Mode</button>
-					<button class="hidden dark:block" onclick=`document.documentElement.classList.remove('dark')`>Light Mode</button>
-				  </div>
+					<button class="dark:hidden" onclick=`document.documentElement.classList.add('dark')`>🌃</button>
+					<button class="hidden dark:block" onclick=`document.documentElement.classList.remove('dark')`>🌁</button>
+				</div>
+				<!-- <div class="text-black dark:text-white text-center">Back to top</div> -->
+				<!-- <div class="text-black dark:text-white text-center">
+					<a href="https://cal.com/apalevich" target="_blank" class="font-mono text-xs uppercase border-2 px-2 py-1">Schedule a call</a>
+					
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -51,18 +56,18 @@ import Layout from "../layouts/Layout.astro";
 				</div>
 			</div>
 		</div>
-		<div class="absolute bottom-12 container m-auto px-6 flex items-end justify-between md:px-12 lg:px-7">
-			<a href="" class="hidden space-x-4 md:flex md:items-center">
+		<div class="absolute bottom-12 container m-auto px-6 flex flex-row-reverse items-end justify-between md:px-12 lg:px-7">
+			<!-- <a href="" class="hidden space-x-4 md:flex md:items-center">
 				<img class="w-14 h-14 rounded-full object-cover" src="/portrait.jpg" alt="">
 				<div class="text-gray-600 dark:text-gray-400">
 					<span class="text-sm">Question ?</span>
 					<p class="font-semibold text-gray-700 dark:text-gray-300">Talk to our assistant</p>
 				</div>
-			</a>
+			</a> -->
 			<div class="text-blue-500">
-				<a href="https://www.linkedin.com/in/apalevich/" target="_blank" class="hover:text-yellow-700 dark:text-gray-300 dark:hover:text-red-400">LinkedIn </a>/
-				<a href="https://github.com/apalevich" target="_blank" class="hover:text-yellow-700 dark:text-gray-300 dark:hover:text-red-400">GitHub </a> /
-				<a href="mailto:hello@apalevich.com" class="hover:text-yellow-700 dark:text-gray-300 dark:hover:text-red-400">Email</a>
+				<a href="https://www.linkedin.com/in/apalevich/" target="_blank" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">LinkedIn </a>/
+				<a href="https://github.com/apalevich" target="_blank" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">GitHub </a> /
+				<a href="mailto:hello@apalevich.com" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">Email</a>
 			</div>
 		</div>
 	</div>
@@ -70,68 +75,74 @@ import Layout from "../layouts/Layout.astro";
 	<!-- // SECTION WITH CARDS -->
 	<div class="grid lg:grid-cols-3">
 		<!-- MATE CARD -->
-		<div class="m-4 p-1 rounded-2xl bg-gradient-to-r from-mateblue to-mateviolet">
-			<div class="p-4 rounded-[calc(1rem-4px)] bg-white">
-				<div class="flex h-20 py-2 px-3">
-					<div class="w-14 h-14 flex-0 rounded-md bg-white bg-[url('/mate_icon.svg')] bg-no-repeat bg-center bg-[length:40px] shadow-sm shadow-gray-500/30"></div>
+		<div class="m-4 p-1 rounded-2xl bg-gradient-to-r from-mateblue to-mateviolet shadow-sm shadow-mateblue">
+			<div class="p-4 rounded-[calc(1rem-4px)] flex flex-col h-full">
+				<div class="flex h-20 py-2 px-3 grow-0">
+					<div class="appicon flex-0 bg-white bg-[url('/mate_icon.svg')] "></div>
 					<div class="flex-1 pl-4">
-						<h2 class="text-xl font-semibold opacity-90">MATE</h2>
-						<p class="text-sm font-normal opacity-40">Developer Tool</p>
+						<h2 class="text-xl font-semibold opacity-90 text-white">MATE</h2>
+						<p class="mt-1 text-sm font-normal opacity-40 text-white">Developer Tool</p>
 					</div>
 				</div>
-				<div class="px-3">
+				<div class="px-3 flex flex-col justify-between overflow-visible grow text-white">
 					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">
-						Website ➡
+					<a class="text-link text-white" aria-label="Open in new tab">
+						Learn more ➡
 					</a>
 				</div>
 			</div>
 		</div>
 		<!-- FRONTEND CARD -->
-		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-100 lg:grid-2">
-			<div class="p-4 rounded-[calc(1rem-4px)] bg-white h-full">
+		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-50">
+			<div class="p-4 rounded-[calc(1rem-4px)] h-full">
 				<div class="flex h-20 py-2 px-3">
 					<div class="flex-1">
-						<h2 class="text-xl font-semibold opacity-90">FrontEnd</h2>
-						<p class="text-sm font-normal opacity-40">Experience</p>
+						<h2 class="text-4xl font-semibold opacity-90">Web Development</h2>
+						<!-- <p class="mt-1 text-sm font-normal opacity-40">Experience</p> -->
 					</div>
 				</div>
 				<div class="px-3">
-					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">GitHub</a> /
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">LinkedIn</a>
+					<p class="text-sm opacity-90 font-normal pb-4">As an enthusiastic and dedicated Frontend Developer, I've honed my skills to not only execute projects with precision but to lead them. Over the years, I've spearheaded initiatives that significantly improved operational efficiencies, such as enhancing call center operations and automating financial processes. My experience spans across constructing robust application architectures that are scalable and editor-friendly, making technology accessible to all team members. I thrive in roles where I can mentor and uplift others, evidenced by my successful guidance of junior developers. Collaborating seamlessly across departments, I bring an Apple-like confidence to my work, ensuring that innovation and high standards are never compromised. Whether it's launching websites, developing user-friendly interfaces, or leading mixed teams, I approach every project with a strategic and analytical mindset, ready to drive excellence.</p>
+					<a class="text-link text-blue-500" href="" aria-label="Open in new tab">GitHub</a> /
+					<a class="text-link text-blue-500" href="" aria-label="Open in new tab">LinkedIn</a>
 				</div>
 			</div>
 		</div>
 		<!-- CONSULTATION CARD -->
-		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-100 grid-1">
+		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-100">
 			<div class="p-4 rounded-[calc(1rem-4px)] bg-white h-full">
 				<div class="flex h-20 py-2 px-3">
 					<div class="flex-1">
 						<h2 class="text-xl font-semibold opacity-90">Mentoring</h2>
-						<p class="text-sm font-normal opacity-40">For coders and digital specialists</p>
+						<p class="mt-1 text-sm font-normal opacity-40">For coders and digital specialists</p>
 					</div>
 				</div>
 				<div class="px-3">
 					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Email</a> /
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Telegram</a>
+					<a class="text-sm font-normal opacity-90 underline font-mono" aria-label="Open in new tab">Email</a> /
+					<a class="text-sm font-normal opacity-90 underline font-mono" aria-label="Open in new tab">Telegram</a>
 				</div>
 			</div>
 		</div>
 		<!-- GPTS CARD -->
-		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-100 md:grid-1">
+		<div class="m-4 p-1 rounded-2xl bg-gray-100">
 			<div class="p-4 rounded-[calc(1rem-4px)] bg-white h-full">
 				<div class="flex h-20 py-2 px-3">
 					<div class="flex-1">
 						<h2 class="text-xl font-semibold opacity-90">GPTs</h2>
-						<p class="text-sm font-normal opacity-40">Free AI assistants for various tasks</p>
+						<p class="mt-1 text-sm font-normal opacity-40">I develop free AI assistants for daily tasks</p>
 					</div>
 				</div>
-				<div class="px-3">
-					<p class="text-sm opacity-90 font-normal pb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit assumenda amet omnis dicta, dolore ducimus obcaecati ex aperiam fugiat eius rem aut corrupti autem eaque magnam minima vitae ab facilis!</p>
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Email</a> /
-					<a class="text-sm font-normal opacity-90 text-blue-900 underline font-mono" aria-label="Open in new tab">Telegram</a>
+				<div class="px-3 flex flex-col justify-between">
+					<div class="flex py-2">
+						<div class="appicon flex-0 bg-white bg-[url('/mate_icon.svg')] "></div>
+						<div class="ml-3">
+							<div class="text-black opacity-90 text-sm font-normal">MATE AI free</div>
+							<div class="pt-1 text-xs opacity-50">Get your shot done</div>
+						</div>
+					</div>
+					<div class="appicon flex-0 bg-white bg-[url('/mate_icon.svg')] "></div>
+					<div class="appicon flex-0 bg-white bg-[url('/mate_icon.svg')] "></div>
 				</div>
 			</div>
 		</div>
@@ -146,12 +157,6 @@ import Layout from "../layouts/Layout.astro";
 			<div class="uppercase text-3xl">Идёт война</div>
 			<div>As a russian citizen, I take my responsibility. If you have a project that helps to stop war in Ukraine or weaken the Putin's regime, I am ready to volunteer</div>
 		</div>
-	</div>
-
-	<!-- // SECTION WITH CARDS -->
-	<div class="grid">
-		<div class="m-4 border-[16px] p-5 rounded-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, possimus assumenda quos, voluptate ipsum dolor repudiandae, aliquid voluptatibus officiis doloribus nesciunt accusamus! Eius ea velit optio, quas pariatur beatae doloremque?</div>
-		<div class="m-4 border-[16px] p-5 rounded-2xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui, possimus assumenda quos, voluptate ipsum dolor repudiandae, aliquid voluptatibus officiis doloribus nesciunt accusamus! Eius ea velit optio, quas pariatur beatae doloremque?</div>
 	</div>
 	
 	<!-- FOOTER -->
