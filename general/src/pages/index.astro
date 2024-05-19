@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro";
 	<div class="fixed w-full backdrop-blur shadow-2xl shadow-gray-900/5 h-11 z-50">
 		<div class="xl:container m-auto px-6 md:px-12 lg:px-6 h-full">
 			<div class="flex items-center justify-between text-white h-full">
-				<div class="text-black dark:text-white text-center">
+				<div class="text-black dark:text-white text-center text-2xl">
 					<button class="dark:hidden" onclick=`document.documentElement.classList.add('dark')`>🌃</button>
 					<button class="hidden dark:block" onclick=`document.documentElement.classList.remove('dark')`>🌁</button>
 				</div>
@@ -20,19 +20,19 @@ import Layout from "../layouts/Layout.astro";
 	</div>
 	<!-- HERO -->
 
-	<div class="min-h-screen w-full py-11 flex justify-center flex-col items-center">
-		<div class="">
-			<img src="/portrait.jpg" class="w-20"/>
+	<div class="min-h-screen md:min-h-[66vh] w-full py-11 flex justify-center flex-col items-center relative">
+		<div class="lg:hidden">
+			<img src="/portrait.jpg" class="w-20 md:w-40"/>
 		</div>
 		<div class="container px-6 pt-10 md:px-12 lg:py-0 lg:px-7">
 			<div class="flex items-center flex-wrap gap-12 lg:gap-0">
 				<div class="lg:w-5/12 space-y-8 text-center md:text-left">
 					<span class="md:flex space-x-2">
-						<span class="hidden md:block w-14 mb-2 border-b-2 border-gray-600"></span>
-						<span class="font-medium text-gray-600 dark:text-gray-400 font-mono lowercase">Personal website</span>
+						<span class="hidden md:block w-14 mb-2 border-b-2 border-gray-600 dark:border-gray-400 opacity-50"></span>
+						<span class="font-medium text-gray-600 dark:text-gray-400 opacity-50 font-mono lowercase">Personal website</span>
 					</span>
 					<h1 class="text-4xl font-bold md:text-6xl text-mustard-500 dark:text-white">Artem Palevich</h1>
-					<p class="text-xl text-gray-500 dark:text-gray-300">I am a software engineer skilled in building UI/UX, and data visualization, focusing on performance with a deep knowledge of JavaScript, HTML, CSS, React.js, Responsive and Adaptive Design.</p>
+					<p class="text-xl text-gray-500 dark:text-gray-300 opacity-90">I am a software engineer skilled in building UI/UX, and data visualization, focusing on performance with a deep knowledge of JavaScript, HTML, CSS, React.js, Responsive and Adaptive Design.</p>
 					
 					<!-- <div class="flex space-x-4">
 						<button type="button" title="Start buying" class="w-full py-3 px-6 text-center transition bg-gray-900 dark:bg-gray-700 hover:bg-gray-800 active:bg-gray-700 focus:bg-gray-800 sm:w-max">
@@ -48,22 +48,20 @@ import Layout from "../layouts/Layout.astro";
 					</div> -->
 				</div>
 
-				<div class="hidden relative md:block lg:w-7/12">
-					<div aria-hidden="true" class="absolute inset-0 m-auto w-[30rem] h-[30rem] rounded-full bg-yellow-200">
-
-					</div>
-					<img src="/portrait.jpg" class="relative ml-auto" alt="">
+				<div class="hidden relative lg:block lg:w-7/12">
+					<div aria-hidden="true" class="absolute inset-0 m-auto w-[30rem] h-[30rem] rounded-full bg-yellow-200"></div>
+					<img src="/portrait.jpg" class="w-1/2 relative ml-auto" alt="portrait">
 				</div>
 			</div>
 		</div>
 		<div class="absolute bottom-12 container m-auto px-6 flex flex-row-reverse items-end justify-between md:px-12 lg:px-7">
-			<!-- <a href="" class="hidden space-x-4 md:flex md:items-center">
-				<img class="w-14 h-14 rounded-full object-cover" src="/portrait.jpg" alt="">
+			<!-- <div class="hidden space-x-4 md:flex md:items-center">
+				<img class="w-1/2 h-1/2 rounded-full object-cover" src="/portrait.jpg" alt="">
 				<div class="text-gray-600 dark:text-gray-400">
 					<span class="text-sm">Question ?</span>
 					<p class="font-semibold text-gray-700 dark:text-gray-300">Talk to our assistant</p>
 				</div>
-			</a> -->
+			</div> -->
 			<div class="text-blue-500">
 				<a href="https://www.linkedin.com/in/apalevich/" target="_blank" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">LinkedIn </a>/
 				<a href="https://github.com/apalevich" target="_blank" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">GitHub </a> /
@@ -73,7 +71,7 @@ import Layout from "../layouts/Layout.astro";
 	</div>
 
 	<!-- // SECTION WITH CARDS -->
-	<div class="grid lg:grid-cols-3">
+	<div class="grid lg:grid-cols-3 md:px-8 md:mb-8">
 		
 		<!-- FRONTEND CARD -->
 		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-50">
