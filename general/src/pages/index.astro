@@ -49,12 +49,12 @@ import Layout from "../layouts/Layout.astro";
 				</div>
 
 				<div class="hidden relative lg:block lg:w-7/12">
-					<div aria-hidden="true" class="absolute inset-0 m-auto w-[30rem] h-[30rem] rounded-full bg-yellow-200"></div>
-					<img src="/portrait.jpg" class="w-1/2 relative ml-auto" alt="portrait">
+					<div class="bg-blue-500 rounded-full absolute aspect-square h-full top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 opacity-80"></div>
+					<img src="/portrait.png" class="w-1/2 lg:w-full relative ml-auto grayscale" alt="portrait">
 				</div>
 			</div>
 		</div>
-		<div class="absolute bottom-12 container m-auto px-6 flex flex-row-reverse items-end justify-between md:px-12 lg:px-7">
+		<div class="absolute bottom-12 container m-auto px-6 flex flex-row-reverse lg:flex-row items-end ld justify-between md:px-12 lg:px-7">
 			<!-- <div class="hidden space-x-4 md:flex md:items-center">
 				<img class="w-1/2 h-1/2 rounded-full object-cover" src="/portrait.jpg" alt="">
 				<div class="text-gray-600 dark:text-gray-400">
@@ -62,7 +62,7 @@ import Layout from "../layouts/Layout.astro";
 					<p class="font-semibold text-gray-700 dark:text-gray-300">Talk to our assistant</p>
 				</div>
 			</div> -->
-			<div class="text-blue-500">
+			<div class="text-blue-500 backdrop-blur-md">
 				<a href="https://www.linkedin.com/in/apalevich/" target="_blank" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">LinkedIn </a>/
 				<a href="https://github.com/apalevich" target="_blank" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">GitHub </a> /
 				<a href="mailto:hello@apalevich.com" class="text-link no-underline hover:text-mustard-500 dark:text-gray-300 dark:hover:text-red-400">Email</a>
@@ -71,7 +71,7 @@ import Layout from "../layouts/Layout.astro";
 	</div>
 
 	<!-- // SECTION WITH CARDS -->
-	<div class="grid lg:grid-cols-3 md:px-8 md:mb-8">
+	<div class="container mx-auto grid lg:grid-cols-3 md:px-8 lg:px-0 md:mb-8">
 		
 		<!-- FRONTEND CARD -->
 		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-50">
@@ -110,7 +110,7 @@ import Layout from "../layouts/Layout.astro";
 			</div>
 		</div>
 		<!-- MENTORING CARD -->
-		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-50">
+		<div class="col-span-2 m-4 p-1 rounded-2xl bg-gray-50 lg:order-4">
 			<div class="p-4 rounded-[calc(1rem-4px)] h-full">
 				<div class="flex h-min-content pt-2 pb-5 px-3">
 					<div class="flex-1">
