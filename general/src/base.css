@@ -7,6 +7,6 @@
         @apply min-w-14 w-14 min-h-14 h-14 rounded-md bg-no-repeat bg-center  bg-[length:100%] shadow-sm shadow-gray-500/30;
     }
     .text-link {
-        @apply text-base font-normal font-mono;
+        @apply text-base font-normal font-mono text-blue-500;
     }
 }
