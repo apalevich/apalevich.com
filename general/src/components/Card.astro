@@ -16,7 +16,7 @@ if (!bgClasses.some((el = '') => el.startsWith('text-'))) {
 }
 
 ---
-<div class="col-span-2 lg:col-span-1 m-4 p-1 rounded-2xl" class:list={borderClasses}>
+<div class="m-4 p-1 rounded-2xl" class:list={borderClasses}>
     <div class="p-4 rounded-[calc(1rem-4px)] flex flex-col h-full" class:list={bgClasses}>
         <div class="flex h-min-content pt-2 pb-5 px-3 grow-0">
             <slot name="heading" />
