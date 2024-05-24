@@ -14,10 +14,12 @@ This directory contains the server-side code for all projects, including website
 
 *TLDR: the project combines a landing page for MATE and a personal website, with a backend for handling prompts.*
 
-## To do:
+## To dos
+
 - [ ] Exclude server to a separate repo
 - [ ] Implement universal light-dark pallet (https://medium.com/@beratyilmaz3102/setting-up-a-maintainable-color-theme-in-tailwind-css-4c7f0bd70d6c)
-- [ ] Exclude texts to a separate files
+- [ ] Exclude texts into separate files
+- [ ] MATE: change the diagram to horizontal (like Apple Mx-processors)
 
-## To research:
+## To researchs
 - shared color pallet between projects
