@@ -2,11 +2,11 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const multer = require('multer');
-const upload = multer({ dest: 'uploads/' })
+const withPrompt = require("./mate/prompt.js");
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 const Airtable = require("airtable");
 const OpenAI = require("openai");
-const withPrompt = require("./mate/prompt.js")
 
 // Set the port for the server to listen on
 const PORT = process.env.PORT || 8000;
@@ -31,7 +31,6 @@ const mate_prefix = "/mate";
 
 app.post(`${mate_prefix}/submit-form`, upload.none(), (req, res) => {
   const { firstName, email } = req.body;
-
   const entry = {
     fields: {
       Name: firstName,
@@ -48,28 +47,30 @@ app.post(`${mate_prefix}/submit-form`, upload.none(), (req, res) => {
       res
         .status(200)
         .send(
-          "Your application submitted successfully. MATE will contact you until the end of March 2024. Cheers!",
+          "Your application submitted successfully. We will contact you via email soon. Cheers!",
         );
     });
   });
 });
 
 app.post(`${mate_prefix}/analyze`, async (req, res) => {
-  const { content } = req.body;
+  const { id, user_id, filename, parsedCode } = req.body;
 
-  openai.chat.completions.create({
-    messages: [
-      { "role": "system", "content": withPrompt(content) },
-      // { "role": "user", "content": content }
-    ],
-    model: process.env.OPENAI_MODEL,
-    response_format: { type: "json_object" },
-  })
-    .then(output => {
-      console.log(output.choices[0].message.content)
+  openai.chat.completions
+    .create({
+      messages: [
+        { role: "system", content: withPrompt({ code: parsedCode, filename }) },
+        // { "role": "user", "content": content }
+      ],
+      model: process.env.OPENAI_MODEL,
+      response_format: { type: "json_object" },
+    })
+    .then((output) => {
       res.status(200).send(output);
     })
-    .catch(err => { res.status(500).send("Error communicating with OpenAI API"); })
+    .catch((err) => {
+      res.status(500).send("Error communicating with OpenAI API");
+    });
 });
 
 app.post(`${mate_prefix}/feedback`, async (req, res) => {
@@ -79,11 +80,11 @@ app.post(`${mate_prefix}/feedback`, async (req, res) => {
     fields: {
       Email,
       Notes,
-      Date: new Date().toISOString()
+      Date: new Date().toISOString(),
     },
   };
 
-  base('feedback').create([entry], function(err, records) {
+  base("feedback").create([entry], function (err, records) {
     if (err) {
       res.status(500).send("Server error while inserting data");
       return;
@@ -91,16 +92,14 @@ app.post(`${mate_prefix}/feedback`, async (req, res) => {
     records.forEach(function (record) {
       res
         .status(200)
-        .send(
-          "Receiver your feedback. Yummy! I really appreciate it 🫶",
-        );
+        .send("Receiver your feedback. Yummy! I really appreciate it 🫶");
     });
   });
 });
 
 // Route for downloading the file
 app.get(`${mate_prefix}/download`, (req, res) => {
-  const file = './upload/AI_reviewer_chrome-0.3.1.zip'; // Replace with the path to your file
+  const file = "./upload/AI_reviewer_chrome-0.3.1.zip"; // Replace with the path to your file
   res.download(file);
 });
 
