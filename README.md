@@ -1,4 +1,4 @@
-# Apalevich Website monorepo
+# Personal Website mono repo
 
 ## Structure
 The project is structured into several parts, where each directory represents its own project located on its own domain.
@@ -15,12 +15,12 @@ Each directory contains its own set of files and subdirectories.
 
 *TLDR: the project combines a landing page for MATE and a personal website.*
 
-## To dos
+## Todos
 
-- [x] Exclude server to a separate repo
-- [ ] Implement universal light-dark pallet (https://medium.com/@beratyilmaz3102/setting-up-a-maintainable-color-theme-in-tailwind-css-4c7f0bd70d6c)
-- [ ] Exclude texts into separate files
+- [x] ~Exclude server to a separate repo~
+- [ ] Exclude texts into separate files for easier content management
 - [ ] MATE: change the diagram to horizontal (like Apple Mx-processors)
 
-## To researchs
-- shared color pallet between projects
+## To research
+- [ ] Shared color pallet between projects
+- [ ] Universal light-dark pallet (https://medium.com/@beratyilmaz3102/setting-up-a-maintainable-color-theme-in-tailwind-css-4c7f0bd70d6c)
