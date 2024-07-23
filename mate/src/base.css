@@ -4,7 +4,16 @@
 
 @layer base {
     h2 {
-        @apply text-3xl capitalize
+        @apply text-3xl capitalize;
+    }
+    h3 {
+        @apply text-2xl capitalize;
+    }
+    h4 {
+        @apply text-xl capitalize;
+    }
+    ul {
+        @apply list-disc;
     }
 }
 
@@ -15,7 +24,7 @@
     .navbar-active .hamburger div:last-child {
         @apply -rotate-45 -translate-y-1;
     }
-    .navbar-active div:first-child div:first-child div:last-child{
-        @apply block lg:flex
+    .navbar-active div:first-child div:first-child div:last-child {
+        @apply block lg:flex;
     }
 }
