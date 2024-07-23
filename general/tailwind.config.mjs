@@ -9,7 +9,7 @@ export default {
 		colors: {
 			'white': '#fefefe',
 			// 'black': '#010309',
-			'black': '#121212', //Recommended by Material UI
+			'black': '#121212',
 			'mateblue': '#013780',
 			'mateviolet': '#CA05B4',
 			"mustard": {
