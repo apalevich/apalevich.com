@@ -1,4 +1,5 @@
 ---
+import { content } from "../content";
 const { icon: Logo } = Astro.props;
 ---
 
@@ -77,12 +78,13 @@ const { icon: Logo } = Astro.props;
                     <div
                         class="space-y-2 sm:flex-row lg:space-y-0 md:w-max mx-auto lg:mx-0"
                     >
-                        <button
+                        <a
                             class="w-full border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 dark:bg-gradient2 text-gradient2 dark:text-white hover:text-white relative mx-auto flex h-9 ml-auto items-center justify-center sm:px-6 text-sm font-semibold"
-                            data-modal-show
+                            href={content.downloadLink}
+                            target="_blank"
                         >
                             Get MATE
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

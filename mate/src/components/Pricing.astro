@@ -22,7 +22,6 @@ const { content } = Astro.props;
                         "group relative md:col-span-2",
                         i === 1 ? "lg:w-[36%] lg:col-span-2" : "lg:w-[32%]",
                     ]}
-                    data-modal-show
                 >
                     <div
                         aria-hidden="true"
@@ -58,7 +57,9 @@ const { content } = Astro.props;
                                 </li>
                             ))}
                         </ul>
-                        <button
+                        <a
+                            href={content.downloadLink}
+                            target="_blank"
                             class:list={[
                                 "relative flex h-11 w-full items-center justify-center px-6 before:absolute before:inset-0 before:rounded-full before:bg-gradient2",
                                 {
@@ -67,7 +68,6 @@ const { content } = Astro.props;
                                 },
                                 "before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95",
                             ]}
-                            data-modal-show
                         >
                             <span
                                 class:list={[
@@ -79,7 +79,7 @@ const { content } = Astro.props;
                             >
                                 {plan.callToAction.text}
                             </span>
-                        </button>
+                        </a>
                     </div>
                 </div>
             ))

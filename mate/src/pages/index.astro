@@ -18,6 +18,14 @@ import Disclosures from '../components/Disclosures.astro';
     <Roles content={content.forWhomSection} />
     <BlockWithIllustration illustration={ChartPrompt} content={content.unlockedPotentialSection} />
     <DemoBlock />
-    <Pricing content={content.plansSection} />
+    <div class="flex flex-col md:flex-row mx-auto gap-4 mt-8 lg:mt-16 w-10/12 max-w-[800px]">
+        <a href="https://chromewebstore.google.com/detail/mate-ai-code-review/cdohahemhlpibhhpiojlmeecfhllddho" target="_blank" class="w-full text-center border-gradient2 border-2 rounded-[6px] hover:bg-gradient2 bg-gradient2 text-white hover:text-white relative mx-auto flex min-h-9 ml-auto items-center justify-center sm:px-3 md:p-8 text-sm font-semibold" onclick="window?.fbq('track', 'InitiateCheckout');">
+            Download for Chrome
+        </a>
+        <!-- <button class="w-full text-center border-gradient2 dark:border-gradient1 dark:bg-gradient1 border-2 rounded-[6px] hover:bg-gradient2 dark:bg-transparent text-gradient2 dark:text-white hover:text-white relative mx-auto flex min-h-9 ml-auto items-center justify-center sm:px-3 text-sm font-semibold" data-modal-show>
+            Alert Me at Launch 
+        </button> -->
+    </div>
+    <!-- <Pricing content={content.plansSection} /> -->
     <Disclosures content={content.faqData} />
 </MateLayout>

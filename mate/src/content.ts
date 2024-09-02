@@ -41,10 +41,12 @@ export type MATELandingPageContent = {
   faqData: Array<{
     question: string;
     answer: string;
-  }>;
+  }>,
+  downloadLink: string;
 };
 
 export const content: MATELandingPageContent = {
+  "downloadLink": "https://chromewebstore.google.com/detail/mate-ai-code-review/cdohahemhlpibhhpiojlmeecfhllddho",
   "heroSection": {
     "heading": "Elevate Your Code with MATE",
     "note": "*[meɪt], an acronym for Mentorship and AI Technology Enhancer.",
@@ -123,26 +125,26 @@ export const content: MATELandingPageContent = {
           available: true,
         },
       },
-      {
-        title: "Individual",
-        monthlyPrice: 9,
-        description: "Get started with our affordable plan, offering basic code&nbsp;review features and support for individual developers.",
-        features: ['GPT', 'Extensions for Popular Browsers'],
-        callToAction: {
-          text: 'Notify me when available',
-          available: false,
-        },
-      },
-      {
-        title: "Enterprise",
-        monthlyPrice: 18,
-        description: "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support.",
-        features: ['GPT', 'Extensions for Popular Browsers', 'API', 'Priority Support', 'Secure Self-Hosted Instance', 'Premium tutorials'],
-        callToAction: {
-          text: 'Notify me when available',
-          available: false,
-        },
-      }
+      // {
+      //   title: "Individual",
+      //   monthlyPrice: 9,
+      //   description: "Get started with our affordable plan, offering basic code&nbsp;review features and support for individual developers.",
+      //   features: ['GPT', 'Extensions for Popular Browsers'],
+      //   callToAction: {
+      //     text: 'Notify me when available',
+      //     available: false,
+      //   },
+      // },
+      // {
+      //   title: "Enterprise",
+      //   monthlyPrice: 18,
+      //   description: "Unlock the full potential of MATE with advanced features, including multi-language support, unlimited repositories, and priority support.",
+      //   features: ['GPT', 'Extensions for Popular Browsers', 'API', 'Priority Support', 'Secure Self-Hosted Instance', 'Premium tutorials'],
+      //   callToAction: {
+      //     text: 'Notify me when available',
+      //     available: false,
+      //   },
+      // }
     ]
   },
   faqData: [
