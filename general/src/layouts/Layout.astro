@@ -17,8 +17,11 @@ const { title } = Astro.props;
 		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
 		<meta name="generator" content={Astro.generator} />
 		<title>{title} — Artem Palevich</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-white dark:bg-black font-sans">
+	<body class="bg-white dark:bg-black" style="font-family: Geist, sans-serif;background-color: rgba(245,245,245,1);">
 		<slot />
 	</body>
 </html>
