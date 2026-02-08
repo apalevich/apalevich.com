@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import LibraryCard from "@components/LibraryCard.astro";
+import { LIBRARY } from "@consts";
+
+const data = (await getCollection("library"))
+  .filter((book) => !book.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Separate fiction and non-fiction books
+const nonFictionBooks = data.filter((book) => !book.data.fiction);
+const fictionBooks = data.filter((book) => book.data.fiction);
+---
+
+<Layout title={LIBRARY.TITLE} description={LIBRARY.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="space-y-10">
+        <!-- Non-Fiction Books Section -->
+        {
+          nonFictionBooks.length > 0 && (
+            <section class="animate space-y-4">
+              <div class="font-semibold text-black dark:text-white">
+                Non-Fiction
+              </div>
+              <ul class="not-prose flex flex-col gap-4">
+                {nonFictionBooks.map((book) => (
+                  <li>
+                    <LibraryCard entry={book} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+
+        <!-- Fiction Books Section -->
+        {
+          fictionBooks.length > 0 && (
+            <section class="animate space-y-4">
+              <div class="font-semibold text-black dark:text-white">
+                Fiction
+              </div>
+              <ul class="not-prose flex flex-col gap-4">
+                {fictionBooks.map((book) => (
+                  <li>
+                    <LibraryCard entry={book} />
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )
+        }
+      </div>
+    </aside>
+  </Container>
+</Layout>

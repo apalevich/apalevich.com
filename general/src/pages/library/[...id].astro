@@ -1,0 +1,84 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import { readingTime } from "@lib/utils";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+import Giscus from "@components/Giscus.astro";
+import BookMeta from "@components/BookMeta.astro";
+import RelatedBooks from "@components/RelatedBooks.astro";
+
+export async function getStaticPaths() {
+  const books = (await getCollection("library"))
+    .filter((book) => !book.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return books.map((book) => ({
+    params: { id: book.id },
+    props: book,
+  }));
+}
+type Props = CollectionEntry<"library">;
+
+const book = Astro.props;
+const { Content, headings } = await render(book);
+---
+
+<Layout title={book.data.title} description={book.data.description}>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/library">Back to library</BackToPrevious>
+    </div>
+    <div class="my-10 space-y-1">
+      <h1 class="animate text-3xl font-semibold text-black dark:text-white">
+        {book.data.title}
+      </h1>
+      <div class="animate flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          by {book.data.author}
+        </div>
+        {
+          book.body && (
+            <>
+              &bull;
+              <div class="font-base text-sm">{readingTime(book.body)}</div>
+            </>
+          )
+        }
+      </div>
+      {
+        book.data.tags && book.data.tags?.length > 0 ? (
+          <div class="animate flex gap-2 pt-1">
+            {book.data.tags.map((tag) => (
+              <a
+                href={`/tags/${tag}`}
+                class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+              >
+                {tag}
+              </a>
+            ))}
+          </div>
+        ) : null
+      }
+    </div>
+    <BookMeta
+      author={book.data.author}
+      date={book.data.date}
+      rating={book.data.rating}
+      coverImage={book.data.coverImage}
+      externalLinks={book.data.externalLinks}
+    />
+    {headings.length > 0 && <TableOfContents headings={headings} />}
+    <article class="animate">
+      <Content />
+      {
+        book.data.relatedBooks && book.data.relatedBooks.length > 0 && (
+          <RelatedBooks relatedBooks={book.data.relatedBooks} />
+        )
+      }
+      <div class="mt-24">
+        <Giscus />
+      </div>
+    </article>
+  </Container>
+</Layout>

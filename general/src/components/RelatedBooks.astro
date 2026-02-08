@@ -1,0 +1,60 @@
+---
+import { getEntry } from "astro:content";
+import Link from "@components/Link.astro";
+
+type Props = {
+  relatedBooks: string[];
+};
+
+const { relatedBooks } = Astro.props;
+
+// Fetch related book entries
+const books = await Promise.all(
+  relatedBooks.map(async (id) => {
+    try {
+      const entry = await getEntry("library", id);
+      // Only return if entry exists and is not a draft
+      if (entry && !entry.data.draft) {
+        return entry;
+      }
+      return null;
+    } catch {
+      return null;
+    }
+  })
+);
+
+// Filter out nulls
+const validBooks = books.filter((book) => book !== null);
+---
+
+{
+  validBooks.length > 0 && (
+    <div class="animate mt-12 space-y-4">
+      <h2 class="text-2xl font-semibold text-black dark:text-white">
+        Related Books
+      </h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {validBooks.map((book) => (
+          <Link href={`/library/${book.id}`} underline={false}>
+            <div class="flex gap-4 rounded-lg border border-black/15 p-4 transition-colors duration-300 ease-in-out hover:bg-black/5 dark:border-white/20 dark:hover:bg-white/5">
+              {book.data.coverImage && (
+                <img
+                  src={book.data.coverImage}
+                  alt={`${book.data.title} cover`}
+                  class="h-24 w-16 rounded object-cover"
+                />
+              )}
+              <div class="flex flex-col">
+                <div class="font-semibold">{book.data.title}</div>
+                <div class="text-sm text-black/60 dark:text-white/60">
+                  by {book.data.author}
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  )
+}

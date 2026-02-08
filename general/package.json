@@ -1,7 +1,7 @@
 {
-  "name": "general",
+  "name": "astro-micro",
   "type": "module",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,9 +11,24 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/tailwind": "^6.0.2",
-    "astro": "^5.7.13",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
+    "@astrojs/mdx": "^4.3.5",
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.6.0",
+    "@fontsource/geist-mono": "^5.2.7",
+    "@fontsource/geist-sans": "^5.2.5",
+    "@tailwindcss/vite": "^4.1.13",
+    "astro": "^5.13.9",
+    "astro-pagefind": "^1.8.5",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.18",
+    "pagefind": "^1.4.0",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.14"
   }
 }
