@@ -1,0 +1,99 @@
+---
+import FormattedDate from "@components/FormattedDate.astro";
+import Link from "@components/Link.astro";
+
+type Props = {
+  author: string;
+  date: Date;
+  rating?: number;
+  coverImage?: string;
+  externalLinks?: {
+    amazon?: string;
+    goodreads?: string;
+    bookshop?: string;
+  };
+};
+
+const { author, date, rating, coverImage, externalLinks } = Astro.props;
+
+// Generate star rating display
+const renderStars = (rating?: number) => {
+  if (!rating) return "";
+  return "★".repeat(rating) + "☆".repeat(5 - rating);
+};
+---
+
+<div class="animate mb-8 space-y-4">
+  <div class="flex flex-col gap-4 md:flex-row md:items-start md:gap-6">
+    <!-- Cover Image (if present) -->
+    {
+      coverImage && (
+        <div class="flex-shrink-0">
+          <img
+            src={coverImage}
+            alt="Book cover"
+            class="h-auto w-full max-w-[200px] rounded-lg shadow-lg md:max-w-[250px]"
+          />
+        </div>
+      )
+    }
+
+    <!-- Metadata -->
+    <div class="flex flex-1 flex-col gap-2">
+      <!-- <div class="text-lg">
+        <span class="font-semibold">Author:</span>
+        {author}
+      </div> -->
+
+      {
+        rating && (
+          <div class="text-lg text-yellow-600 dark:text-yellow-400">
+            <span class="font-semibold text-black dark:text-white">
+              My rating:
+            </span>{" "}
+            {renderStars(rating)} ({rating}/5)
+          </div>
+        )
+      }
+
+      <div class="text-sm text-black/70 dark:text-white/70">
+        <span class="font-semibold text-black dark:text-white">
+          Finished:
+        </span>
+        <FormattedDate date={date} />
+      </div>
+
+      <!-- External Links -->
+      {
+        externalLinks &&
+          (externalLinks.amazon ||
+            externalLinks.goodreads ||
+            externalLinks.bookshop) && (
+            <div class="mt-2 flex flex-wrap gap-2">
+              {externalLinks.amazon && (
+                <Link href={externalLinks.amazon} external>
+                  <span class="rounded-sm border border-black/15 px-3 py-1.5 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 dark:border-white/20 dark:hover:bg-white/5">
+                    Amazon
+                  </span>
+                </Link>
+              )}
+              {externalLinks.goodreads && (
+                <Link href={externalLinks.goodreads} external>
+                  <span class="rounded-sm border border-black/15 px-3 py-1.5 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 dark:border-white/20 dark:hover:bg-white/5">
+                    Goodreads
+                  </span>
+                </Link>
+              )}
+              {externalLinks.bookshop && (
+                <Link href={externalLinks.bookshop} external>
+                  <span class="rounded-sm border border-black/15 px-3 py-1.5 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 dark:border-white/20 dark:hover:bg-white/5">
+                    Bookshop
+                  </span>
+                </Link>
+              )}
+            </div>
+          )
+      }
+    </div>
+  </div>
+</div>
