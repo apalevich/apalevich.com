@@ -5,7 +5,6 @@ import Container from "@components/Container.astro";
 import { readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import TableOfContents from "@components/TableOfContents.astro";
-import Giscus from "@components/Giscus.astro";
 import BookMeta from "@components/BookMeta.astro";
 import RelatedBooks from "@components/RelatedBooks.astro";
 import { mdxComponents } from "@components/mdx/mdx-components";
@@ -77,9 +76,6 @@ const { Content, headings } = await render(book);
           <RelatedBooks relatedBooks={book.data.relatedBooks} />
         )
       }
-      <div class="mt-24">
-        <Giscus />
-      </div>
     </article>
   </Container>
 </Layout>
