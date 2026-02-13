@@ -72,6 +72,9 @@
     @apply prose prose-neutral dark:prose-invert prose-img:mx-auto prose-img:my-auto max-w-full;
     @apply prose-headings:font-semibold;
     @apply prose-headings:text-black dark:prose-headings:text-white;
+    @apply prose-blockquote:border-l-[0.4rem] prose-blockquote:border-[color:var(--astro-code-token-punctuation)];
+    @apply prose-blockquote:pl-5 prose-blockquote:text-[1.3rem] prose-blockquote:leading-tight;
+    @apply prose-blockquote:text-[color:var(--astro-code-token-punctuation)] prose-blockquote:not-italic;
   }
 
   iframe {
