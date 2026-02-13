@@ -8,6 +8,7 @@ import TableOfContents from "@components/TableOfContents.astro";
 import Giscus from "@components/Giscus.astro";
 import BookMeta from "@components/BookMeta.astro";
 import RelatedBooks from "@components/RelatedBooks.astro";
+import { mdxComponents } from "@components/mdx/mdx-components";
 
 export async function getStaticPaths() {
   const books = (await getCollection("library"))
@@ -70,7 +71,7 @@ const { Content, headings } = await render(book);
     />
     {headings.length > 0 && <TableOfContents headings={headings} />}
     <article class="animate">
-      <Content />
+      <Content components={mdxComponents} />
       {
         book.data.relatedBooks && book.data.relatedBooks.length > 0 && (
           <RelatedBooks relatedBooks={book.data.relatedBooks} />

@@ -73,6 +73,10 @@
     @apply prose-headings:font-semibold;
     @apply prose-headings:text-black dark:prose-headings:text-white;
   }
+
+  iframe {
+    @apply aspect-video w-full h-auto;
+  }
 }
 
 @layer utilities {
