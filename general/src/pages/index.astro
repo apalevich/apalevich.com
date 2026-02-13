@@ -14,9 +14,7 @@ const blog = (await getCollection("blog"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const library: CollectionEntry<"library">[] = (
-  await getCollection("library")
-)
+const library: CollectionEntry<"library">[] = (await getCollection("library"))
   .filter((book) => !book.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_BOOKS_ON_HOMEPAGE);
@@ -37,13 +35,13 @@ const library: CollectionEntry<"library">[] = (
               humans better
             </p>
             <p>
-              This is my quiet corner of the internet for <Link href="/library"
-                >book reviews</Link
+              This is a quiet corner of the internet for my <Link
+                href="/library">book reviews</Link
               > and <Link href="/blog">blog posts</Link>
             </p>
           </span>
-          <span class="animate">
-            <h3 class="font-serif">What you’ll find here:</h3>
+          <span class="animate hidden">
+            <h3 class="pt-2">What you’ll find here:</h3>
             <div>
               <h4><Link href="/library">Book Reviews</Link></h4>
               <p>
@@ -64,42 +62,30 @@ const library: CollectionEntry<"library">[] = (
               </p>
             </div></span
           >
-          <span class="animate">
-            <h3 class="font-serif">Professional Projects</h3>
-            <p>
-              Professionally, I’m a frontend developer + product-minded tech
-              consultant. I build lean products, run audits, and help teams ship
-              improvements that users can feel (speed, UX, reliability,
-              clarity). I prefer project-based, outcome-focused work, with
-              honest feedback loops
-            </p>
-            <p>
-              If you came here looking for the “work” side, it’s alive and well.
-              I’m building and shipping things like ProCommento and other
-              product experiments under my boutique web development agency:
-            </p>
-            <p>
-              <ul class="font-bold">
-                <li>
-                  <Link href="https://apalevich.pro" external
-                    >APalevich.Pro</Link
-                  >: my professional home base, services, and product
-                  experiments
-                </li>
-                <li>
-                  <Link href="https://procommento.com" external
-                    >ProCommento</Link
-                  >: a LinkedIn commenting and growth toolkit (analytics +
-                  gamification) >
-                </li>
-              </ul>
-            </p>
-          </span>
         </article>
       </section>
+
       <section class="animate space-y-6">
         <div class="flex flex-wrap items-center justify-between gap-y-2">
-          <h2 class="font-semibold text-black dark:text-white">Latest posts</h2>
+          <h2 class="font-semibold text-black dark:text-white">Recent reads</h2>
+          <Link href="/library"> See all books </Link>
+        </div>
+        <ul class="not-prose flex flex-col gap-4">
+          {
+            library.map((book) => (
+              <li>
+                <LibraryCard entry={book} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h2 class="font-semibold text-black dark:text-white">
+            Latest articles
+          </h2>
           <Link href="/blog"> See all posts </Link>
         </div>
         <ul class="not-prose flex flex-col gap-4">
@@ -113,22 +99,26 @@ const library: CollectionEntry<"library">[] = (
         </ul>
       </section>
 
-      <section class="animate space-y-6">
-        <div class="flex flex-wrap items-center justify-between gap-y-2">
-          <h2 class="font-semibold text-black dark:text-white">
-            Recent reads
-          </h2>
-          <Link href="/library"> See all books </Link>
-        </div>
-        <ul class="not-prose flex flex-col gap-4">
-          {
-            library.map((book) => (
-              <li>
-                <LibraryCard entry={book} />
-              </li>
-            ))
-          }
-        </ul>
+      <section class="animate space-y-4">
+        <h2 class="font-semibold text-black dark:text-white">
+          Professional Projects
+        </h2>
+        <p>
+          I’m building and shipping things like ProCommento and other product
+          experiments under my boutique web development agency:
+        </p>
+        <p>
+          <ul class="list-disc list-inside">
+            <li>
+              <Link href="https://apalevich.pro" external>APalevich.Pro</Link>:
+              Full-Stack Web Development Services with High Perfomance
+            </li>
+            <li>
+              <Link href="https://procommento.com" external>ProCommento</Link>:
+              LinkedIn Toolkit for Seekers, Founders, Consultants, and B2B Sales
+            </li>
+          </ul>
+        </p>
       </section>
 
       <section class="animate space-y-4">

@@ -5,28 +5,18 @@ import myImage from "../../public/website.jpg";
 
 <!-- HERO -->
 <div
-  class="relative flex min-h-screen w-full flex-col items-center justify-center pb-20 md:min-h-[80vh] lg:min-h-fit lg:flex-row-reverse lg:pb-10"
+  class="relative flex h-min w-full flex-col items-center justify-center mb-10 lg:min-h-fit bg-[#E3DFE2]"
 >
-  <!-- <div class="relative lg:block lg:w-7/12">
-    <div
-      class="absolute top-1/2 left-1/2 aspect-square w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500 opacity-80 lg:w-full"
-    >
-    </div>
-    <Picture
-      src={myImage}
-      class="top-1/2 left-1/2 ml-auto w-1/2 -translate-x-1/2 scale-125 brightness-125 grayscale lg:relative lg:top-0 lg:w-full"
-      alt="portrait"
-    />
-  </div> -->
   <Picture
     src={myImage}
-    class="lg:relative lg:top-0 lg:w-full"
+    class="lg:relative lg:top-0 lg:w-full aspect-2/1"
     alt="portrait"
   />
-  <div class="absolute left-0 w-1/2 px-6 pt-12 md:px-12 lg:px-7 lg:py-0">
-    <p class="text-2xl text-gray-500/90 lg:text-right dark:text-gray-700">
-      Notes from a builder:<br /> books, systems, and the&nbsp;human&nbsp;side of
-      ambitious&nbsp;work
+  <div class="absolute left-0 top-50% w-1/2 px-6 md:px-12 lg:px-7 lg:py-0">
+    <p
+      class="text-m md:text-2xl text-gray-500/90 lg:text-right dark:text-gray-700"
+    >
+      Notes from a builder:<br /> books, photos, and thoughts
     </p>
   </div>
 </div>

@@ -2,39 +2,31 @@ import type { Metadata, Site, Socials } from "@types";
 
 export const SITE: Site = {
   TITLE: "Artem Palevich",
-  DESCRIPTION: "Personal website and blog",
+  DESCRIPTION: "Personal website, library and blog",
   EMAIL: "hello@apalevich.com",
-  NUM_POSTS_ON_HOMEPAGE: 5,
+  NUM_POSTS_ON_HOMEPAGE: 3,
   NUM_BOOKS_ON_HOMEPAGE: 3,
 };
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "Astro Micro is an accessible theme for Astro.",
+  TITLE: "Homepage",
+  DESCRIPTION: "Artem Palevich's Personal website",
 };
 
 export const BLOG: Metadata = {
   TITLE: "Blog",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  DESCRIPTION: "A collection of articles and notes I wrote",
 };
 
 export const LIBRARY: Metadata = {
   TITLE: "Library",
   DESCRIPTION:
-    "Book reviews, summaries, and reading notes on non-fiction books about productivity, business, psychology, and technology.",
+    "Book reviews, summaries, and reading notes on books about Business, Technology, and Philosophy.",
 };
 
 export const SOCIALS: Socials = [
   {
-    NAME: "X (ex-Twitter)",
-    HREF: "https://twitter.com/apalevich",
-  },
-  {
-    NAME: "GitHub",
-    HREF: "https://github.com/apalevich",
-  },
-  {
-    NAME: "Website",
-    HREF: "https://apalevich.com",
+    NAME: "LinkedIn",
+    HREF: "https://www.linkedin.com/in/apalevich/",
   },
 ];
