@@ -33,5 +33,18 @@ const { title, description } = Astro.props;
     </main>
     <Footer />
     <Pagefind />
+    <script is:inline>
+      // Open external links in new tab
+      document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll("a");
+        links.forEach((link) => {
+          const href = link.getAttribute("href");
+          if (href && (href.startsWith("http://") || href.startsWith("https://"))) {
+            link.setAttribute("target", "_blank");
+            link.setAttribute("rel", "noopener noreferrer");
+          }
+        });
+      });
+    </script>
   </body>
 </html>
