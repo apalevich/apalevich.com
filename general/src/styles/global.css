@@ -77,6 +77,15 @@
     @apply prose-blockquote:text-[color:var(--astro-code-token-punctuation)] prose-blockquote:not-italic;
   }
 
+  article blockquote {
+    quotes: none;
+  }
+
+  article blockquote p:first-of-type::before,
+  article blockquote p:last-of-type::after {
+    content: "";
+  }
+
   iframe {
     @apply aspect-video w-full h-auto;
   }

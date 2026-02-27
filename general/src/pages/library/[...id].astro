@@ -79,3 +79,30 @@ const { Content, headings } = await render(book);
     </article>
   </Container>
 </Layout>
+
+<script define:vars={{ author: book.data.author }}>
+  // Add author attribution to blockquotes
+  const blockquotes = document.querySelectorAll('article blockquote');
+  blockquotes.forEach((blockquote) => {
+    const lastChild = blockquote.lastElementChild;
+    const authorSpan = document.createElement('span');
+    authorSpan.className = 'blockquote-author';
+    authorSpan.textContent = ` — ${author}`;
+
+    if (lastChild && lastChild.tagName === 'P') {
+      lastChild.appendChild(authorSpan);
+    } else {
+      blockquote.appendChild(authorSpan);
+    }
+  });
+</script>
+
+<style>
+  :global(.blockquote-author) {
+    display: block;
+    margin-top: 0.5em;
+    font-style: italic;
+    font-size: 0.9em;
+    opacity: 0.8;
+  }
+</style>
