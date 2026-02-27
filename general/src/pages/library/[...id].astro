@@ -51,7 +51,7 @@ const { Content, headings } = await render(book);
           <div class="animate flex gap-2 pt-1">
             {book.data.tags.map((tag) => (
               <a
-                href={`/tags/${tag}`}
+                href={``}
                 class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
               >
                 {tag}
@@ -82,14 +82,14 @@ const { Content, headings } = await render(book);
 
 <script define:vars={{ author: book.data.author }}>
   // Add author attribution to blockquotes
-  const blockquotes = document.querySelectorAll('article blockquote');
+  const blockquotes = document.querySelectorAll("article blockquote");
   blockquotes.forEach((blockquote) => {
     const lastChild = blockquote.lastElementChild;
-    const authorSpan = document.createElement('span');
-    authorSpan.className = 'blockquote-author';
+    const authorSpan = document.createElement("span");
+    authorSpan.className = "blockquote-author";
     authorSpan.textContent = ` — ${author}`;
 
-    if (lastChild && lastChild.tagName === 'P') {
+    if (lastChild && lastChild.tagName === "P") {
       lastChild.appendChild(authorSpan);
     } else {
       blockquote.appendChild(authorSpan);
