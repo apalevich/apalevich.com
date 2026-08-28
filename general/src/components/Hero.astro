@@ -1,0 +1,22 @@
+---
+import { Picture } from "astro:assets";
+import myImage from "../../public/website.jpg";
+---
+
+<!-- HERO -->
+<div
+  class="relative flex h-min w-full flex-col items-center justify-center mb-10 lg:min-h-fit bg-[#E3DFE2]"
+>
+  <Picture
+    src={myImage}
+    class="lg:relative lg:top-0 lg:w-full aspect-2/1"
+    alt="portrait"
+  />
+  <div class="absolute left-0 top-50% w-1/2 px-6 md:px-12 lg:px-7 lg:py-0">
+    <p
+      class="text-m md:text-2xl text-gray-500/90 lg:text-right dark:text-gray-700"
+    >
+      Notes from a builder:<br /> books, photos, and thoughts
+    </p>
+  </div>
+</div>

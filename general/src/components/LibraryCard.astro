@@ -1,0 +1,64 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Link from "@components/Link.astro";
+
+type Props = {
+  entry: CollectionEntry<"library">;
+};
+
+const { entry } = Astro.props;
+
+// Truncate description for card display
+const truncatedDescription =
+  entry.data.description.length > 120
+    ? entry.data.description.slice(0, 120) + "..."
+    : entry.data.description;
+
+// Generate star rating display
+const renderStars = (rating?: number) => {
+  if (!rating) return "";
+  return "★".repeat(rating) + "☆".repeat(5 - rating);
+};
+---
+
+<Link href={`/library/${entry.id}`} underline={false} group>
+  <div
+    class="not-prose group relative flex min-h-32 flex-col rounded-lg border border-black/15 px-4 py-3 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+  >
+    <div class="flex flex-1 flex-col gap-1">
+      <div class="font-semibold">
+        {entry.data.title}
+      </div>
+      <div class="text-sm text-black/60 dark:text-white/60">
+        by {entry.data.author}
+      </div>
+      {
+        entry.data.rating && (
+          <div class="text-sm text-yellow-600 dark:text-yellow-400">
+            {renderStars(entry.data.rating)}
+          </div>
+        )
+      }
+      <div class="text-sm">
+        {truncatedDescription}
+      </div>
+    </div>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class="absolute top-4 right-2 size-5 fill-none stroke-current stroke-2"
+    >
+      <line
+        x1="5"
+        y1="12"
+        x2="19"
+        y2="12"
+        class="translate-x-3 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100 group-focus-visible:translate-x-0 group-focus-visible:scale-x-100"
+      ></line>
+      <polyline
+        points="12 5 19 12 12 19"
+        class="-translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-focus-visible:translate-x-0"
+      ></polyline>
+    </svg>
+  </div>
+</Link>
